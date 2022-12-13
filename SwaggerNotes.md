@@ -1,10 +1,10 @@
-#Choice of maven plugin version
+# Choice of maven plugin version
 used below maven plugin because swagger.json file specified "swagger": "2.0"  
 &lt;groupId&gt;io.swagger&lt;/groupId&gt;  
 &lt;artifactId&gt;swagger-codegen-maven-plugin&lt;/artifactId&gt;  
 &lt;version&gt;2.4.28&lt;/version&gt;  
 
-#discriminator problem
+# discriminator problem
 If we look at swagger definition for DataStore we see that discriminator is the "type" property.
 
 To the back end api -lets say one - which is expecting a DataStore or its derived child classes as request body one should be able to post a LdapDataStore by specifying the type.
@@ -30,6 +30,8 @@ Maybe.
 But version three also has issues of other kinds when dealing with object inheritance and polymorhism. see more here- https://github.com/swagger-api/swagger-core/issues/3312   
 
 Other than these points I did notice some other minor issues in the swagger definitions. Not listing them here for brevity.
+
+# Solution for above issues:
 
 To overcome these challenges while using the code generated java wrapper I also applied some json transformation via the rest template interceptor.
 

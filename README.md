@@ -16,4 +16,4 @@ As far as setup is concerned this is only a way to quickly get started on using 
 #### Setup
 [Setup Steps](Setup.md)
 #### Swagger discussion
-TBD
+[Swagger Notes](SwaggerNotes.md)

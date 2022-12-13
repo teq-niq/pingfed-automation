@@ -5,7 +5,7 @@ used below maven plugin because swagger.json file specified "swagger": "2.0"
 &lt;version&gt;2.4.28&lt;/version&gt;  
 
 # discriminator problem
-If we look at swagger definition for DataStore we see that discriminator is the "type" property.
+As an example, if we look at the swagger definition for DataStore we see that discriminator is the "type" property.
 
 To the back end api -lets say one - which is expecting a DataStore or its derived child classes as request body one should be able to post a LdapDataStore by specifying the type.
 And same also should work in same way when returning a datastore in response.
@@ -25,7 +25,7 @@ https://swagger.io/specification/
 
 So the type "enum" should have been actually listing  "LdapDataStore", "PingOneLdapGatewayDataStore", "JdbcDataStore", "CustomDataStore" than the "LDAP", "PING_ONE_LDAP_GATEWAY", "JDBC", "CUSTOM" it does currently.
 
-Is the other solution in using version 3 of open api.  
+Is the other solution in using version 3 of open api?  
 Maybe.  
 But version three also has issues of other kinds when dealing with object inheritance and polymorhism. see more here- https://github.com/swagger-api/swagger-core/issues/3312   
 

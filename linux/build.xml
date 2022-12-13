@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Sep 16, 2022 11:15:13 PM                                                        
+
+     Sets up and controls PingFed and PingDirectory server
+                   
+                                                              
+     ====================================================================== -->
+<project name="project" default="setup">
+	<property file="../versions.properties"/>
+	<property file="os.properties"/>
+	<property file="../mysql.properties"/>
+	<property file="../build.properties"/> 
+	
+	<path id="pingfed.start.stop.cp" >
+		<pathelement location="../custom-ant-tasks/target/custom-ant-tasks.jar"/>
+	</path>
+	
+	
+    <description>
+            description
+    </description>
+
+    <!-- ================================= 
+          target: setup              
+         ================================= -->
+    <target name="setup" description="description" depends="prepare-pingfed">
+    	
+    	
+    </target>
+	<target name="start-ds">
+			<exec  executable="ping\pingdirectory\PingDirectory-${ping.dir.version}\${ping.dir.bin}\start-server${ping.dir.extn}">
+			</exec>
+
+	</target>
+	
+	<target name="stop-ds">
+		<exec executable="ping\pingdirectory\PingDirectory-${ping.dir.version}\${ping.dir.bin}\stop-server${ping.dir.extn}">
+		</exec>
+
+	</target>
+	
+	<!--
+	Comment below taskdefs if you wish to avoid the custom ant tasks
+	and prefr using direct java
+	
+	-->
+	<taskdef name="start-non-clustered-pingfed" 
+			classname="example.StartNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
+	</taskdef>
+	<taskdef name="stop-non-clustered-pingfed" 
+			classname="example.StopNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
+	</taskdef>
+	<target name="start-pingfed">
+		<!--
+			comment if you prefer using direct java instead of ant tasks
+		-->
+		<start-non-clustered-pingfed 
+			pingFedHome=".\ping\pingfederate\pingfederate-${ping.fed.version}"
+			launchPropertiesFile=".\ping\pingfederate\pingfed.launch.properties"
+		/>
+		<!-- uncomment below if not using ant task but direct java-->
+		<!--
+		<java   classpathref="pingfed.start.stop.cp" classname="example.Launch">
+			<arg file=".\ping\pingfederate\pingfederate-${ping.fed.version}"/>
+			<arg file=".\ping\pingfederate\pingfed.launch.properties"/>
+		</java>
+		-->
+	</target>
+	
+	<target name="stop-pingfed">
+		<!--
+			comment if you prefer using direct java instead of ant tasks
+		-->
+		<stop-non-clustered-pingfed 
+			launchPropertiesFile=".\ping\pingfederate\pingfed.launch.properties"
+		/>
+		<!-- uncomment below if not using ant task but direct java-->
+		<!--
+		<java   classpathref="pingfed.start.stop.cp" classname="example.Kill">
+			<arg file=".\ping\pingfederate\pingfed.launch.properties"/>
+		</java>
+		-->
+	</target>
+	
+	<target name="configure-pingfed" depends="prepare-pingfed">
+
+
+				<exec outputproperty="secret1" executable="ping\pingfederate\pingfederate-${ping.fed.version}\bin\obfuscate${ping.fed.extn}">
+					<arg value="-l" />
+					<arg value="SECRETPASS" />
+				</exec>
+				<exec outputproperty="secret2" executable="ping\pingfederate\pingfederate-${ping.fed.version}\bin\obfuscate${ping.fed.extn}">
+					<arg value="-l" />
+					<arg value="${mysql.upwd}" />
+				</exec>
+				<exec outputproperty="secret3" executable="ping\pingfederate\pingfederate-${ping.fed.version}\bin\obfuscate${ping.fed.extn}">
+					<arg value="-l" />
+					<arg value="manager" />
+				</exec>
+				<script language="javascript">
+					<![CDATA[
+								        var secret1= project.getProperty("secret1");
+								        if (secret1!= null) {
+								            project.setProperty("secret1", secret1.trim())
+								        }
+									var secret2= project.getProperty("secret2");
+											        if (secret2!= null) {
+											            project.setProperty("secret2", secret2.trim())
+											        }
+									var secret3= project.getProperty("secret3");
+																	        if (secret3!= null) {
+																	            project.setProperty("secret3", secret3.trim())
+																	        }
+								    ]]>
+				</script>
+				<copy file="../override\pingfederate-jdbc-ds.xml" todir="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\data" overwrite="true">
+					<filterset>
+						<filter token="SECRET1" value="${secret1}" />
+						<filter token="SECRET2" value="${secret2}" />
+						<filter token="pingfedmysqluser" value="${mysql.u}" />
+						<filter token="pingfedmysqlschema" value="${mysql.schema}" />
+					</filterset>
+				</copy>
+
+
+				<copy file="../override\org.sourceid.oauth20.domain.ClientManagerJdbcImpl.xml" todir="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\data\config-store" overwrite="true" />
+</target>
+	
+	
+	<target name="prepare-pingfed" depends="configure-pingdir-win">
+
+
+				<unzip dest="ping/pingfederate" src="../downloads\pingfederate-${ping.fed.version}.zip" />
+				<move file="ping\pingfederate\pingfederate-${ping.fed.version}" tofile="ping\pingfederate\pingfederate-${ping.fed.version}-temp" />
+				<move tofile="ping\pingfederate\pingfederate-${ping.fed.version}" file="ping\pingfederate\pingfederate-${ping.fed.version}-temp\pingfederate" />
+				<move file="ping\pingfederate\pingfederate-${ping.fed.version}-temp\ReadMeFirst.pdf" todir="ping\pingfederate\pingfederate-${ping.fed.version}" />
+				<delete dir="ping\pingfederate\pingfederate-${ping.fed.version}-temp" />
+				<replace file="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\META-INF\hivemodule.xml" 
+					token="class=&quot;org.sourceid.oauth20.domain.ClientManagerXmlFileImpl&quot;" value="class=&quot;org.sourceid.oauth20.domain.ClientManagerJdbcImpl&quot;"/>
+				
+				<copy file="../downloads\mysql-connector-java-${mysql.conn.version}.jar" todir="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\lib" />
+			<copy file="../sql/setup.sql" tofile="../sql/setup-use.sql" overwrite="true">
+									<filterset>
+										
+										<filter token="pingfedmysqluserpwd" value="${mysql.upwd}" />
+										<filter token="pingfedmysqluser" value="${mysql.u}" />
+										<filter token="pingfedmysqlschema" value="${mysql.schema}" />
+									</filterset>
+								</copy>	
+
+			<sql src="../sql/setup-use.sql" userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" />
+			<delete file="../sql/setup-use.sql"/>
+			<sql src="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\oauth-client-management\sql-scripts\oauth-client-management-mysql.sql" userid="${mysql.u}" password="${mysql.upwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" />
+			<chmod perm="777" file="ping\pingfederate\pingfederate-${ping.fed.version}\bin\obfuscate${ping.fed.extn}"/>
+			<chmod perm="777" file="ping/pingfederate/pingfederate-${ping.fed.version}/bin/*"/>
+
+			</target>
+	
+
+
+	<target name="configure-pingdir-win" depends="prepare-pingdir">
+		<chmod perm="777" file="ping\pingdirectory\PingDirectory-${ping.dir.version}\setup${ping.dir.extn}"/>
+					<chmod perm="777" file="ping/pingdirectory/PingDirectory-${ping.dir.version}/bin/start-server"/>
+					<chmod perm="777" file="ping/pingdirectory/PingDirectory-${ping.dir.version}/bin/stop-server"/>
+					<chmod perm="777" file="ping/pingdirectory/PingDirectory-${ping.dir.version}/bin/*"/>
+					<chmod perm="777" file="ping/pingdirectory/PingDirectory-${ping.dir.version}/lib/*"/>
+					<property name="ping.dir.setup.dir" location="./ping/pingdirectory/PingDirectory-${ping.dir.version}" />
+						<exec dir="${ping.dir.setup.dir}" executable="./setup${ping.dir.extn}">
+						
+								<arg value="--acceptLicense" />
+								<arg value="--licenseKeyFile" />
+								<arg path="ping\pingdirectory\PingDirectory-${ping.dir.version}\PingDirectory-${ping.dir.lic.version}.lic" />
+								<arg value="--baseDN" />
+								<arg value="dc=example,dc=com" />
+								<arg value="--sampleData" />
+								<arg value="2" />
+								<arg value="--skipHostnameCheck" />
+							
+								<arg value="--localHostName" />
+								<arg value="${local.ip}" />
+								<arg value="--ldapPort" />
+								<arg value="389" />
+								<arg value="--rootUserDN" />
+								<arg value="cn=Directory Manager" />
+								<arg value="--rootUserPasswordFile" />
+								<arg path="ping/pingdirectory/PingDirectory-${ping.dir.version}/config/tools.pin" />
+								<arg value="--maxHeapSize" />
+								<arg value="768m" />
+								<arg value="--doNotStart" />
+								<arg value="--ldapsPort" />
+								<arg value="636" />
+								<arg value="--httpsPort" />
+								<arg value="8443" />
+								<arg value="--instanceName" />
+								<arg value="instance1" />
+
+								<arg value="--location" />
+								<arg value="Bangalore" />
+								<arg value="--optionCacheDirectory" />
+								<arg path="ping\pingdirectory\PingDirectory-${ping.dir.version}\logs\option-cache" />
+								<arg value="--enableStartTLS" />
+								<arg value="--generateSelfSignedCertificate" />
+								<arg value="--no-prompt" />
+								<arg value="--populateToolPropertiesFile" />
+								<arg value="bind-password" />
+								<arg value="--allowWeakRootUserPassword" />
+							</exec>
+
+
+						</target>
+
+	<target name="prepare-pingdir"  depends="depends" >
+
+					<unzip dest="ping/pingdirectory" src="../downloads\PingDirectory-${ping.dir.version}.zip" />
+					<move file="ping/pingdirectory\PingDirectory" includeemptydirs="true" tofile="ping/pingdirectory\PingDirectory-${ping.dir.version}">
+					</move>
+					<copy file="../downloads\PingDirectory-${ping.dir.lic.version}.lic" tofile="ping\pingdirectory\PingDirectory-${ping.dir.version}\PingDirectory-${ping.dir.lic.version}.lic" />
+		
+			
+			<echo file="ping/pingdirectory/PingDirectory-${ping.dir.version}/config/tools.pin" message="manager" />
+
+				</target>
+    <target name="depends">
+    	<mkdir dir="ping" />
+    </target>
+	<target name="clean">
+	    	<delete dir="ping" />
+	    </target>
+
+</project>

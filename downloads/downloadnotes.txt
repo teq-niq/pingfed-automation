@@ -1,0 +1,31 @@
+A) Go to https://www.pingidentity.com/en/resources/downloads/pingfederate.html
+Download the PRODUCT DISTRIBUTION (ZIP)
+In my case it was pingfederate-11.1.2.zip.
+Copy it into downloads folder.
+
+B) Go to https://www.pingidentity.com/en/account/request-license-key.html
+Select PingFederate.
+Accept the license agreement and submit
+Go to https://support.pingidentity.com/s/manage-license-keys
+Select the license key and click View> download button.
+Copy the license key into the downloads folder.
+This was the file in my case- PingFederate-11.1-Production.lic
+
+C) Go to https://www.pingidentity.com/en/resources/downloads/pingdirectory-downloads.html
+Download the version of PingDirectory  from there.
+In my case it was PingDirectory-9.1.0.0.zip.
+Copy it into downloads folder.
+
+
+D) Go to https://www.pingidentity.com/en/account/request-license-key.html
+Select PingDirectory.
+Accept the license agreement and submit
+Go to https://support.pingidentity.com/s/manage-license-keys
+Select the license key and click View> download button.
+Copy the license key into the downloads folder.
+This was the file in my case- PingDirectory-9.1-Production.lic
+
+E) Visit https://repo1.maven.org/maven2/mysql/mysql-connector-java/
+Download the latest jar
+This was the file in my case- mysql-connector-java-8.0.30.jar
+Copy it into downloads folder.

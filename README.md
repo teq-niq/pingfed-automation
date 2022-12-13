@@ -1,1 +1,19 @@
-# pingfed-automation
+# PingFed Automation Demo
+## Objectives:
+1. Speed up getting started on PingFederate.  
+1.1 Setup a non clustred pingfederate instance with minimal manual effort.  
+1.2 Post initial configuration setup automate configuration of pingfederate using a java admin api wrapper.
+2. A general discussion on swagger in this context.
+As far as setup is concerned this is only a way to quickly get started on using pingfederate. Customise as needed.  
+## Prerequisites 
+- Java JDK 11
+- JAVA_HOME environment variable should be correctly setup.
+- Java, Maven and Ant should be configured in Path environment variable.
+- A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
+- Ensure ports 9999, 9031, 8080 are available and not in use before proceeding.
+
+## Steps to follow
+#### Setup
+[Setup Steps](Setup.md)
+#### Swagger discussion
+TBD

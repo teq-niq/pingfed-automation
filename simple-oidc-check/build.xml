@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     22-Feb-2022 2:35:06 am                                                        
+
+     Downloads tomcat 10 and launches the war file in it
+                   
+                                                               
+     ====================================================================== -->
+<project name="project" default="fullbuild">
+    <description>
+            description
+    </description>
+	<property name="tomcat.ver" value="10.0.16"/>
+     <property name="tomcat.home" location="build/apache-tomcat-${tomcat.ver}"/>
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="fullbuild"  description="description">
+    	<delete dir="build"/>
+    	
+        <mkdir dir="build"/>
+    	<mkdir dir="build/lib"/>
+
+    	<get src="https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.16/bin/apache-tomcat-${tomcat.ver}-windows-x64.zip" dest="build"/>
+
+    	
+    	    	    	
+ 
+    	<unzip src="build\apache-tomcat-${tomcat.ver}-windows-x64.zip" dest="build"/>
+    	
+    	<copy todir="${tomcat.home}">
+    		<fileset dir="overrides"/>
+    		</copy>
+    	
+    	
+    	
+    	<antcall target="build"/>
+    	
+   
+    </target>
+    <target name="build"  description="description">
+    	<fail message="Ensure warfile was created using maven build.">
+    	    <condition>
+    	        <not>
+    	            <resourcecount count="1">
+    	                <fileset id="fs" dir="target" includes="simple-oidc-check.war"/>
+    	            </resourcecount>
+    	        </not>
+    	    </condition>
+    	</fail>
+    	<delete dir="${tomcat.home}/webapps/simple-oidc-check"></delete>
+    	<unwar  src="target/simple-oidc-check.war" dest="${tomcat.home}/webapps/simple-oidc-check"></unwar>
+   
+    </target>
+
+ 
+</project>

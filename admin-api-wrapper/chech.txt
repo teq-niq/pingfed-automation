@@ -1,0 +1,41 @@
+
+https://stackoverflow.com/questions/39683846/discriminator-in-polymorphism-openapi-2-0-swagger-2-0
+https://groups.google.com/g/swagger-swaggersocket/c/RXCcs-uVUBE
+
+
+https://support.smartbear.com/swaggerhub/docs/
+https://github.com/swagger-api/swaggerhub-maven-plugin
+https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen-maven-plugin
+
+
+https://localhost:9999/pf-admin-api/api-docs/
+
+swagger :3
+https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/
+
+swagger: 2
+https://swagger.io/specification/v2/
+https://swagger.io/docs/specification/2-0/authentication/basic-authentication/
+
+https://swagger.io/docs/open-source-tools/swagger-codegen/
+
+https://github.com/swagger-api/swagger-codegen
+
+so this is for 2
+
+<plugin>
+    <groupId>io.swagger</groupId>
+    <artifactId>swagger-codegen-maven-plugin</artifactId>
+    <version>2.3.1</version>
+    
+    
+latest of 2 is
+ <groupId>io.swagger</groupId>
+ <artifactId>swagger-codegen-maven-plugin</artifactId>
+   <version>2.4.28</version>
+    
+ so this is for 3
+    <plugin>
+    <groupId>io.swagger.codegen.v3</groupId>
+    <artifactId>swagger-codegen-maven-plugin</artifactId>
+    <version>3.0.35</version>

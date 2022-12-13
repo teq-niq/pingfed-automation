@@ -22,9 +22,13 @@ I got this output.
 In command prompt/terminal navigate to 
 "pingfed-automation/win/" or "pingfed-automation/linux"  
 
-**Impotant Note**: Before proceeding *ensure that mysql is running and reachable.*  
-pingfed-automation/**mysql.properties** file entries should match the expectations.  
-Edit pingfed-automation\mysql.properties as needed.  
+```diff
+! Impotant Note: Before proceeding ensure that mysql is running and reachable.  
+! pingfed-automation/mysql.properties file entries should match the expectations.  
++ Edit pingfed-automation\mysql.properties as needed.  
+```
+  
+
 Run “ant”  
 ![setup](images/setup.png)  
 Result should look like this:  
@@ -67,8 +71,12 @@ Select it.
 ![chrome-step7](images/chrome-step7.png)  
 Press Next.  
 ![chrome-step8](images/chrome-step8.png)   
-Retain the default. For password I fed "Admin@123" without the quotes.  
-Ensure this matches with pingfed-automation\admin-api-wrapper\pingfed.api.properties file contents.  
+
+```diff
+! Retain the default. For password I fed "Admin@123" without the quotes.  
++ Ensure this matches with pingfed-automation\admin-api-wrapper\pingfed.api.properties file contents.  
+```
+
 Note: Its possible to create additional users for use with pingfed  api.
 However keeping it simple.  
 Prss Next.  
@@ -77,7 +85,7 @@ Do nothing. Press Finish.
 
 ![chrome-step10](images/chrome-step10.png)   
 #### swagger.json
-Visit https://localhost:9999/pf-admin-api/v1/swagger.json
+Visit  https://localhost:9999/pf-admin-api/v1/swagger.json
 Copy its contents into the file- pingfed-automation\admin-api-wrapper\swagger-json\swagger.json.   
 This step has already been done if you are on version pingfederate-11.1.2.  
 If your pingfederate version is higher do please update the file content here.  

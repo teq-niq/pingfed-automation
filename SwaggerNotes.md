@@ -31,9 +31,17 @@ But version three also has issues of other kinds when dealing with object inheri
 
 Other than these points I did notice some other minor issues in the swagger definitions. Not listing them here for brevity.
 
+In spite of these issues the back end can actually work which is a good thing.  
+Especially if you are using postman and swagger-ui most of the times.  
+
+The issue is more when you want to use the code-generation approach and the swagger json/yaml has some problems like the one we noted.  
+
+
+
 # Solution for above issues:
 
-To overcome these challenges while using the code generated java wrapper I also applied some json transformation via the rest template interceptor.
+The solution is to be careful about the yaml/json. If needed correct it manually.  Or else use a transformer like shown here in this case.  
+To overcome these challenges while using the code generated java wrapper I also applied some json transformation via the rest template interceptor.  
 
 This enabled me to successfuly administrate the pingfederate instance using java code.
 

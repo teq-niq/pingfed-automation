@@ -27,7 +27,7 @@ So the type "enum" should have been actually listing  "LdapDataStore", "PingOneL
 
 Is the other solution in using version 3 of open api?  
 Maybe.  
-But version three also has issues of other kinds when dealing with object inheritance and polymorhism. see more here- https://github.com/swagger-api/swagger-core/issues/3312   
+But version three also has issues of other kinds when dealing with object inheritance and polymorphism. see more here- https://github.com/swagger-api/swagger-core/issues/3312   
 
 Other than these points I did notice some other minor issues in the swagger definitions. Not listing them here for brevity.
 

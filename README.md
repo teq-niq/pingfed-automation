@@ -1,10 +1,10 @@
 # PingFed Automation Demo
 ## Objectives:
 1. Speed up getting started on PingFederate.  
-1.1 Setup a non clustred pingfederate instance with minimal manual effort.  
+1.1 Setup a non clustered pingfederate instance with minimal manual effort.  
 1.2 Post initial configuration setup automate configuration of pingfederate using a java admin api wrapper.
 2. A general discussion on swagger in this context.
-As far as setup is concerned this is only a way to quickly get started on using pingfederate. Customise as needed.  
+As far as setup is concerned this is only a way to quickly get started on using pingfederate. Customize as needed.  
 ## Prerequisites 
 - Java JDK 11
 - JAVA_HOME environment variable should be correctly setup.

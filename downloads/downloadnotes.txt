@@ -1,6 +1,6 @@
 A) Go to https://www.pingidentity.com/en/resources/downloads/pingfederate.html
 Download the PRODUCT DISTRIBUTION (ZIP)
-In my case it was pingfederate-11.1.2.zip.
+In my case it was pingfederate-11.1.3.zip.
 Copy it into downloads folder.
 
 B) Go to https://www.pingidentity.com/en/account/request-license-key.html
@@ -13,7 +13,7 @@ This was the file in my case- PingFederate-11.1-Production.lic
 
 C) Go to https://www.pingidentity.com/en/resources/downloads/pingdirectory-downloads.html
 Download the version of PingDirectory  from there.
-In my case it was PingDirectory-9.1.0.0.zip.
+In my case it was PingDirectory-9.1.0.1.zip.
 Copy it into downloads folder.
 
 

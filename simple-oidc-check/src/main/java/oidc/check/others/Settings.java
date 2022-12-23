@@ -39,6 +39,7 @@ public class Settings {
 		this.tokenEndpoint=this.endPoints.get("token_endpoint");
 		this.userinfoEndpoint=this.endPoints.get("userinfo_endpoint");
 		this.authorizationEndpoint=this.endPoints.get("authorization_endpoint");
+		this.jwksUriEndpoint=endPoints.get("jwks_uri");
 		
 	}
 	private void setup() throws Exception
@@ -123,6 +124,11 @@ public class Settings {
 	private final String tokenEndpoint;
 	private final String userinfoEndpoint;
 	private final String authorizationEndpoint;
+	private final String jwksUriEndpoint;
+	public String getJwksUriEndpoint() {
+		return jwksUriEndpoint;
+	}
+
 	public String getAuthorizationEndpoint() {
 		return authorizationEndpoint;
 	}
@@ -143,6 +149,7 @@ public class Settings {
 		return "Settings [wellKnown=" + wellKnown + ", clientId=" + clientId + ", clientSecret=" + clientSecret
 				+ ", loginHint=" + loginHint + ", atmId=" + atmId + ", tokenEndpoint=" + tokenEndpoint
 				+ ", userinfoEndpoint=" + userinfoEndpoint + ", authorizationEndpoint=" + authorizationEndpoint
+				+ ", jwksUriEndpoint=" + jwksUriEndpoint
 				+ ", endPoints=" + endPoints + ", setupException=" + setupException + "]";
 	}
 

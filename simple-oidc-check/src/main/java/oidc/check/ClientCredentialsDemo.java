@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
@@ -15,6 +16,8 @@ import org.apache.hc.core5.http.HttpHeaders;
 import org.apache.hc.core5.http.NameValuePair;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -101,16 +104,29 @@ public class ClientCredentialsDemo extends HttpServlet {
 	    
 	    CloseableHttpClient client = ClientBuilder.buildClient();
 
-		//HttpClient client = HttpClientBuilder.create().build();
+	
 	    client.execute(request, response -> {
 	    	int statusCode = response.getCode();
 			System.out.println("statusCode="+statusCode);
 			HttpEntity entity = response.getEntity();
 			String string = EntityUtils.toString(entity);
 			System.out.println(string);
+			ObjectMapper mapper= new ObjectMapper();
+			Map<String, String> readValue = mapper.readValue(string, Map.class);
+			System.out.println("readValue="+readValue);
 			
-			PrintWriter out = resp.getWriter();
-			out.println(string);
+			String accessToken=readValue.get("access_token");
+		
+			
+			try {
+				boolean verified = new AccessTokenVerifier(settings.getJwksUriEndpoint()).verifyAccessToken(accessToken);
+				System.out.println("verified="+verified);
+				PrintWriter out = resp.getWriter();
+				out.println("accessToken="+accessToken);
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			
 	    	return null;
 	    });
 		

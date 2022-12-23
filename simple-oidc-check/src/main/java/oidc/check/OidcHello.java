@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import java.util.Base64;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +13,7 @@ import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.utils.Base64;
+
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.HttpHeaders;
 import org.apache.hc.core5.http.NameValuePair;
@@ -129,8 +131,10 @@ public class OidcHello extends HttpServlet {
 		System.out.println("posting to "+settings.getTokenEndpoint());
 		HttpPost request = new HttpPost(settings.getTokenEndpoint());
 		String auth = settings.getClientId() + ":" + settings.getClientSecret();
-		byte[] encodedAuth = Base64.encodeBase64(
+		byte[] encodedAuth = Base64.getEncoder().encode(
 		  auth.getBytes(StandardCharsets.ISO_8859_1));
+		
+		
 		String authHeader = "Basic " + new String(encodedAuth);
 		request.setHeader(HttpHeaders.AUTHORIZATION, authHeader);
 		String redirectUrl = Urls.getRedirectrUrl(req);
@@ -159,24 +163,34 @@ public class OidcHello extends HttpServlet {
 			String idToken = readValue.get("id_token");
 			System.out.println();
 			System.out.println("accessToken="+accessToken);
-			System.out.println();
-			System.out.println("idToken="+idToken);
-			
-			if(idToken!=null && nonceValueFromCookie!=null)
-			{
-				boolean nonceMatched = nonceMatched(nonceValueFromCookie, idToken);
-				System.out.println("nonceMatched="+nonceMatched);
-				if(!nonceMatched)
-				{
-					throw new IllegalArgumentException("nonce not matched in id token");
-				}
-				
-			}
+
+			boolean verified;
 			try {
-				next(resp, settings, accessToken);
-			} catch (Exception e) {
-				throw new RuntimeException(e);
+				verified = new AccessTokenVerifier(settings.getJwksUriEndpoint()).verifyAccessToken(accessToken);
+				System.out.println("verified="+verified);
+				System.out.println();
+				System.out.println("idToken="+idToken);
+				
+				if(idToken!=null && nonceValueFromCookie!=null)
+				{
+					boolean nonceMatched = nonceMatched(nonceValueFromCookie, idToken);
+					System.out.println("nonceMatched="+nonceMatched);
+					if(!nonceMatched)
+					{
+						throw new IllegalArgumentException("nonce not matched in id token");
+					}
+					
+				}
+				try {
+					next(resp, settings, accessToken);
+				} catch (Exception e) {
+					throw new RuntimeException(e);
+				}
+			} catch (Exception e1) {
+				throw new RuntimeException(e1);
 			}
+			
+			
 	    	return null;
 	    });
 	    
@@ -184,6 +198,13 @@ public class OidcHello extends HttpServlet {
 		
 		
 	}
+
+	
+
+	
+	
+
+
 
 	private void next(HttpServletResponse resp, Settings settings, String accessToken) throws Exception, IOException {
 		HttpGet get = new HttpGet(settings.getUserinfoEndpoint());

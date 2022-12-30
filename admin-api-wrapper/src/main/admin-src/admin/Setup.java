@@ -32,7 +32,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.example.pingfedadmin.api.*;
 import com.example.pingfedadmin.invoker.ApiClient;
 import com.example.pingfedadmin.model.*;
-
+import com.example.pingfedadmin.model.Client.GrantTypesEnum;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -138,8 +138,11 @@ public class Setup implements ISetup{
 		 
 		 new ScopesCreator(core).addScopes( "email", "roles");
 		 
-		 new ClientCreator(core).createClient( "manual1", "manual1", "secret", atmId1, false, true, true, null, "http://localhost:8080/oidc-hello");
-		 new ClientCreator(core).createClient( "manual2", "manual2", "secret", atmId2, true, false, true, null);
+		 new ClientCreator(core).createClient( "manual1", "manual1", "secret", atmId1, 
+				  true, null, "http://localhost:8080/oidc-hello", GrantTypesEnum.AUTHORIZATION_CODE,
+				 GrantTypesEnum.ACCESS_TOKEN_VALIDATION);
+		 new ClientCreator(core).createClient( "manual2", "manual2", "secret", atmId2, 
+				  true, null, "", GrantTypesEnum.CLIENT_CREDENTIALS);
 			 
 		 Pair<String, String[]>[] scopesToAttributes=new Pair[] {
 				 Pair.with("email", new String[] {"email", "family_name", "given_name"})

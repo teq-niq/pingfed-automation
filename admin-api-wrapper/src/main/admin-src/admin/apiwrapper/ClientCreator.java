@@ -3,6 +3,7 @@ package admin.apiwrapper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import com.example.pingfedadmin.api.*;
 import com.example.pingfedadmin.model.*;
@@ -17,9 +18,24 @@ public class ClientCreator extends BaseCreator{
 	}
 	
 	public  void createClient(String clientId, String clientName, 
-			String clientSecret, String atmId2, boolean clientCredentials, boolean authorizationCode,
-			Boolean restrictToDefaultAccessTokenManager, String oidcPolicyId, String... redirectUrls) {
+			String clientSecret, String atmId2, 
+			Boolean restrictToDefaultAccessTokenManager, String oidcPolicyId, String redirectUrlsPipeSeperated,
+			GrantTypesEnum... grantTypes
+			) {
 		core.clearTransformers();
+		String[] redirectUrls= {};
+		if(redirectUrlsPipeSeperated!=null )
+		{
+			redirectUrlsPipeSeperated=redirectUrlsPipeSeperated.trim();
+			if(redirectUrlsPipeSeperated.length()>0)
+			{
+				redirectUrls=redirectUrlsPipeSeperated.split(Pattern.quote("|"));
+				for (int i = 0; i < redirectUrls.length; i++) {
+					redirectUrls[i]=redirectUrls[i].trim();
+				}
+			}
+			
+		}
 		OauthclientsApi api= new OauthclientsApi(core.getApiClient());
 		 Client client= new Client();
 		 client.setClientId(clientId);
@@ -33,16 +49,9 @@ public class ClientCreator extends BaseCreator{
 		 clientAuth.setSecret(clientSecret);
 		 clientAuth.setType(ClientAuth.TypeEnum.SECRET);
 		 client.setClientAuth(clientAuth);
-		 List<GrantTypesEnum> grantTypes= new ArrayList<>();
-		 if(clientCredentials)
-		 {
-			 grantTypes.add(GrantTypesEnum.CLIENT_CREDENTIALS);
-		 }
-		 if(authorizationCode)
-		 {
-			 grantTypes.add(GrantTypesEnum.AUTHORIZATION_CODE);
-		 }
-		 client.setGrantTypes(grantTypes);
+		
+		 
+		 client.setGrantTypes(Arrays.asList(grantTypes));
 		 if(atmId2!=null)
 		 {
 			 ResourceLink accessTokenManagerRef = new ResourceLink();

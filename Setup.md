@@ -126,7 +126,7 @@ Then
 Next screen should be this.  
 ![Reached Protected](images/protected.png) 
 Look at the console to see the acces token and other details.  
-This above application demonstrates the **authorisation code flow**.
+This above application demonstrates the **authorisation code flow**.  
 The improvment areas are :  
 1 Caching of jwks and the introspection.  
 2 use of refresh token.  

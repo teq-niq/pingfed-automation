@@ -1,0 +1,4 @@
+<Context path="" docBase="simple-oidc-app">
+<Realm className="com.example.realm.SimpleOidcRealm"/>
+ </Context>
+      

@@ -114,16 +114,25 @@ Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat o
 Once this tomcat has started pls visit http://localhost:8080/   
 ![Localhost 8080](images/localhost_8080.png)   
 In case you see messages of could not connect please ensure pingdirectory and pingfederate is running.    
-- **Click on the "Start" link**.   
+- **Click on the "Protected..." link**.   
+We have two configurations for essentially same oidc server.  
+So in next screen it will prompt for selecting the oidc server.    
+![oidc select](images/oidcselect.png)  
 This will start and verify the authorization code flow.  
 ![Login](images/authorization_code1.png)  
 Note: Use "password" for password
 Then  
 ![Approval Request](images/authorization_code2.png)   
-Next screen you will see the access token.  
-Feel free to copy it and study in https://jwt.io/  
+Next screen should be this.  
+![Reached Protected](images/protected.png) 
+Look at the console to see the acces token and other details.  
+This above application demonstrates the **authorisation code flow**.  
+The improvment areas are :  
+1 Caching of jwks and the introspection.  
+2 use of refresh token.  
+
 - **Click on the "Try" link**.  
-It should take you to another access token via client creedentials grant flow.  
+It should take you to another access token via client credentials grant flow.  
 If all worked correctly congrats.
 
 #### Stop Ping Federate

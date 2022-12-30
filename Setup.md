@@ -12,7 +12,7 @@ Read pingfed-automation\downloads\downloadnotes.txt.
 Download the files as mentioned here into "pingfed-automation\downloads" folder.  
 In command prompt/terminal navigate to pingfed-automation folder.  
 Run “mvn clean package” in command prompt.  
-![build](./images/build.png)  
+![build](images/build.png)  
 Wait for it to finish successfully.  
 ![buildresult](images/buildresult.png)   
 In command prompt/terminal navigate to "pingfed-automation/verify-downloads" folder.  

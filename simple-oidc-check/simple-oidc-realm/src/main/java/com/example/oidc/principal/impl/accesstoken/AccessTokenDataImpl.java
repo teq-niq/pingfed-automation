@@ -3,9 +3,11 @@ package com.example.oidc.principal.impl.accesstoken;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.example.config.AutomationSharedConstants;
 import com.example.oidc.principal.accesstoken.AccessTokenData;
 import com.example.oidc.principal.accesstoken.AccessTokenHeader;
 import com.example.oidc.principal.accesstoken.AccessTokenPayload;
+
 import com.example.util.JsonUtils;
 import com.example.util.JwtAccessTokenUtil;
 import com.example.util.ObjectMapperHolder;
@@ -46,6 +48,7 @@ public class AccessTokenDataImpl implements  AccessTokenData{
 			ObjectNode decodedPayloadAsObjectNode = ObjectMapperHolder.mapper.readValue(this.decodedPayload, ObjectNode.class);
 			payloadImpl.setScopes(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "scope"));
 			payloadImpl.setClient_id(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "client_id"));
+			payloadImpl.setUserId(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, AutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName));
 			payloadImpl.setNbf(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "nbf"));
 			payloadImpl.setIat(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "iat"));
 			payloadImpl.setExp(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "exp"));

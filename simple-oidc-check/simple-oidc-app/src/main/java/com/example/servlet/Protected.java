@@ -38,6 +38,8 @@ public class Protected extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 		out.println("<h1>Reached Protected &nbsp;&nbsp; Hello "+request.getRemoteUser()+"</h1>");
+		out.println("<a href=\"logout\">Logout</a><br/>");
+		out.println("<a href=\"/\">Home</a><br/>");
 		out.println("contextPath="+contextPath+"<br/>");
 		out.println("requestURI="+requestURI+"<br/>");
 		out.println("pathInfo="+pathInfo+"<br/>");

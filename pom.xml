@@ -6,10 +6,12 @@
   <packaging>pom</packaging>
   <modules>
   	<module>verify-downloads</module>
+ 
   	<module>admin-api-wrapper</module>
 
   	<module>custom-ant-tasks</module>
   	<module>simple-oidc-check</module>
+  	
   </modules>
   <properties>
     <maven.compiler.source>11</maven.compiler.source>

@@ -1,16 +1,19 @@
 package com.example.config;
+
+
+
 /*
  * imagine its loaded from config file
  */
 public class CurrentSettings {
 	
 	private final static  Settings localAuthorizatioonCode1=new Settings("https://localhost:9031/.well-known/openid-configuration", 
-			"manual1", 
-			"secret",
+			AutomationSharedConstants.AuthCodeClientId, 
+			AutomationSharedConstants.AuthCodeClientSecret,
 			"user.2").introspect();
 	private final static  Settings localAuthorizatioonCode2=new Settings("https://localhost:9031/.well-known/openid-configuration", 
-			"manual1", 
-			"secret",
+			AutomationSharedConstants.AuthCodeClientId, 
+			AutomationSharedConstants.AuthCodeClientSecret,
 			null);
 
 

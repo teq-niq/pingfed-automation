@@ -124,12 +124,12 @@ Note: Use "password" for password
 Then  
 ![Approval Request](images/authorization_code2.png)   
 Next screen should be this.  
-![Reached Protected](images/protected.png) 
+![Reached Protected](images/protected.png)   
 Look at the console to see the acces token and other details.  
 This above application demonstrates the **authorisation code flow**.  
 The improvment areas are :  
-1 Caching of jwks and the introspection.  
-2 use of refresh token.  
+- Caching of jwks and the introspection.  
+- use of refresh token.  
 
 - **Click on the "Try" link**.  
 It should take you to another access token via client credentials grant flow.  

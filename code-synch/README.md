@@ -10,5 +10,7 @@ Will have to rather run "mvn clean package - P admin" under pingfed-automation.
 There is no harm in that.  
 This was just a mater of personal preference.  
 
-In any case both approaches lead to an additional module.    
-
+In any case both approaches lead to an additional module.   
+ 
+Did want to also demosntrate how easy its to write a maven based custom code generator.  
+Could have easily leveraged moustache templates for that matter and generated all kinds of code.

@@ -110,7 +110,13 @@ In command prompt or terminal after navigating to pingfed-automation\simple-oidc
 Build should show up like this.  
 ![in simple oic check run ant result](images/simple_oidc_check_ant_res.png)  
 In case of difficulty edit tomcat.ver property in the build.xml file.  
-Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh.  
+##### Start Tomat
+Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
+You can also start and stop the tomcat using the ant targets as shown here.  
+In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant start-tomcat".  
+![start tomcat](images/start_tomcat.png)   
+This should result in  
+![start tomcat result](images/start_tomcat_result.png)   
 Once this tomcat has started pls visit http://localhost:8080/   
 ![Localhost 8080](images/localhost_8080.png)   
 In case you see messages of could not connect please ensure pingdirectory and pingfederate is running.    
@@ -130,7 +136,7 @@ This above application demonstrates the **authorisation code flow**.
 The improvment areas are :  
 - Caching of jwks and the introspection.  
 - use of refresh token.  
-
+Could be done in different ways.  Steering away from it for now.  
 ##### Click on the "Try" link -(Client credentials grant flow).  
 It should take you to another access token via client credentials grant flow.  
 If all worked correctly congrats.

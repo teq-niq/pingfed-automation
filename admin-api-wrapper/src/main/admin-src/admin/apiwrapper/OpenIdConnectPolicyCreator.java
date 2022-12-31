@@ -34,7 +34,7 @@ public class OpenIdConnectPolicyCreator extends BaseCreator{
 			String dsAttributeSourceId, String description, 
 			com.example.pingfedadmin.model.SourceTypeIdKey.TypeEnum dsAttributeType,
 			Pair<String, String>[] attributeContractFulfillmentDatas,
-			Pair<String, String[]>[] scopesToAttributes, boolean includeCoreAttributeInIdToken, boolean includeCoreAttributeInInUserInfo, String ldapSearchFilter) {
+			Pair<String, String[]>[] scopesToAttributes, boolean includeCoreAttributeInIdToken, boolean includeCoreAttributeInInUserInfo, String ldapSearchFilter, String customAttributeSourceFilter) {
 		core.setRequestTransformBeans(new TransformBean("attributeMapping/attributeSources/*/type",type->AttributeSource.TypeEnum.LDAP.name()));
 		core.setResponseTransformBeans(new TransformBean("attributeMapping/attributeSources/*/type",type->type.charAt(0)+type.substring(1).toLowerCase()+"AttributeSource"));
 		OauthopenIdConnectApi api= new OauthopenIdConnectApi(core.getApiClient());
@@ -84,7 +84,7 @@ public class OpenIdConnectPolicyCreator extends BaseCreator{
 			 CustomAttributeSource cattributeSource=(CustomAttributeSource) attributeSource;
 			 FieldEntry filterFieldsItem= new FieldEntry();
 			 filterFieldsItem.setName("Resource Path");
-			 filterFieldsItem.setValue("/users?uid=${abc}");
+			 filterFieldsItem.setValue(customAttributeSourceFilter);
 			 cattributeSource.addFilterFieldsItem(filterFieldsItem);
 		 }
 		 

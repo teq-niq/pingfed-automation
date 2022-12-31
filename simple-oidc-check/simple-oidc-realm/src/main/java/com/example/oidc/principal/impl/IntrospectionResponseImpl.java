@@ -3,7 +3,9 @@ package com.example.oidc.principal.impl;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.example.config.AutomationSharedConstants;
 import com.example.oidc.principal.IntrospectionResponse;
+
 import com.example.util.JsonUtils;
 import com.example.util.ObjectMapperHolder;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,7 +31,7 @@ public class IntrospectionResponseImpl implements IntrospectionResponse{
 		this.raw = raw;
 		try {
 			ObjectNode responseObjectNode = ObjectMapperHolder.mapper.readValue(raw, ObjectNode.class);
-			this.userid=JsonUtils.getTextFieldFromObjectNode(responseObjectNode, "abc");
+			this.userid=JsonUtils.getTextFieldFromObjectNode(responseObjectNode, AutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName);
 			this.nbf=JsonUtils.getLongFieldFromObjectNode(responseObjectNode, "nbf");
 			this.setScopes(JsonUtils.getTextFieldFromObjectNode(responseObjectNode, "scope"));
 			this.active=JsonUtils.getBooleanFieldFromObjectNode(responseObjectNode, "active");

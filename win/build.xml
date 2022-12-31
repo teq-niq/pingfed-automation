@@ -83,6 +83,7 @@
 			<arg file=".\ping\pingfederate\pingfed.launch.properties"/>
 		</java>
 		-->
+		<delete file=".\ping\pingfederate\pingfed.launch.properties"/>
 	</target>
 	
 	<target name="configure-pingfed" depends="prepare-pingfed">

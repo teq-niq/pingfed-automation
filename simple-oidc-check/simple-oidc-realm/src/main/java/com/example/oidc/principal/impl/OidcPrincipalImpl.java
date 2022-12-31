@@ -111,6 +111,10 @@ public class OidcPrincipalImpl  implements OidcPrincipal, Principal{
 		this.roles=this.accessTokenData.getPayload().getScopes();
 		
 		this.userId=this.accessTokenData.getPayload().getUserId();
+		if(this.userId==null)
+		{
+			this.userId=this.getIntrospectionResponse().getUserid();
+		}
 	}
 	@Override
 	public AccessTokenData getAccessTokenData() {

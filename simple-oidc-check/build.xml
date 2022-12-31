@@ -12,6 +12,15 @@
     </description>
 	<property name="tomcat.ver" value="10.0.18"/>
      <property name="tomcat.home" location="build/apache-tomcat-${tomcat.ver}"/>
+	<condition property="extn" value="bat">
+	    <os family="windows" />
+	</condition>
+
+	<condition property="extn" value="sh">
+	        <os family="unix" />
+	</condition>
+
+	
     <!-- ================================= 
           target: default              
          ================================= -->
@@ -61,6 +70,17 @@
     	<unwar  src="simple-oidc-app/target/simple-oidc-app.war" dest="${tomcat.home}/webapps/simple-oidc-app"></unwar>
    
     </target>
+	
 
- 
+ <target name="stop-tomcat">
+ 	<exec dir="${tomcat.home}/bin" executable="${tomcat.home}/bin/shutdown.${extn}">
+ 	
+ 	</exec>
+	</target>
+	
+	<target name="start-tomcat">
+	 	<exec dir="${tomcat.home}/bin" executable="${tomcat.home}/bin/startup.${extn}">
+	 	
+	 	</exec>
+		</target>
 </project>

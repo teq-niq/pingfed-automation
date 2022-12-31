@@ -114,7 +114,7 @@ Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat o
 Once this tomcat has started pls visit http://localhost:8080/   
 ![Localhost 8080](images/localhost_8080.png)   
 In case you see messages of could not connect please ensure pingdirectory and pingfederate is running.    
-- **Click on the "Protected..." link**.   
+##### Click on the "Protected...- link -(Authorization code grant flow).   
 We have two configurations for essentially same oidc server.  
 So in next screen it will prompt for selecting the oidc server.    
 ![oidc select](images/oidcselect.png)  
@@ -131,7 +131,7 @@ The improvment areas are :
 - Caching of jwks and the introspection.  
 - use of refresh token.  
 
-- **Click on the "Try" link**.  
+##### Click on the "Try" link -(Client credentials grant flow).  
 It should take you to another access token via client credentials grant flow.  
 If all worked correctly congrats.
 

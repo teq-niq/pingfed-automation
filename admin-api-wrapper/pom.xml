@@ -121,6 +121,7 @@
 								<configuration>
 									<sources>
 										<source>src/main/admin-src/</source>
+										<source>src/main/synch-src/</source>
 									</sources>
 								</configuration>
 							</execution>

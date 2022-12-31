@@ -11,7 +11,8 @@
 
   	<module>custom-ant-tasks</module>
   	<module>simple-oidc-check</module>
-  	
+
+  	<module>code-synch</module>
   </modules>
   <properties>
     <maven.compiler.source>11</maven.compiler.source>

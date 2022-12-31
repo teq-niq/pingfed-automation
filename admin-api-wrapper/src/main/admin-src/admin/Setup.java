@@ -56,6 +56,7 @@ import admin.apiwrapper.ScopesCreator;
 import admin.apiwrapper.core.Core;
 import admin.apiwrapper.util.CreatorUtil;
 import admin.beans.AccessTokenMappingAttribute;
+import admin.synched.SynchedAutomationSharedConstants;
 
 
 
@@ -115,10 +116,10 @@ public class Setup implements ISetup{
 		
 		  IdpAdapterMapping createdIdpAdapterMapping = new IdpAdapterMappingCreator(core).createIdpAdapterGrantMapping(formAdapterid, "username");
 		
-		 new JwtAtmCreator(core).createJWTATM( atmId1, "jwtatm1", 120, 1, AutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName, "iat", "nbf");
+		 new JwtAtmCreator(core).createJWTATM( atmId1, "jwtatm1", 120, 1, SynchedAutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName, "iat", "nbf");
 		 
 		 new AtmMappingCreator(core).createTokenMappings( "jwtatm1mapping", AccessTokenMappingContext.TypeEnum.IDP_ADAPTER, formAdapterid, atmId1,
-				 new AccessTokenMappingAttribute(null, AutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName, SourceTypeIdKey.TypeEnum.OAUTH_PERSISTENT_GRANT, "USER_KEY"),
+				 new AccessTokenMappingAttribute(null, SynchedAutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName, SourceTypeIdKey.TypeEnum.OAUTH_PERSISTENT_GRANT, "USER_KEY"),
 				 new AccessTokenMappingAttribute(null, "iat", SourceTypeIdKey.TypeEnum.EXPRESSION, "#iat=@org.jose4j.jwt.NumericDate@now().getValue()"),
 				 new AccessTokenMappingAttribute(null, "nbf", SourceTypeIdKey.TypeEnum.EXPRESSION, "#nbf = @org.jose4j.jwt.NumericDate@now(), #nbf.addSeconds(10), #nbf = #nbf.getValue()")
 				 
@@ -139,7 +140,7 @@ public class Setup implements ISetup{
 		 
 		 new ScopesCreator(core).addScopes( "email", "roles");
 		 
-		 new ClientCreator(core).createClient( AutomationSharedConstants.AuthCodeClientId, AutomationSharedConstants.AuthCodeClientId, AutomationSharedConstants.AuthCodeClientSecret, atmId1, 
+		 new ClientCreator(core).createClient( SynchedAutomationSharedConstants.AuthCodeClientId, SynchedAutomationSharedConstants.AuthCodeClientId, SynchedAutomationSharedConstants.AuthCodeClientSecret, atmId1, 
 				  true, null, "http://localhost:8080/oidc-hello", GrantTypesEnum.AUTHORIZATION_CODE,
 				 GrantTypesEnum.ACCESS_TOKEN_VALIDATION);
 		 new ClientCreator(core).createClient( "manual2", "manual2", "secret", atmId2, 
@@ -163,8 +164,8 @@ public class Setup implements ISetup{
 						 Pair.with("family_name", "sn"),
 						 Pair.with("given_name", "givenName")
 				 },
-				 scopesToAttributes, true, true, "uid=${"+AutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName+"}", 
-				 "/users?uid=${"+AutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName+"}");
+				 scopesToAttributes, true, true, "uid=${"+SynchedAutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName+"}", 
+				 "/users?uid=${"+SynchedAutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName+"}");
 	
 	}
 	

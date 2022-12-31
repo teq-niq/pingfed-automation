@@ -62,5 +62,15 @@
    
     </target>
 
- 
+ <target name="stop-tomcat">
+ 	<exec dir="${tomcat.home}/bin" executable="${tomcat.home}/bin/shutdown.bat">
+ 	
+ 	</exec>
+	</target>
+	
+	<target name="start-tomcat">
+	 	<exec dir="${tomcat.home}/bin" executable="${tomcat.home}/bin/startup.bat">
+	 	
+	 	</exec>
+		</target>
 </project>

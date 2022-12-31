@@ -1,5 +1,5 @@
 # PingFed Automation Demo
-![buildresult](images/authorization_code1.png) 
+![demo](https://raw.githubusercontent.com/teq-niq/pingfed-automation/media/authorization_code1.png) 
 ## Objectives:
 1. Speed up getting started on PingFederate.  
 1.1 Setup a non clustered pingfederate instance with minimal manual effort.  

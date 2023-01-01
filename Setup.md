@@ -129,9 +129,14 @@ This will start and verify the authorization code flow.
 <img width="255" alt="authorization_code1" src="https://user-images.githubusercontent.com/14346578/210154455-1b3749f0-fc34-4918-a371-d856a2e7cc9a.png">    
 Note: Use "password" for password
 Then  
-<img width="300" alt="authorization_code2" src="https://user-images.githubusercontent.com/14346578/210154467-3ddc1934-1ad2-4ad8-b5ab-fa92ad3ad5c6.png">    
+<img width="641" alt="authorization_code2" src="https://user-images.githubusercontent.com/14346578/210169644-0929666f-7265-436e-9667-0a35b82f3060.png">    
+Uncheck foo scope item.
+<img width="586" alt="authorization_code3" src="https://user-images.githubusercontent.com/14346578/210169650-98df70d9-5ca6-45f4-8366-cb8462f395fd.png">   
+Press Allow button.  
 Next screen should be this.  
-<img width="285" alt="protected" src="https://user-images.githubusercontent.com/14346578/210154481-e190b6e2-ef66-4da0-99a4-c1f56bd79f98.png">   
+<img width="270" alt="protected" src="https://user-images.githubusercontent.com/14346578/210169662-38c982b7-b63e-45c5-a150-94af44ceb6c4.png">   
+Note: As can be seen in above screen in our authorization code sample for convenience treating scope as the user roles.  Thats why it says false against foo. But true against bar. 
+Also Note: security can be applied against scope and also roles treating both as difefrent concepts.
 Look at the console to see the acces token and other details.  
 This above application demonstrates the **authorisation code flow**.  
 The improvment areas are :  

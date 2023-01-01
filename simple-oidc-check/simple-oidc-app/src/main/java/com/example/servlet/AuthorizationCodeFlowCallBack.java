@@ -123,7 +123,7 @@ public class AuthorizationCodeFlowCallBack extends HttpServlet {
 					if(authenticatedPrincipal instanceof OidcPrincipal)
 					{
 						OidcPrincipal oidcPrincipal=(OidcPrincipal) authenticatedPrincipal;
-						logger.log(Level.FINE, "authenticated oidc principal="+oidcPrincipal.toJsonString());
+						logger.log(Level.FINE, "authenticated oidc principal="+oidcPrincipal.toString());
 					}
 					String originalRequestUri = extractOriginalRequestUriFromState(stateValueFromCookie);
 					if(originalRequestUri==null)

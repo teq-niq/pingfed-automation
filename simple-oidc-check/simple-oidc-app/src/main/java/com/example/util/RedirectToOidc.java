@@ -37,7 +37,7 @@ public class RedirectToOidc {
 		String url=settings.getAuthorizationEndpoint()+"?redirect_uri="+
 		Encoder.encode(redirectUrl)
 		+"&response_type=code&client_id="+settings.getClientId()
-		+"&scope="+Encoder.encode("openid email roles")
+		+"&scope="+Encoder.encode("openid email foo bar")
 		+"&state="+Encoder.encode(state)
 		+"&nonce="+Encoder.encode(nonce);
 		if(loginHint!=null)

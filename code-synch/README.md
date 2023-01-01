@@ -12,5 +12,7 @@ This was just a mater of personal preference.
 
 In any case both approaches lead to an additional module.   
  
-Did want to also demosntrate how easy its to write a maven based custom code generator.  
-Could have easily leveraged moustache templates for that matter and generated all kinds of code.
+Did want to also try  a maven based custom code generator which participates in the build without creating a custom maven plugin.  
+Could have easily leveraged moustache templates for that matter and generated all kinds of code.  
+
+That said might switch to using a common shared module later instead.  

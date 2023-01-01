@@ -1,6 +1,8 @@
 package com.example.oidc.principal.impl;
 
 import java.security.Principal;
+import java.util.Arrays;
+import java.util.List;
 
 import com.example.oidc.principal.IntrospectionResponse;
 import com.example.oidc.principal.OidcPrincipal;
@@ -12,10 +14,37 @@ import com.example.oidc.principal.impl.accesstoken.AccessTokenDataImpl;
 import com.example.oidc.principal.impl.idtoken.IdTokenDataImpl;
 import com.example.util.ObjectMapperHolder;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.apache.catalina.realm.GenericPrincipal;
 
-public class OidcPrincipalImpl  implements OidcPrincipal, Principal{
+public class OidcPrincipalImpl extends GenericPrincipal implements OidcPrincipal, Principal {
 	
-	private TokenResponse tokenResponse;
+
+	public OidcPrincipalImpl(String name, TokenResponse tokenResponse, AccessTokenData accessTokenData,
+			IdTokenData idTokenData, UserInfo userInfo, IntrospectionResponse introspectionResponse, 
+			String userId, String[] roles, int settingsIndex) {
+		super(name, Arrays.asList(roles));
+		this.tokenResponse = tokenResponse;
+		this.accessTokenData = accessTokenData;
+		this.idTokenData = idTokenData;
+		this.userInfo = userInfo;
+		this.introspectionResponse = introspectionResponse;
+		this.name = name;
+		this.userId = userId;
+		this.roles = roles;
+		this.settingsIndex = settingsIndex;
+	}
+	
+	public OidcPrincipalImpl()
+	{
+		super(null, null);
+		tokenResponse=new TokenResponseImpl();
+		accessTokenData= new AccessTokenDataImpl();
+		idTokenData=new IdTokenDataImpl();
+		userInfo= new UserInfoImpl();
+		introspectionResponse = new IntrospectionResponseImpl();
+	}
+
+	
 	@Override
 	public TokenResponse getTokenResponse() {
 		return tokenResponse;
@@ -38,7 +67,8 @@ public class OidcPrincipalImpl  implements OidcPrincipal, Principal{
 	public UserInfoImpl getUserInfoImpl() {
 		return (UserInfoImpl) userInfo;
 	}
-
+	private TokenResponse tokenResponse;
+	
 	private AccessTokenData accessTokenData;
 	private IdTokenData idTokenData;
 	private UserInfo userInfo;
@@ -48,14 +78,7 @@ public class OidcPrincipalImpl  implements OidcPrincipal, Principal{
 	private String[] roles;
 	private int settingsIndex;
 	
-	public OidcPrincipalImpl()
-	{
-		tokenResponse=new TokenResponseImpl();
-		accessTokenData= new AccessTokenDataImpl();
-		idTokenData=new IdTokenDataImpl();
-		userInfo= new UserInfoImpl();
-		introspectionResponse = new IntrospectionResponseImpl();
-	}
+	
 	
 	
 	
@@ -72,9 +95,13 @@ public class OidcPrincipalImpl  implements OidcPrincipal, Principal{
 		
 		return this.roles;
 	}
+	
 
 	@Override
 	public boolean hasRole(String role) {
+		 if ("*".equals(role)) { // Special 2.4 role meaning everyone
+	            return true;
+	        }
 		boolean hasRole=false;
 		for (String checkWith : roles) {
 			if(role.equals(checkWith))
@@ -98,7 +125,7 @@ public class OidcPrincipalImpl  implements OidcPrincipal, Principal{
 	/*
 	 * Customise
 	 */
-	public void buildDerived() {
+	public OidcPrincipalImpl buildDerived() {
 		if(this.userInfo.getGiven_name()!=null && this.userInfo.getGiven_name().length()>0)
 		{
 			this.name=this.userInfo.getGiven_name();
@@ -115,6 +142,10 @@ public class OidcPrincipalImpl  implements OidcPrincipal, Principal{
 		{
 			this.userId=this.getIntrospectionResponse().getUserid();
 		}
+		return new  OidcPrincipalImpl(this.name, this.tokenResponse, this.accessTokenData,
+				this.idTokenData, this.userInfo, this.introspectionResponse, 
+				this.userId, this.roles, this.settingsIndex);
+		
 	}
 	@Override
 	public AccessTokenData getAccessTokenData() {
@@ -154,5 +185,15 @@ public class OidcPrincipalImpl  implements OidcPrincipal, Principal{
 	public void setSettingsIndex(int settingsIndex) {
 		this.settingsIndex = settingsIndex;
 	}
+
+	@Override
+	public String toString() {
+		return "OidcPrincipal [tokenResponse=" + tokenResponse + ", accessTokenData=" + accessTokenData
+				+ ", idTokenData=" + idTokenData + ", userInfo=" + userInfo + ", introspectionResponse="
+				+ introspectionResponse + ", name=" + name + ", userId=" + userId + ", roles=" + Arrays.toString(roles)
+				+ ", settingsIndex=" + settingsIndex + "]";
+	}
+	
+	
 
 }

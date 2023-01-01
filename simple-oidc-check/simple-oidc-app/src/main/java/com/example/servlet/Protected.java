@@ -40,12 +40,20 @@ public class Protected extends HttpServlet {
 		out.println("<h1>Reached Protected &nbsp;&nbsp; Hello "+request.getRemoteUser()+"</h1>");
 		out.println("<a href=\"logout\">Logout</a><br/>");
 		out.println("<a href=\"/\">Home</a><br/>");
+		userInRole(request, out, "email");
+		userInRole(request, out, "foo");
+		userInRole(request, out, "bar");
 		out.println("contextPath="+contextPath+"<br/>");
 		out.println("requestURI="+requestURI+"<br/>");
 		out.println("pathInfo="+pathInfo+"<br/>");
 		out.println("queryString="+queryString+"<br/>");
 		out.println("contextPath="+contextPath+"<br/>");
 		out.println("</body></html>");
+	}
+
+	private void userInRole(HttpServletRequest request, PrintWriter out, String roleName) {
+		boolean userInRole = request.isUserInRole(roleName);
+		out.println("user has role:"+roleName+"="+userInRole+"<br/>");
 	}
 
 	

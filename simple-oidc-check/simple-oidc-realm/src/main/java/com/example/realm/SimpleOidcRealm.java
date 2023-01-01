@@ -48,9 +48,9 @@ public class SimpleOidcRealm extends RealmBase{
     public Principal authenticate(String username, String credentials) {
 		try {
 			OidcPrincipalImpl principal = lastLeg(credentials);
-			principal.buildDerived();
+			return principal.buildDerived();
 
-			return principal;
+			
 			
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Got Problem treated as reason not to authenticate", e);

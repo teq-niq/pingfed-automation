@@ -130,8 +130,8 @@ Click on the first "Start" link. This will start and verify the authorization co
 Note: Use "password" for password
 Then  
 <img width="641" alt="authorization_code2" src="https://user-images.githubusercontent.com/14346578/210169644-0929666f-7265-436e-9667-0a35b82f3060.png">    
-Uncheck foo scope item.
-<img width="586" alt="authorization_code3" src="https://user-images.githubusercontent.com/14346578/210169650-98df70d9-5ca6-45f4-8366-cb8462f395fd.png">   
+Uncheck foo scope item.   
+<img width="586" alt="authorization_code3" src="https://user-images.githubusercontent.com/14346578/210169650-98df70d9-5ca6-45f4-8366-cb8462f395fd.png">    
 Press Allow button.  
 Next screen should be this.  
 <img width="270" alt="protected" src="https://user-images.githubusercontent.com/14346578/210169662-38c982b7-b63e-45c5-a150-94af44ceb6c4.png">   

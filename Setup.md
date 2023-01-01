@@ -17,6 +17,8 @@ Wait for it to finish successfully.
 <img width="444" alt="buildresult" src="https://user-images.githubusercontent.com/14346578/210153661-a61535fd-3296-43a1-aa43-9ed7cb6d8391.png">   
 In command prompt/terminal navigate to "pingfed-automation/verify-downloads" folder.  
 Run "verifydownloads.bat" or "verifydownloads.sh".
+Might need to use "sudo chmod +x verifydownloads.sh" on linux.   
+Might need to use "sudo verifydownloads.sh" on linux.  
 I got this output.
 <img width="666" alt="verifydownloads" src="https://user-images.githubusercontent.com/14346578/210153720-536f2a35-603e-4d78-902e-d632e81bd244.png">   
 In command prompt/terminal navigate to 
@@ -29,21 +31,21 @@ In command prompt/terminal navigate to
 ```
   
 
-Run “ant”  
+Run “ant”. On linux might need to use  “sudo ant”.   
 <img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">  
 Result should look like this:  
 <img width="588" alt="setuprun-part1" src="https://user-images.githubusercontent.com/14346578/210153791-e6e8662f-7c01-4c9d-a463-35c7a918beeb.png">  
 <img width="604" alt="setuprun-part2" src="https://user-images.githubusercontent.com/14346578/210153798-08e1a56d-8665-4da0-b979-9a07d718113c.png">  
 That should setup pinfederate.
 #### Start PingDirectory
-Run "ant start-ds"  
+Run "ant start-ds". On linux use "sudo ant start-ds".     
 <img width="412" alt="start_ds" src="https://user-images.githubusercontent.com/14346578/210153869-5818bb83-99a6-4303-b7be-681b0aefbaa6.png">  
 Result should look like this:  
 <img width="567" alt="start_ds_result" src="https://user-images.githubusercontent.com/14346578/210153897-455b13eb-9616-400b-ab68-6e7342014b28.png">  
 Note: Via ant just starting the Ping directory. 
 PingDirectory can also be started by launching: start-server.bat or start-server.sh found in bin/bat folder of the Ping Directory.
 #### Start Ping Federate
-Run “ant start-pingfed”  
+Run “ant start-pingfed”. On linux use "sudo ant start-pingfed".    
 <img width="447" alt="start_pingfed" src="https://user-images.githubusercontent.com/14346578/210153941-6f95a083-fcef-49a1-ba47-553bc1f2501f.png">  
 Result should look like this:  
 <img width="567" alt="start_pingfed_result" src="https://user-images.githubusercontent.com/14346578/210153987-0c61dd67-3979-4893-8dea-cd6da4f9e2be.png">  
@@ -106,7 +108,7 @@ simple-oidc-check is a maven project. Its also a submodule of pingfed-automation
 It should be already built.  
 Its a simple servlet based project.  
 We are going to use this project to verify if we are able to obtain some access tokens from pingfederate.  
-In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant".
+In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant". On linux use "sudo ant". 
 <img width="451" alt="simple_oidc_check" src="https://user-images.githubusercontent.com/14346578/210154307-7414149b-75b0-452e-854b-3817de1ab6a8.png">   
 Build should show up like this.  
 <img width="591" alt="simple_oidc_check_ant_res" src="https://user-images.githubusercontent.com/14346578/210154342-1505f797-f26b-4b6f-9b5a-5d2e4b184791.png">   
@@ -114,7 +116,12 @@ In case of difficulty edit tomcat.ver property in the build.xml file.
 ##### Start Tomat
 Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
 You can also start and stop the tomcat using the ant targets as shown here.  
-In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant start-tomcat".  
+In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant start-tomcat". 
+On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/startup.sh".
+On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/catalina.sh".
+On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/shutdown.sh".
+Then on linux use "sudo ant start-tomcat".   
+
 <img width="298" alt="start_tomcat" src="https://user-images.githubusercontent.com/14346578/210154363-b207100c-81d1-46e1-aeb5-1deb86f8f965.png">   
 This should result in  
 <img width="773" alt="start_tomcat_result" src="https://user-images.githubusercontent.com/14346578/210154374-9e545fc6-3192-4b73-9027-aa34bdd37878.png">     

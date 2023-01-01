@@ -1,6 +1,5 @@
 package com.example.config;
-//copy of same in/admin-api-wrapper/src/main/admin-src/admin/
-//update together
+//copy of same in /admin-api-wrapper/src/main/synch-src/admin/synched/SynchedAutomationSharedConstants.java
 //alternatively could keep in a new shared module. Might do that later.
 public class AutomationSharedConstants {
 	public static final  String AtmOauth_PersistentGrantUserKeyAttrName="userid";

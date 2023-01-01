@@ -135,9 +135,9 @@ Uncheck foo scope item.
 Press Allow button.  
 Next screen should be this.  
 <img width="270" alt="protected" src="https://user-images.githubusercontent.com/14346578/210169662-38c982b7-b63e-45c5-a150-94af44ceb6c4.png">   
-Note: As can be seen in above screen in our authorization code sample for convenience treating scope as the user roles.  Thats why it says false against foo. But true against bar. 
-Also Note: security can be applied against scope and also roles treating both as different concepts.
-Look at the console to see the acces token and other details.  
+Note: As can be seen in above screen in our authorization code sample for convenience treating scope as the user roles.  Thats why it says false against foo. But true against bar.   
+Also Note: Security can be applied against scope and also roles treating both as different concepts.  
+Look at the console to see the access token and other details.  
 This above application demonstrates the **authorisation code flow**.  
 The improvment areas are :  
 - Caching of jwks and the introspection.  

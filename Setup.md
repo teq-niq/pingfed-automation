@@ -122,10 +122,10 @@ Once this tomcat has started pls visit http://localhost:8080/
 <img width="425" alt="localhost_8080" src="https://user-images.githubusercontent.com/14346578/210154396-63c1508f-f011-47c5-a1bb-ecc9cea5f052.png">   
 In case you see messages of could not connect please ensure pingdirectory and pingfederate is running.    
 ##### Click on the "Protected...- link -(Authorization code grant flow).   
-We have two configurations for essentially same oidc server.  
+We have two configurations for essentially same oidc server.    
 So in next screen it will prompt for selecting the oidc server.    
 <img width="355" alt="oidcselect" src="https://user-images.githubusercontent.com/14346578/210154416-f46fc3c8-7d08-4ef6-9753-7a0f7568016d.png">   
-This will start and verify the authorization code flow.  
+Click on the first "Start" link. This will start and verify the authorization code flow.  
 <img width="255" alt="authorization_code1" src="https://user-images.githubusercontent.com/14346578/210154455-1b3749f0-fc34-4918-a371-d856a2e7cc9a.png">    
 Note: Use "password" for password
 Then  

@@ -18,4 +18,4 @@
  - Note: In java spring world it is generally recommended to use spring security for implementing the Authorization code flow.  Lots of articles exist on that topic.  
  
 ## Screenshots:
-See in  [Setup Steps](Setup.md) for the sample application screen shots at the end of the setup steps.  
+See in  [Setup Steps](Setup.md#start-tomat) for the sample application screen shots at the end of the setup steps.  

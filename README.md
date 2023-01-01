@@ -18,6 +18,11 @@ As far as setup is concerned this is only a way to quickly get started on using 
 
 ## Steps to follow
 #### Setup
-[Setup Steps](Setup.md)
+[Setup Steps](Setup.md) - setup steps.  
 #### Swagger discussion
-[Swagger Notes](SwaggerNotes.md)
+[Swagger Notes](SwaggerNotes.md)- some notes.  
+#### Authorization code flow sample
+[Authorization code flow sample](AuthCodeSample.md) - some notes.   
+#### Ping federate admin java wrapper - others
+I don't think there otherwise exists any other java wrapper over their admin api for administering pingfederate in similar manner.  This is possibly the first such implementation.  
+

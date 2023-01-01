@@ -19,7 +19,7 @@ In command prompt/terminal navigate to "pingfed-automation/verify-downloads" fol
 Run "verifydownloads.bat" or "verifydownloads.sh".
 Might need to use "sudo chmod +x verifydownloads.sh" on linux.   
 Might need to use "sudo verifydownloads.sh" on linux.  
-I got this output.
+I got this output.  
 <img width="666" alt="verifydownloads" src="https://user-images.githubusercontent.com/14346578/210153720-536f2a35-603e-4d78-902e-d632e81bd244.png">   
 In command prompt/terminal navigate to 
 "pingfed-automation/win/" or "pingfed-automation/linux"  

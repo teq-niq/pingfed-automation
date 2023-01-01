@@ -24,5 +24,5 @@ As far as setup is concerned this is only a way to quickly get started on using 
 #### Authorization code flow sample
 [Authorization code flow sample](AuthCodeSample.md) - some notes.   
 #### Ping federate admin java wrapper - others
-I don't think there otherwise exists any other java wrapper over their admin api for administering pingfederate in similar manner.  This is possibly the first such implementation.  
+This is possibly the first such implementation.  
 

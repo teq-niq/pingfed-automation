@@ -1,5 +1,7 @@
 package com.example.constants;
 
+import com.example.config.AutomationSharedConstants;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 public class Urls {
@@ -26,7 +28,7 @@ public class Urls {
 		}
 		String protocol = secure?"https":"http";
 		
-		String redirectUrl=protocol+"://localhost"+port+Urls.RedirectPath;
+		String redirectUrl=protocol+"://"+AutomationSharedConstants.HOSTNAME+port+Urls.RedirectPath;
 		return redirectUrl;
 	}
 

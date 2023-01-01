@@ -18,7 +18,7 @@ Wait for it to finish successfully.
 In command prompt/terminal navigate to "pingfed-automation/verify-downloads" folder.  
 Run "verifydownloads.bat" or "verifydownloads.sh".
 Might need to use "sudo chmod +x verifydownloads.sh" on linux.   
-Might need to use "sudo verifydownloads.sh" on linux.  
+Might need to use "sudo ./verifydownloads.sh" on linux.  
 I got this output.  
 <img width="666" alt="verifydownloads" src="https://user-images.githubusercontent.com/14346578/210153720-536f2a35-603e-4d78-902e-d632e81bd244.png">   
 In command prompt/terminal navigate to 
@@ -116,10 +116,10 @@ In case of difficulty edit tomcat.ver property in the build.xml file.
 ##### Start Tomat
 Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
 You can also start and stop the tomcat using the ant targets as shown here.  
-In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant start-tomcat". 
-On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/startup.sh".
-On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/catalina.sh".
-On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/shutdown.sh".
+In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant start-tomcat".   
+On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/startup.sh".  
+On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/catalina.sh".  
+On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/shutdown.sh".  
 Then on linux use "sudo ant start-tomcat".   
 
 <img width="298" alt="start_tomcat" src="https://user-images.githubusercontent.com/14346578/210154363-b207100c-81d1-46e1-aeb5-1deb86f8f965.png">   

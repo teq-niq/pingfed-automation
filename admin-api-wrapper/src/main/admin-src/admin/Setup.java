@@ -141,7 +141,7 @@ public class Setup implements ISetup{
 		 new ScopesCreator(core).addScopes("email", "foo", "bar");
 		 
 		 new ClientCreator(core).createClient( SynchedAutomationSharedConstants.AuthCodeClientId, SynchedAutomationSharedConstants.AuthCodeClientId, SynchedAutomationSharedConstants.AuthCodeClientSecret, atmId1, 
-				  true, null, "http://localhost:8080/oidc-hello", GrantTypesEnum.AUTHORIZATION_CODE,
+				  true, null, "http://"+SynchedAutomationSharedConstants.HOSTNAME+":8080/oidc-hello", GrantTypesEnum.AUTHORIZATION_CODE,
 				 GrantTypesEnum.ACCESS_TOKEN_VALIDATION);
 		 new ClientCreator(core).createClient( "manual2", "manual2", "secret", atmId2, 
 				  true, null, "", GrantTypesEnum.CLIENT_CREDENTIALS);

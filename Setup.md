@@ -149,7 +149,8 @@ This above application demonstrates the **authorisation code flow**.
 The improvment areas are :  
 - Caching of jwks and the introspection.  
 - use of refresh token.  
-Could be done in different ways.  Steering away from it for now.  
+Could be done in different ways.  Steering away from it for now.   
+
 ##### Click on the "Try" link -(Client credentials grant flow).  
 It should take you to another access token via client credentials grant flow.  
 If all worked correctly congrats.

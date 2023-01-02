@@ -1,6 +1,6 @@
 package com.example.config;
 
-
+import com.example.config.constants.AutomationSharedConstants;
 
 /*
  * imagine its loaded from config file

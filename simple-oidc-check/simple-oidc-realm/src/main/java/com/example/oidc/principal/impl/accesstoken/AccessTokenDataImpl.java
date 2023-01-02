@@ -3,7 +3,7 @@ package com.example.oidc.principal.impl.accesstoken;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.example.config.AutomationSharedConstants;
+import com.example.config.constants.AutomationSharedConstants;
 import com.example.oidc.principal.accesstoken.AccessTokenData;
 import com.example.oidc.principal.accesstoken.AccessTokenHeader;
 import com.example.oidc.principal.accesstoken.AccessTokenPayload;

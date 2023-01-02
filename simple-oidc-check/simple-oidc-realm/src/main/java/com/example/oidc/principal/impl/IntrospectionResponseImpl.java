@@ -3,7 +3,7 @@ package com.example.oidc.principal.impl;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.example.config.AutomationSharedConstants;
+import com.example.config.constants.AutomationSharedConstants;
 import com.example.oidc.principal.IntrospectionResponse;
 
 import com.example.util.JsonUtils;

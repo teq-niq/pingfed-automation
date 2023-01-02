@@ -11,10 +11,14 @@ public class CurrentSettings {
 			AutomationSharedConstants.AuthCodeClientId, 
 			AutomationSharedConstants.AuthCodeClientSecret,
 			"user.2").introspect().lenientNonceOnMissingId();
+			//will prompt userid
+			//will use intrspection endpoint
+			//if id token is not permitted will not fail login
 	private final static  Settings localAuthorizatioonCode2=new Settings("https://"+AutomationSharedConstants.HOSTNAME+":9031/.well-known/openid-configuration", 
 			AutomationSharedConstants.AuthCodeClientId, 
 			AutomationSharedConstants.AuthCodeClientSecret,
-			null);
+			null);//no prompting of userId. wont introspect. 
+			//if id token is not permitted will fail login because nonce cant be verified
 
 
 	

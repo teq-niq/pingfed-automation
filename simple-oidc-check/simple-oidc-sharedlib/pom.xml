@@ -31,6 +31,10 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.14.1</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.example</groupId>
+		    <artifactId>automation-shared-lib</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+  		</dependency>
   </dependencies>
 </project>

@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.config.constants;
 //copy of same in /admin-api-wrapper/src/main/synch-src/admin/synched/SynchedAutomationSharedConstants.java
 //alternatively could keep in a new shared module. Might do that later.
 public class AutomationSharedConstants {

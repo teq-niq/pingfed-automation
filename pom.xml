@@ -12,7 +12,8 @@
   	<module>custom-ant-tasks</module>
   	<module>simple-oidc-check</module>
 
-  	<module>code-synch</module>
+
+  	<module>automation-shared-lib</module>
   </modules>
   <properties>
     <maven.compiler.source>11</maven.compiler.source>

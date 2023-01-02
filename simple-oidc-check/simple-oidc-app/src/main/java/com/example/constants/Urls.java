@@ -1,6 +1,6 @@
 package com.example.constants;
 
-import com.example.config.AutomationSharedConstants;
+import com.example.config.constants.AutomationSharedConstants;
 
 import jakarta.servlet.http.HttpServletRequest;
 

@@ -19,6 +19,8 @@ As far as setup is concerned this is only a way to quickly get started on using 
 ## Steps to follow
 #### Setup
 [Setup Steps](Setup.md) - setup steps.  
+
+## Other points
 #### Swagger discussion
 [Swagger Notes](SwaggerNotes.md)- some notes.  
 #### Authorization code flow sample

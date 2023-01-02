@@ -14,7 +14,7 @@ In command prompt/terminal navigate to pingfed-automation folder.
 Run “mvn clean package” in command prompt.  
 <img width="420" alt="build" src="https://user-images.githubusercontent.com/14346578/210153578-7bab1333-c9c4-441c-841f-3636dcab39b4.png">  
 Wait for it to finish successfully.  
-<img width="444" alt="buildresult" src="https://user-images.githubusercontent.com/14346578/210153661-a61535fd-3296-43a1-aa43-9ed7cb6d8391.png">   
+<img width="447" alt="buildresult" src="https://user-images.githubusercontent.com/14346578/210246321-280ce33f-fa8a-4448-8826-3ef2efbb6475.png">    
 In command prompt/terminal navigate to "pingfed-automation/verify-downloads" folder.  
 Run "verifydownloads.bat" or "verifydownloads.sh".
 Might need to use "sudo chmod +x verifydownloads.sh" on linux.   
@@ -93,14 +93,18 @@ Copy its contents into the file- pingfed-automation\admin-api-wrapper\swagger-js
 This step has already been done if you are on version pingfederate-11.2.0.  
 If your pingfederate version is higher do please update the file content here.  
 #### Swagger Code generation
-In command prompt/terminal visit folder - "pingfed-automation/admin-api-wrapper".
+In command prompt/terminal visit folder - "pingfed-automation".
 Run "mvn clean package -P admin".    
-<img width="570" alt="codegen" src="https://user-images.githubusercontent.com/14346578/210154229-0231d23c-9c61-4dd4-aaee-973747be50da.png">    
+<img width="259" alt="codegen" src="https://user-images.githubusercontent.com/14346578/210247771-ee8abbce-3689-4c2f-9533-96f49850192f.png">       
 Result should look like this:   
-<img width="489" alt="codegen-result" src="https://user-images.githubusercontent.com/14346578/210154257-b2930d7f-0071-4374-88fc-d42ae5d8cee3.png">   
-Staying in same location in command prompt Run "java -jar target/admin-api-wrapper.jar admin.Main".  
-<img width="697" alt="automated_pingfed_config" src="https://user-images.githubusercontent.com/14346578/210154285-6e0b6552-7a5f-4e3f-b35a-7e3d76e7be78.png">   
-Visit https://localhost:9999/ and verify the results.  
+<img width="447" alt="buildresult" src="https://user-images.githubusercontent.com/14346578/210246321-280ce33f-fa8a-4448-8826-3ef2efbb6475.png">    
+This time because we used the admin profile during maven build there has also been some code generation.   
+Now navigate to "pingfed-automation\admin-api-wrapper" in command prompt.  
+Run "java -jar target/admin-api-wrapper.jar admin.Main".  
+<img width="697" alt="automated_pingfed_config" src="https://user-images.githubusercontent.com/14346578/210154285-6e0b6552-7a5f-4e3f-b35a-7e3d76e7be78.png">    
+Output should look like this:   
+<img width="681" alt="automated_pingfed_config_result" src="https://user-images.githubusercontent.com/14346578/210248610-0e0ce7c5-044e-4642-9a71-0351ced971cd.png">   
+Visit https://localhost:9999/ and verify the results in the admin console.  
 Lets quickly verify if this was done correctly or not.  
 #### Verify the automated configuration
 In command prompt or terminal navigate to pingfed-automation\simple-oidc-check folder.  
@@ -108,7 +112,7 @@ simple-oidc-check is a maven project. Its also a submodule of pingfed-automation
 It should be already built.  
 Its a simple servlet based project.  
 We are going to use this project to verify if we are able to obtain some access tokens from pingfederate.  
-In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant". On linux use "sudo ant". 
+In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant". On linux machines use "sudo ant". 
 <img width="451" alt="simple_oidc_check" src="https://user-images.githubusercontent.com/14346578/210154307-7414149b-75b0-452e-854b-3817de1ab6a8.png">   
 Build should show up like this.  
 <img width="591" alt="simple_oidc_check_ant_res" src="https://user-images.githubusercontent.com/14346578/210154342-1505f797-f26b-4b6f-9b5a-5d2e4b184791.png">   

@@ -48,7 +48,11 @@ public class SimpleOidcRealm extends RealmBase{
     public Principal authenticate(String username, String credentials) {
 		try {
 			OidcPrincipalImpl principal = lastLeg(credentials);
-			return principal.buildDerived();
+			if(principal!=null)
+			{
+				principal=principal.buildDerived();
+			}
+			return principal;
 
 			
 			

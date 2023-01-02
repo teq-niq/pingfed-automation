@@ -182,5 +182,5 @@ Run “ant clean”
 <img width="395" alt="undosetup" src="https://user-images.githubusercontent.com/14346578/210154619-18f6954c-14d5-430a-ad50-0bef0b54dda0.png">   
 Result should be like this.  
 <img width="538" alt="undosetupresult" src="https://user-images.githubusercontent.com/14346578/210154640-4aec73e8-c85b-4c2c-ac3e-f0059855319b.png">   
-Note: Before running ant clean ensure that pingfederate and pingdirectory are stopped.
+Note: Before running "ant clean" ensure that pingfederate and pingdirectory are stopped.
 Also Note: Can again setup by running "ant".

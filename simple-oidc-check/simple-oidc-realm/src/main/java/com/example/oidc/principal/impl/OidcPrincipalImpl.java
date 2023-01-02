@@ -142,6 +142,7 @@ public class OidcPrincipalImpl extends GenericPrincipal implements OidcPrincipal
 		{
 			this.userId=this.getIntrospectionResponse().getUserid();
 		}
+		
 		return new  OidcPrincipalImpl(this.name, this.tokenResponse, this.accessTokenData,
 				this.idTokenData, this.userInfo, this.introspectionResponse, 
 				this.userId, this.roles, this.settingsIndex);

@@ -1,8 +1,10 @@
 package com.example.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.Principal;
 
 import com.example.constants.Urls;
+import com.example.oidc.principal.OidcPrincipal;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,15 +31,24 @@ public class Protected extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		Principal userPrincipal = request.getUserPrincipal();
+		String userId=null;
+		if(userPrincipal!=null)
+		{
+			
+			if(userPrincipal instanceof OidcPrincipal)
+			{
+				OidcPrincipal oidcPrincipal=(OidcPrincipal)request.getUserPrincipal();
+				userId=oidcPrincipal.getUserId();
+			}
+		}
 		String contextPath = request.getContextPath();
 		String requestURI = request.getRequestURI();
 		String pathInfo = request.getPathInfo();
 		String queryString = request.getQueryString();
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
-		out.println("<h1>Reached Protected &nbsp;&nbsp; Hello "+request.getRemoteUser()+"</h1>");
+		out.println("<h1>Reached Protected &nbsp;&nbsp; Hello "+request.getRemoteUser()+"[userId:"+userId+"]</h1>");
 		out.println("<a href=\"logout\">Logout</a><br/>");
 		out.println("<a href=\"/\">Home</a><br/>");
 		userInRole(request, out, "email");

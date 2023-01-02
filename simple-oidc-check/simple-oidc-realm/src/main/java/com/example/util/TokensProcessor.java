@@ -78,33 +78,40 @@ public class TokensProcessor {
 							
 						
 						
-						if(settings.useIntrospection())
-						{
-							Response introspectionResponse = BasicIntrospection.introspect(settings, accessToken);
-							if(introspectionResponse.getStatusCode()==200)
-							{
-								principal.getIntrospectionResponseImpl().setRaw(introspectionResponse.getResponse());
-								if(!principal.getIntrospectionResponse().isActive())
-								{
-									//log also
-									principal=null;
-								}
-							}
-							else
-							{
-								//being defensive
-								//log also
-								principal=null;
-							}
-						}
+						
 						
 					}
 					else
 					{
-						//did not get id token
-						//user might not have agreed to share id token
-						logger.info("Did not get id token. Choosing to stop login.");
-						principal=null;
+						if(!settings.isLenientNonceOnMissingId())
+						{
+							//did not get id token
+							//user might not have agreed to share id token
+							logger.info("Did not get id token. Could not verify nonce. Choosing to stop login based on configured settings.");
+							principal=null;
+						}
+						
+					}
+					
+					
+					if(settings.useIntrospection())
+					{
+						Response introspectionResponse = BasicIntrospection.introspect(settings, accessToken);
+						if(introspectionResponse.getStatusCode()==200)
+						{
+							principal.getIntrospectionResponseImpl().setRaw(introspectionResponse.getResponse());
+							if(!principal.getIntrospectionResponse().isActive())
+							{
+								//log also
+								principal=null;
+							}
+						}
+						else
+						{
+							//being defensive
+							//log also
+							principal=null;
+						}
 					}
 					
 					

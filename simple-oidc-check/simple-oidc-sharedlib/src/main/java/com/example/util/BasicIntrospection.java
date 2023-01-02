@@ -36,6 +36,7 @@ public static Response introspect(Settings settings, String accessToken) throws 
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 	    params.add(new BasicNameValuePair("token", accessToken));
 	    params.add(new BasicNameValuePair("token_type_hint", "access_token"));
+	    logger.log(Level.FINE, "accessToken=["+accessToken+"]");
 	    request.setEntity(new UrlEncodedFormEntity(params));
 		 CloseableHttpClient client1 = ClientBuilder.buildClient();
 		return  client1.execute(request, userInfoResponse -> {

@@ -10,7 +10,7 @@ public class CurrentSettings {
 	private final static  Settings localAuthorizatioonCode1=new Settings("https://"+AutomationSharedConstants.HOSTNAME+":9031/.well-known/openid-configuration", 
 			AutomationSharedConstants.AuthCodeClientId, 
 			AutomationSharedConstants.AuthCodeClientSecret,
-			"user.2").introspect();
+			"user.2").introspect().lenientNonceOnMissingId();
 	private final static  Settings localAuthorizatioonCode2=new Settings("https://"+AutomationSharedConstants.HOSTNAME+":9031/.well-known/openid-configuration", 
 			AutomationSharedConstants.AuthCodeClientId, 
 			AutomationSharedConstants.AuthCodeClientSecret,

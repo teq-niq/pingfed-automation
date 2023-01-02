@@ -104,8 +104,8 @@ Run "java -jar target/admin-api-wrapper.jar admin.Main".
 <img width="697" alt="automated_pingfed_config" src="https://user-images.githubusercontent.com/14346578/210154285-6e0b6552-7a5f-4e3f-b35a-7e3d76e7be78.png">    
 Output should look like this:   
 <img width="681" alt="automated_pingfed_config_result" src="https://user-images.githubusercontent.com/14346578/210248610-0e0ce7c5-044e-4642-9a71-0351ced971cd.png">   
-Visit https://localhost:9999/ and verify the results in the admin console.  
-Lets quickly verify if this was done correctly or not.  
+If you understand pingfederate configuration details - visit https://localhost:9999/ and verify the results in the admin console.  
+Now lets quickly proceed and verify if this was done correctly or not.  
 #### Verify the automated configuration
 In command prompt or terminal navigate to pingfed-automation\simple-oidc-check folder.  
 simple-oidc-check is a maven project. Its also a submodule of pingfed-automation.  

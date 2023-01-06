@@ -6,7 +6,8 @@
  - It does not rely on HttpSessions but the JEE container security.  
  - For convenience treating scope as the user roles.  
  - Security can be applied against scope and also roles treating both as different concepts.  
- - The improvment areas are :  
+ - The improvment areas are : 
+    - Supports only JWT access tokens.  Will add support for opaque access tokens.  
 	- Caching of jwks and the introspection.  
 	- use of refresh token.  
  	- Could be done in different ways.  Steering away from it for now.  

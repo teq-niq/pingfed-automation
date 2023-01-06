@@ -113,30 +113,46 @@ public class AuthorizationCodeFlowCallBack extends HttpServlet {
 			     * If there are no issues in the reaiing we treat the user as fully authenticated
 			     * and create the principal object using our custom real.
 			     */
-				
-			    req.login(null, tokenResponseMixed.getResponse());
-			    //if the realm vaerified the reamining steps of the authorzation code flow we will now have a principal
-				
-				Principal authenticatedPrincipal = req.getUserPrincipal();
-				if(authenticatedPrincipal!=null)
+				boolean loginSucess=false;
+		    	try
 				{
-					if(authenticatedPrincipal instanceof OidcPrincipal)
+					req.login(null, tokenResponseMixed.getResponse());
+					loginSucess=true;
+				}
+				catch(ServletException e)
+				{
+					logger.log(Level.INFO, "login failed", e);
+				}
+			    //if the realm vaerified the reamining steps of the authorzation code flow we will now have a principal
+				if(loginSucess)
+				{
+					Principal authenticatedPrincipal = req.getUserPrincipal();
+					if(authenticatedPrincipal!=null)
 					{
-						OidcPrincipal oidcPrincipal=(OidcPrincipal) authenticatedPrincipal;
-						logger.log(Level.FINE, "authenticated oidc principal="+oidcPrincipal.toString());
+						if(authenticatedPrincipal instanceof OidcPrincipal)
+						{
+							OidcPrincipal oidcPrincipal=(OidcPrincipal) authenticatedPrincipal;
+							logger.log(Level.FINE, "authenticated oidc principal="+oidcPrincipal.toString());
+						}
+						String originalRequestUri = extractOriginalRequestUriFromState(stateValueFromCookie);
+						if(originalRequestUri==null)
+						{
+							originalRequestUri=req.getContextPath() + Urls.WelcomePath;
+						}
+						resp.sendRedirect(originalRequestUri);
 					}
-					String originalRequestUri = extractOriginalRequestUriFromState(stateValueFromCookie);
-					if(originalRequestUri==null)
+					else
 					{
-						originalRequestUri=req.getContextPath() + Urls.WelcomePath;
+						resp.setStatus(401);
+						resp.getWriter().println("Forbidden");
 					}
-					resp.sendRedirect(originalRequestUri);
 				}
 				else
 				{
 					resp.setStatus(401);
-					resp.getWriter().println("Forbidden");
+					resp.getWriter().println("Forbidden. Login Failed");
 				}
+				
 		    }
 		    else
 		    {

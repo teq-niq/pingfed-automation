@@ -69,52 +69,64 @@ public class RestTemplateConfig {
         sslContext.init(null, trustAllCerts, new java.security.SecureRandom()); 
         
         CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        Properties apiProps = PropertiesUtil.loadProps(new File("pingfed.api.properties"));
-        //PingFederate
-        //x-xsrf-header
-        credentialsProvider.setCredentials(AuthScope.ANY, 
-                        new UsernamePasswordCredentials(apiProps.getProperty("username"), apiProps.getProperty("password")));
-        CloseableHttpClient httpClient = HttpClients.custom()
-                .setSSLContext(sslContext)
-                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
-                .setDefaultCredentialsProvider(credentialsProvider)
-                .setDefaultHeaders(defaultHeaders())
-                .build();  
-        
-      
-
-    
-        HttpComponentsClientHttpRequestFactory customRequestFactory = new HttpComponentsClientHttpRequestFactory();
-        customRequestFactory.setHttpClient(httpClient);
-        
-        RestTemplate restTemplate = builder.errorHandler(new MyResponseErrorHandler() ).
-        		requestFactory(() -> customRequestFactory).build();
-        List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
-        System.out.println("messageConverters="+messageConverters);
-        MappingJackson2HttpMessageConverter found=null;
-        for (HttpMessageConverter<?> httpMessageConverter : messageConverters) {
-			if(httpMessageConverter instanceof MappingJackson2HttpMessageConverter)
-			{
-				MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter=(MappingJackson2HttpMessageConverter) httpMessageConverter;
-				ObjectMapper objectMapper = mappingJackson2HttpMessageConverter.getObjectMapper();
-				if(objectMapper!=null)
-				{
-					ThreeTenModule module = new ThreeTenModule();
-					 module.addDeserializer(OffsetDateTime.class, CustomInstantDeserializer.OFFSET_DATE_TIME);
-					 objectMapper.registerModule(module);
-					    System.out.println("REGISERED");
-					    found=mappingJackson2HttpMessageConverter;
-				}
-			}
-		}
-        if(found!=null)
+        File file = new File("pingfed.api.properties");
+        if(file.exists())
         {
-        	messageConverters.remove(found);
-        	messageConverters.add(0, found);
-        	restTemplate.setMessageConverters(messageConverters);
-        	System.out.println("reset");
+        	Properties apiProps = PropertiesUtil.loadProps(file);
+            //PingFederate
+            //x-xsrf-header
+            credentialsProvider.setCredentials(AuthScope.ANY, 
+                            new UsernamePasswordCredentials(apiProps.getProperty("username"), apiProps.getProperty("password")));
+            CloseableHttpClient httpClient = HttpClients.custom()
+                    .setSSLContext(sslContext)
+                    .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
+                    .setDefaultCredentialsProvider(credentialsProvider)
+                    .setDefaultHeaders(defaultHeaders())
+                    .build();  
+            
+          
+
+        
+            HttpComponentsClientHttpRequestFactory customRequestFactory = new HttpComponentsClientHttpRequestFactory();
+            customRequestFactory.setHttpClient(httpClient);
+            
+            RestTemplate restTemplate = builder.errorHandler(new MyResponseErrorHandler() ).
+            		requestFactory(() -> customRequestFactory).build();
+            List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
+            System.out.println("messageConverters="+messageConverters);
+            MappingJackson2HttpMessageConverter found=null;
+            for (HttpMessageConverter<?> httpMessageConverter : messageConverters) {
+    			if(httpMessageConverter instanceof MappingJackson2HttpMessageConverter)
+    			{
+    				MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter=(MappingJackson2HttpMessageConverter) httpMessageConverter;
+    				ObjectMapper objectMapper = mappingJackson2HttpMessageConverter.getObjectMapper();
+    				if(objectMapper!=null)
+    				{
+    					ThreeTenModule module = new ThreeTenModule();
+    					 module.addDeserializer(OffsetDateTime.class, CustomInstantDeserializer.OFFSET_DATE_TIME);
+    					 objectMapper.registerModule(module);
+    					    System.out.println("REGISERED");
+    					    found=mappingJackson2HttpMessageConverter;
+    				}
+    			}
+    		}
+            if(found!=null)
+            {
+            	messageConverters.remove(found);
+            	messageConverters.add(0, found);
+            	restTemplate.setMessageConverters(messageConverters);
+            	System.out.println("reset");
+            }
+            return restTemplate;  
         }
-        return restTemplate;  
+        else
+        {
+        	String msg="File not found - "+file.getAbsolutePath();
+        	msg+=".\nAre you running from \"pingfed-automation/admin-api-wrapper\"";
+        	System.out.println(msg);
+        	throw new IllegalArgumentException(msg);
+        }
+        
     }
 
 	private Collection<? extends Header> defaultHeaders() {

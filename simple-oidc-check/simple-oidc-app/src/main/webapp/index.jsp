@@ -1,3 +1,5 @@
+
+<%@ page import="com.example.oidc.principal.OidcPrincipal" %>
 <%@ page import="com.example.config.*" %>
 <!DOCTYPE html>
 <%
@@ -8,8 +10,19 @@
 <title>Welcome Page</title>
 </head>
 <body>
-<%if(request.getUserPrincipal()!=null){ %>
-Hello <%= request.getUserPrincipal().getName()%><br/>
+<%
+
+if(request.getUserPrincipal()!=null){ 
+	String userId=null;
+	if(request.getUserPrincipal() instanceof OidcPrincipal)
+	{
+		OidcPrincipal oidcPrincipal=(OidcPrincipal)request.getUserPrincipal();
+		userId=oidcPrincipal.getUserId();
+	}
+%>
+
+
+Hello <%= request.getUserPrincipal().getName()%>[userId: <%= userId %>]<br/>
 <a href="logout">Logout</a><br/>
 <%} %>
 <a href="protected">Protected link click to start authorization code flow if not logged on already</a>

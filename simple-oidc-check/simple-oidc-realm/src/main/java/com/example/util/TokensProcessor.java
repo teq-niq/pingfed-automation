@@ -28,7 +28,11 @@ public class TokensProcessor {
 		
 
 			String idToken = principal.getTokenResponse().getId_token();
-			principal.getIdTokenDataImpl().setRaw(idToken);
+			if(idToken!=null)
+			{
+				principal.getIdTokenDataImpl().setRaw(idToken);
+			}
+			
 			
 			logger.log(Level.FINE, "accessToken="+accessToken);
 			 String jwksUriEndpoint = settings.getJwksUriEndpoint();
@@ -45,32 +49,49 @@ public class TokensProcessor {
 					logger.log(Level.FINE, "verified="+verified);
 					
 					logger.log(Level.FINE, "idToken="+idToken);
-					
-					if(idToken!=null && nonceValueFromCookie!=null)
+					if(idToken!=null)
 					{
-						boolean nonceMatched = nonceMatched(nonceValueFromCookie, idToken);
-						logger.log(Level.FINE, "nonceMatched="+nonceMatched);
-						if(!nonceMatched)
+						if(nonceValueFromCookie!=null)
 						{
+							boolean nonceMatched = nonceMatched(nonceValueFromCookie, idToken);
+							logger.log(Level.FINE, "nonceMatched="+nonceMatched);
+							if(!nonceMatched)
+							{
+								//log also
+								principal=null;
+							}
+							
+						}
+						
+							
+						Response userInfoResponse = buildUserInfo(settings, accessToken);
+						if(userInfoResponse.getStatusCode()==200)
+						{
+							principal.getUserInfoImpl().setRaw(userInfoResponse.getResponse());
+						}
+						else
+						{
+							//being defensive
 							//log also
+							principal=null;
+						}
+							
+						
+						
+						
+						
+					}
+					else
+					{
+						if(!settings.isLenientNonceOnMissingId())
+						{
+							//did not get id token
+							//user might not have agreed to share id token
+							logger.info("Did not get id token. Could not verify nonce. Choosing to stop login based on configured settings.");
 							principal=null;
 						}
 						
 					}
-					
-						
-					Response userInfoResponse = buildUserInfo(settings, accessToken);
-					if(userInfoResponse.getStatusCode()==200)
-					{
-						principal.getUserInfoImpl().setRaw(userInfoResponse.getResponse());
-					}
-					else
-					{
-						//being defensive
-						//log also
-						principal=null;
-					}
-						
 					
 					
 					if(settings.useIntrospection())

@@ -32,30 +32,34 @@ public class IdTokenDataImpl implements IdTokenData{
 	}
 	
 	public void setRaw(String raw) {
-		this.raw = raw;
-		IdTokenHeaderImpl headerImpl = this.getHeaderImpl();
-		IdTokenPayloadImpl payloadImpl = this.getPayloadImpl();
-		try {
-			this.decodedHeader = JwtAccessTokenUtil.getTokenDecodedHeader(raw);
-			ObjectNode decodedHedaerAsObjectNode = ObjectMapperHolder.mapper.readValue(this.decodedHeader, ObjectNode.class);
-			headerImpl.setKid(JsonUtils.getTextFieldFromObjectNode(decodedHedaerAsObjectNode, "kid"));
-			headerImpl.setAlg(JsonUtils.getTextFieldFromObjectNode(decodedHedaerAsObjectNode, "alg"));
-			this.decodedPayload = JwtAccessTokenUtil.getTokenDecodedPayload(raw);
-			ObjectNode decodedPayloadAsObjectNode = ObjectMapperHolder.mapper.readValue(this.decodedPayload, ObjectNode.class);
-			payloadImpl.setSub(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "sub"));
-			payloadImpl.setAud(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "aud"));
-			payloadImpl.setJti(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "jti"));
-			payloadImpl.setIss(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "iss"));
-			payloadImpl.setIat(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "iat"));
-			payloadImpl.setExp(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "exp"));
-			payloadImpl.setAuth_time(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "auth_time"));
-			payloadImpl.setGiven_name(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "given_name"));
-			payloadImpl.setFamily_name(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "family_name"));
-			payloadImpl.setEmail(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "email"));
-			payloadImpl.setNonce(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "nonce"));
-		} catch (JsonProcessingException e) {
-			logger.log(Level.SEVERE, "Unexpected Problem", e);
+		if(raw!=null)
+		{
+			this.raw = raw;
+			IdTokenHeaderImpl headerImpl = this.getHeaderImpl();
+			IdTokenPayloadImpl payloadImpl = this.getPayloadImpl();
+			try {
+				this.decodedHeader = JwtAccessTokenUtil.getTokenDecodedHeader(raw);
+				ObjectNode decodedHedaerAsObjectNode = ObjectMapperHolder.mapper.readValue(this.decodedHeader, ObjectNode.class);
+				headerImpl.setKid(JsonUtils.getTextFieldFromObjectNode(decodedHedaerAsObjectNode, "kid"));
+				headerImpl.setAlg(JsonUtils.getTextFieldFromObjectNode(decodedHedaerAsObjectNode, "alg"));
+				this.decodedPayload = JwtAccessTokenUtil.getTokenDecodedPayload(raw);
+				ObjectNode decodedPayloadAsObjectNode = ObjectMapperHolder.mapper.readValue(this.decodedPayload, ObjectNode.class);
+				payloadImpl.setSub(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "sub"));
+				payloadImpl.setAud(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "aud"));
+				payloadImpl.setJti(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "jti"));
+				payloadImpl.setIss(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "iss"));
+				payloadImpl.setIat(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "iat"));
+				payloadImpl.setExp(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "exp"));
+				payloadImpl.setAuth_time(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "auth_time"));
+				payloadImpl.setGiven_name(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "given_name"));
+				payloadImpl.setFamily_name(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "family_name"));
+				payloadImpl.setEmail(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "email"));
+				payloadImpl.setNonce(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "nonce"));
+			} catch (JsonProcessingException e) {
+				logger.log(Level.SEVERE, "Unexpected Problem", e);
+			}
 		}
+		
 		
 	}
 	@Override

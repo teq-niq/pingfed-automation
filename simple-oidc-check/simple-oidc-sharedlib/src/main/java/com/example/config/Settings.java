@@ -31,8 +31,12 @@ public class Settings {
 	private final String jwksUriEndpoint;
 	private final String introspectionEndpoint;
 	private boolean introspect=false;
+	private boolean lenientNonceOnMissingId=false;
 	
 	
+	public boolean isLenientNonceOnMissingId() {
+		return lenientNonceOnMissingId;
+	}
 	private int index;
 	public Settings(String wellKnown,       String clientId, String clientSecret)  {
 		this(wellKnown, clientId, clientSecret, null);
@@ -131,6 +135,16 @@ public class Settings {
 	public Settings atmId(String atmId)
 	{
 		this.atmId=atmId;
+		return this;
+	}
+	Settings lenientNonceOnMissingId()
+	{
+		this.lenientNonceOnMissingId=true;
+		return this;
+	}
+	Settings lenientNonceOnMissingId(boolean flag)
+	{
+		this.lenientNonceOnMissingId=flag;
 		return this;
 	}
 	public Settings introspect()

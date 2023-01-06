@@ -25,7 +25,7 @@ public class TokensVerifier {
 				Settings settings = settingsArr[oidcPrincipal.getSettingsIndex()];
 				if(settings.useIntrospection())
 				{
-					Response introspectionResponse = BasicIntrospection.introspect(settings, oidcPrincipal.getIdTokenData().getRaw());
+					Response introspectionResponse = BasicIntrospection.introspect(settings, oidcPrincipal.getAccessTokenData().getRaw());
 					if(introspectionResponse.getStatusCode()==200)
 					{
 						

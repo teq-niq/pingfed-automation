@@ -1,6 +1,9 @@
 package com.example.util;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,34 +24,63 @@ public class TokensProcessor {
 			String rawAccessData) {
 		OidcPrincipalImpl principal= new OidcPrincipalImpl();
 		principal.getTokenResponseImpl().setRaw(rawAccessData);
-	
+		
+		 String jwksUriEndpoint = settings.getJwksUriEndpoint();
+		
 		
 		String accessToken=principal.getTokenResponse().getAccess_token();
-		principal.getAccessTokenDataImpl().setRaw(accessToken);
+		logger.log(Level.FINE, "accessToken="+accessToken);
+		boolean verifiedIdToken=false;
+		boolean verifiedAccessToken=false;
+		
+		if(accessToken!=null)
+		{
+			principal.getAccessTokenDataImpl().setRaw(accessToken);
+			try {
+				verifiedAccessToken = new AccessTokenVerifier().verifyAccessTokenUsingJwks(jwksUriEndpoint, accessToken);
+			} catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException | IOException e) {
+				principal=null;
+				logger.log(Level.SEVERE, "problem", e);
+			}
+		}
+		else
+		{
+			//treat as verified- no we must always have access token
+			verifiedAccessToken=false;
+		}
+		
 		
 
-			String idToken = principal.getTokenResponse().getId_token();
-			if(idToken!=null)
-			{
-				principal.getIdTokenDataImpl().setRaw(idToken);
-			}
-			
-			
-			logger.log(Level.FINE, "accessToken="+accessToken);
-			 String jwksUriEndpoint = settings.getJwksUriEndpoint();
-			 principal.setSettingsIndex(settings.getIndex());
-			boolean verified;
+		String idToken = principal.getTokenResponse().getId_token();
+		logger.log(Level.FINE, "idToken="+idToken);
+		if(idToken!=null)
+		{
+			principal.getIdTokenDataImpl().setRaw(idToken);
 			try {
-				/*
-				 * everything below should be in verify
-				 */
-				verified = new AccessTokenVerifier().verifyAccessTokenUsingJwks(jwksUriEndpoint, accessToken);
-				if(verified)
+				verifiedIdToken = new AccessTokenVerifier().verifyAccessTokenUsingJwks(jwksUriEndpoint, idToken);
+			} catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException | IOException e) {
+				principal=null;
+				logger.log(Level.SEVERE, "problem", e);
+			}
+		}
+		else
+		{
+			//treat as verified
+			verifiedIdToken=true;
+		}
+			
+		logger.log(Level.FINE, "verifiedAccessToken="+verifiedAccessToken+",verifiedIdToken="+verifiedIdToken);	
+			
+			 principal.setSettingsIndex(settings.getIndex());
+			
+			try {
+				
+				
+				
+				if(verifiedAccessToken && verifiedIdToken)
 				{
 
-					logger.log(Level.FINE, "verified="+verified);
-					
-					logger.log(Level.FINE, "idToken="+idToken);
+				
 					if(idToken!=null)
 					{
 						if(nonceValueFromCookie!=null)
@@ -129,6 +161,8 @@ public class TokensProcessor {
 			}
 		return principal;
 	}
+	
+
 	
 	
 	private static boolean nonceMatched(String nonceValueFromCookie, String idToken) throws IOException {

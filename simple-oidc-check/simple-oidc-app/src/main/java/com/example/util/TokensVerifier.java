@@ -19,7 +19,7 @@ public class TokensVerifier {
 	 {
 		 boolean ret=false;
 		 try {
-			boolean verified = new AccessTokenVerifier().verifyAccessTokenUsingJwks(oidcPrincipal);
+			boolean verified = new AccessTokenVerifier().verifyTokensUsingJwks(oidcPrincipal);
 			if(verified)
 			{
 				Settings settings = settingsArr[oidcPrincipal.getSettingsIndex()];

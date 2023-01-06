@@ -27,6 +27,9 @@ import com.example.oidc.principal.OidcPrincipal;
 import com.example.oidc.principal.accesstoken.AccessTokenData;
 import com.example.oidc.principal.accesstoken.AccessTokenHeader;
 import com.example.oidc.principal.accesstoken.AccessTokenPayload;
+import com.example.oidc.principal.idtoken.IdTokenData;
+import com.example.oidc.principal.idtoken.IdTokenHeader;
+import com.example.oidc.principal.idtoken.IdTokenPayload;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -48,43 +51,110 @@ public class AccessTokenVerifier {
 	 * 
 	 */
 
-	public boolean verifyAccessTokenUsingJwks(OidcPrincipal principal) throws Exception {
+	public boolean verifyTokensUsingJwks(OidcPrincipal principal) throws Exception {
 		logger.log(Level.FINE, "****verifying");
-		boolean verified = false;
+		boolean verifiedAccessToken = false;
+		Settings settings = settingsArr[principal.getSettingsIndex()];
 		AccessTokenData accessTokenData = principal.getAccessTokenData();
 		if (accessTokenData != null) {
-			
-			Settings settings = settingsArr[principal.getSettingsIndex()];
-			verified = verifyAccessTokenUsingJwks(settings.getJwksUriEndpoint(), accessTokenData);
+				verifiedAccessToken = verifyAccessTokenUsingJwks(settings.getJwksUriEndpoint(), accessTokenData);
+
+		}
+		boolean verifiedIdToken = false;
+		IdTokenData idTokenData = principal.getIdTokenData();
+		if (idTokenData != null) {
+			verifiedIdToken = verifyIdTokenUsingJwks(settings.getJwksUriEndpoint(), idTokenData);
 
 		}
 
-		logger.log(Level.FINE, "*****verified=" + verified);
-		return verified;
+		logger.log(Level.FINE, "*****verifiedAccessToken=" + verifiedAccessToken+",verifiedIdToken="+verifiedIdToken);
+		return verifiedAccessToken && verifiedIdToken;
 	}
 
 	public boolean verifyAccessTokenUsingJwks(String jwksUriEndpoint, AccessTokenData accessTokenData)
 			throws JsonProcessingException, JsonMappingException, KeyManagementException, NoSuchAlgorithmException,
 			KeyStoreException, IOException {
 		boolean verified = false;
-		if (jwksUriEndpoint != null && accessTokenData != null) {
+		if (jwksUriEndpoint != null && accessTokenData != null && accessTokenData.getRaw()!=null) {
 			
 			AccessTokenPayload payload = accessTokenData.getPayload();
-			//exp is always expected
-			if(payload.getExp()*1000>System.currentTimeMillis())
+			if(payload.getExp()!=null)
 			{
-				//not yet expired
-				AccessTokenHeader header = accessTokenData.getHeader();
+				//exp is always expected
+				if(payload.getExp()*1000>System.currentTimeMillis())
+				{
+					//not yet expired
+					AccessTokenHeader header = accessTokenData.getHeader();
+					if(header!=null)
+					{
+						// we are testing relying on kid alone. ignoring algInHeader for now
+						verified = confirmed(header.getKid(), accessTokenData.getRaw(), jwksUriEndpoint);
+					}
+					else
+					{
+						//till we use opaque its false
+					}
 
-				// we are testing relying on kid alone. ignoring algInHeader for now
-				verified = confirmed(header.getKid(), accessTokenData.getRaw(), jwksUriEndpoint);
+					
+				}
+				else
+				{
+					//its not verified even without using jwks
+				}
 			}
 			else
 			{
-				//its not verified even without using jwks
+				//cant use exp
+				//till we use opaque its false
 			}
 			
+			
 		}
+		return verified;
+	}
+	
+	public boolean verifyIdTokenUsingJwks(String jwksUriEndpoint, IdTokenData tokenData)
+			throws JsonProcessingException, JsonMappingException, KeyManagementException, NoSuchAlgorithmException,
+			KeyStoreException, IOException {
+		boolean verified = false;
+		if(tokenData.getRaw()!=null)
+		{
+			if (jwksUriEndpoint != null && tokenData != null ) {
+				
+				IdTokenPayload payload = tokenData.getPayload();
+				if(payload.getExp()!=null)
+				{
+					//exp is always expected
+					if(payload.getExp()*1000>System.currentTimeMillis())
+					{
+						//not yet expired
+						IdTokenHeader header = tokenData.getHeader();
+						if(header!=null)
+						{
+							// we are testing relying on kid alone. ignoring algInHeader for now
+							verified = confirmed(header.getKid(), tokenData.getRaw(), jwksUriEndpoint);
+						}
+						else
+						{
+							//treat as false
+						}
+
+						
+					}
+					else
+					{
+						//its not verified even without using jwks
+					}
+				}
+				
+				
+			}
+			else
+			{
+				verified=true;//means didnt get an id token thats all
+			}
+		}
+
 		return verified;
 	}
 

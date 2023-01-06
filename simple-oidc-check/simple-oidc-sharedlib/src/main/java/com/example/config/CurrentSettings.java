@@ -25,7 +25,9 @@ public class CurrentSettings {
 	private final static  Settings googleAuthorizationCodeSettings=new Settings("https://accounts.google.com/.well-known/openid-configuration", 
 			"replace.with.actual.google.client.id", //replace
 			"replace.with.actual.google.client.secret", //replace
-			null).lenientNonceOnMissingId().opaqueAccessToken().scopes("openid", "email", "profile").scopeTranslator((String input)->{
+			null).lenientNonceOnMissingId().opaqueAccessToken().scopes("openid", "email", "profile", 
+					"https://www.googleapis.com/auth/cloud-billing.readonly")
+			.scopeTranslator((String input)->{
 				String ret=null;
 				if(input!=null)
 				{

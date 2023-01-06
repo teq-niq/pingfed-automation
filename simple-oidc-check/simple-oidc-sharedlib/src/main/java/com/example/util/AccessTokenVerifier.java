@@ -55,11 +55,22 @@ public class AccessTokenVerifier {
 		logger.log(Level.FINE, "****verifying");
 		boolean verifiedAccessToken = false;
 		Settings settings = settingsArr[principal.getSettingsIndex()];
-		AccessTokenData accessTokenData = principal.getAccessTokenData();
-		if (accessTokenData != null) {
-				verifiedAccessToken = verifyAccessTokenUsingJwks(settings.getJwksUriEndpoint(), accessTokenData);
+		if(!settings.isOpaqueAccessToken())
+		{
+			AccessTokenData accessTokenData = principal.getAccessTokenData();
+			if (accessTokenData != null) {
+					verifiedAccessToken = verifyAccessTokenUsingJwks(settings.getJwksUriEndpoint(), accessTokenData);
 
+			}
 		}
+		else
+		{
+			//for opaque what else
+			//excepions are there example with google
+			//handle that later
+			verifiedAccessToken=true;
+		}
+		
 		boolean verifiedIdToken = false;
 		IdTokenData idTokenData = principal.getIdTokenData();
 		if (idTokenData != null) {

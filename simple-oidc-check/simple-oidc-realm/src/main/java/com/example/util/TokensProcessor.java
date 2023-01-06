@@ -35,13 +35,24 @@ public class TokensProcessor {
 		
 		if(accessToken!=null)
 		{
-			principal.getAccessTokenDataImpl().setRaw(accessToken);
-			try {
-				verifiedAccessToken = new AccessTokenVerifier().verifyAccessTokenUsingJwks(jwksUriEndpoint, accessToken);
-			} catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException | IOException e) {
-				principal=null;
-				logger.log(Level.SEVERE, "problem", e);
+			principal.getAccessTokenDataImpl().setRaw(accessToken, settings.isOpaqueAccessToken());
+			if(!settings.isOpaqueAccessToken())
+			{
+				try {
+					verifiedAccessToken = new AccessTokenVerifier().verifyAccessTokenUsingJwks(jwksUriEndpoint, accessToken);
+				} catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException | IOException e) {
+					principal=null;
+					logger.log(Level.SEVERE, "problem", e);
+				}
 			}
+			else
+			{
+				//for opaque what else
+				//excepions are there example with google
+				//handle that later
+				verifiedAccessToken=true;
+			}
+			
 		}
 		else
 		{

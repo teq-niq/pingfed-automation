@@ -32,8 +32,13 @@ public class Settings {
 	private final String introspectionEndpoint;
 	private boolean introspect=false;
 	private boolean lenientNonceOnMissingId=false;
+	private boolean opaqueAccessToken=false;
 	
 	
+	public boolean isOpaqueAccessToken() {
+		return opaqueAccessToken;
+	}
+
 	public boolean isLenientNonceOnMissingId() {
 		return lenientNonceOnMissingId;
 	}
@@ -137,6 +142,19 @@ public class Settings {
 		this.atmId=atmId;
 		return this;
 	}
+	
+	Settings opaqueAccessToken()
+	{
+		this.opaqueAccessToken=true;
+		return this;
+	}
+	
+	Settings opaqueAccessToken(boolean flag)
+	{
+		this.opaqueAccessToken=flag;
+		return this;
+	}
+	
 	Settings lenientNonceOnMissingId()
 	{
 		this.lenientNonceOnMissingId=true;

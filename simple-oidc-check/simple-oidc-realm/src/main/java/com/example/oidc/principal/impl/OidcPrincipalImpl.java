@@ -3,7 +3,10 @@ package com.example.oidc.principal.impl;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
+import com.example.config.CurrentSettings;
+import com.example.config.Settings;
 import com.example.oidc.principal.IntrospectionResponse;
 import com.example.oidc.principal.OidcPrincipal;
 import com.example.oidc.principal.TokenResponse;
@@ -18,7 +21,7 @@ import org.apache.catalina.realm.GenericPrincipal;
 
 public class OidcPrincipalImpl extends GenericPrincipal implements OidcPrincipal, Principal {
 	
-
+	private static final Settings[] settingsArr=CurrentSettings.authorizationCodeDefaultSettings;
 	public OidcPrincipalImpl(String name, TokenResponse tokenResponse, AccessTokenData accessTokenData,
 			IdTokenData idTokenData, UserInfo userInfo, IntrospectionResponse introspectionResponse, 
 			String userId, String[] roles, int settingsIndex) {
@@ -136,13 +139,31 @@ public class OidcPrincipalImpl extends GenericPrincipal implements OidcPrincipal
 		}
 	
 		this.roles=this.accessTokenData.getPayload().getScopes();
+		if(this.roles==null)
+		{
+			this.roles=this.getTokenResponse().getScopes();
+		}
 		
 		this.userId=this.accessTokenData.getPayload().getUserId();
 		if(this.userId==null)
 		{
 			this.userId=this.getIntrospectionResponse().getUserid();
 		}
-		
+		if(this.roles==null)
+		{
+			this.roles=new String[] {};
+		}
+		else
+		{
+			Settings settings = settingsArr[this.settingsIndex];
+			Function<String, String> scopeTranslator = settings.getScopeTranslator();
+			if(scopeTranslator!=null)
+			{
+				for (int i = 0; i < roles.length; i++) {
+					roles[i]=scopeTranslator.apply(roles[i]);
+				}
+			}
+		}
 		return new  OidcPrincipalImpl(this.name, this.tokenResponse, this.accessTokenData,
 				this.idTokenData, this.userInfo, this.introspectionResponse, 
 				this.userId, this.roles, this.settingsIndex);

@@ -6,6 +6,7 @@ public interface TokenResponse {
 	public String getToken_type();
 	public long getExpires_in();
 	public String getRaw();
+	String[] getScopes();
 	
 	
 }

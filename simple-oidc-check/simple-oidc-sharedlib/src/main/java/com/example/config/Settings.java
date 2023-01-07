@@ -3,6 +3,7 @@ package com.example.config;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,8 +33,48 @@ public class Settings {
 	private final String introspectionEndpoint;
 	private boolean introspect=false;
 	private boolean lenientNonceOnMissingId=false;
+	private boolean opaqueAccessToken=false;
+	private String[] scopes;
+	private Function<String, String> scopeTranslator;
 	
 	
+	public Function<String, String> getScopeTranslator() {
+		return scopeTranslator;
+	}
+
+	public Settings scopeTranslator(Function<String, String> scopeTranslator) {
+		this.scopeTranslator = scopeTranslator;
+		return this;
+	}
+
+	public String[] getScopes() {
+		return scopes;
+	}
+	
+	public String getScopesAsString() {
+		StringBuilder sb= new StringBuilder();
+		if(this.scopes!=null)
+		{
+			for (int i = 0; i < scopes.length; i++) {
+				sb.append(this.scopes[i]);
+				if(i!=(scopes.length-1))
+				{
+					sb.append(" ");
+				}
+			}
+		}
+		return sb.toString();
+	}
+
+	public Settings scopes(String... scopes) {
+		this.scopes = scopes;
+		return this;
+	}
+
+	public boolean isOpaqueAccessToken() {
+		return opaqueAccessToken;
+	}
+
 	public boolean isLenientNonceOnMissingId() {
 		return lenientNonceOnMissingId;
 	}
@@ -137,6 +178,19 @@ public class Settings {
 		this.atmId=atmId;
 		return this;
 	}
+	
+	Settings opaqueAccessToken()
+	{
+		this.opaqueAccessToken=true;
+		return this;
+	}
+	
+	Settings opaqueAccessToken(boolean flag)
+	{
+		this.opaqueAccessToken=flag;
+		return this;
+	}
+	
 	Settings lenientNonceOnMissingId()
 	{
 		this.lenientNonceOnMissingId=true;

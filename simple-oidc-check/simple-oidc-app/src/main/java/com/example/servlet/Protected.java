@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.Principal;
 
+import com.example.config.CurrentSettings;
+import com.example.config.Settings;
 import com.example.constants.Urls;
 import com.example.oidc.principal.OidcPrincipal;
 
@@ -17,6 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = Urls.ProtectedPath, name = "Protected")
 public class Protected extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Settings[] settingsArr=CurrentSettings.authorizationCodeDefaultSettings;
 
        
     /**
@@ -33,6 +36,8 @@ public class Protected extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Principal userPrincipal = request.getUserPrincipal();
 		String userId=null;
+		String[] allScopes= {};
+		
 		if(userPrincipal!=null)
 		{
 			
@@ -40,6 +45,8 @@ public class Protected extends HttpServlet {
 			{
 				OidcPrincipal oidcPrincipal=(OidcPrincipal)request.getUserPrincipal();
 				userId=oidcPrincipal.getUserId();
+				Settings settings = settingsArr[oidcPrincipal.getSettingsIndex()];
+				allScopes=settings.getScopes();
 			}
 		}
 		String contextPath = request.getContextPath();
@@ -51,14 +58,15 @@ public class Protected extends HttpServlet {
 		out.println("<h1>Reached Protected &nbsp;&nbsp; Hello "+request.getRemoteUser()+"[userId:"+userId+"]</h1>");
 		out.println("<a href=\"logout\">Logout</a><br/>");
 		out.println("<a href=\"/\">Home</a><br/>");
-		userInRole(request, out, "email");
-		userInRole(request, out, "foo");
-		userInRole(request, out, "bar");
+		for (String string : allScopes) {
+			userInRole(request, out, string);
+		}
+		
 		out.println("contextPath="+contextPath+"<br/>");
 		out.println("requestURI="+requestURI+"<br/>");
 		out.println("pathInfo="+pathInfo+"<br/>");
 		out.println("queryString="+queryString+"<br/>");
-		out.println("contextPath="+contextPath+"<br/>");
+		
 		out.println("</body></html>");
 	}
 

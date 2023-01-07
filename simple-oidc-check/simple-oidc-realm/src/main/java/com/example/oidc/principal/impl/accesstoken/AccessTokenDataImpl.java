@@ -33,29 +33,32 @@ public class AccessTokenDataImpl implements  AccessTokenData{
 		return raw;
 	}
 
-	public void setRaw(String raw) {
+	public void setRaw(String raw, boolean opaque) {
 		this.raw = raw;
-
-		
-		try {
-			this.decodedHeader = JwtAccessTokenUtil.getTokenDecodedHeader(raw);
-			AccessTokenHeaderImpl headerImpl = this.getHeaderImpl();
-			AccessTokenPayloadImpl payloadImpl = this.getPayloadImpl();
-			ObjectNode decodedHedaerAsObjectNode = ObjectMapperHolder.mapper.readValue(this.decodedHeader, ObjectNode.class);
-			headerImpl.setKid(JsonUtils.getTextFieldFromObjectNode(decodedHedaerAsObjectNode, "kid"));
-			headerImpl.setAlg(JsonUtils.getTextFieldFromObjectNode(decodedHedaerAsObjectNode, "alg"));
-			this.decodedPayload = JwtAccessTokenUtil.getTokenDecodedPayload(raw);
-			ObjectNode decodedPayloadAsObjectNode = ObjectMapperHolder.mapper.readValue(this.decodedPayload, ObjectNode.class);
-			payloadImpl.setScopes(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "scope"));
-			payloadImpl.setClient_id(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "client_id"));
-			payloadImpl.setUserId(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, AutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName));
-			payloadImpl.setNbf(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "nbf"));
-			payloadImpl.setIat(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "iat"));
-			payloadImpl.setExp(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "exp"));
-			
-		} catch (JsonProcessingException e) {
-			logger.log(Level.SEVERE, "Unexpected Problem", e);
+		if(!opaque)
+		{
+			try {
+				this.decodedHeader = JwtAccessTokenUtil.getTokenDecodedHeader(raw);
+				AccessTokenHeaderImpl headerImpl = this.getHeaderImpl();
+				AccessTokenPayloadImpl payloadImpl = this.getPayloadImpl();
+				ObjectNode decodedHedaerAsObjectNode = ObjectMapperHolder.mapper.readValue(this.decodedHeader, ObjectNode.class);
+				headerImpl.setKid(JsonUtils.getTextFieldFromObjectNode(decodedHedaerAsObjectNode, "kid"));
+				headerImpl.setAlg(JsonUtils.getTextFieldFromObjectNode(decodedHedaerAsObjectNode, "alg"));
+				this.decodedPayload = JwtAccessTokenUtil.getTokenDecodedPayload(raw);
+				ObjectNode decodedPayloadAsObjectNode = ObjectMapperHolder.mapper.readValue(this.decodedPayload, ObjectNode.class);
+				payloadImpl.setScopes(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "scope"));
+				payloadImpl.setClient_id(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, "client_id"));
+				payloadImpl.setUserId(JsonUtils.getTextFieldFromObjectNode(decodedPayloadAsObjectNode, AutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName));
+				payloadImpl.setNbf(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "nbf"));
+				payloadImpl.setIat(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "iat"));
+				payloadImpl.setExp(JsonUtils.getLongFieldFromObjectNode(decodedPayloadAsObjectNode, "exp"));
+				
+			} catch (JsonProcessingException e) {
+				logger.log(Level.SEVERE, "Unexpected Problem", e);
+			}
 		}
+		
+		
 		
 		 
 	}

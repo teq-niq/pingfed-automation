@@ -13,8 +13,23 @@ public class TokenResponseImpl implements TokenResponse{;
 	private String id_token;
 	private String token_type;
 	private long expires_in;
-
+	private String[] scopes;
+	@Override
+	public String[] getScopes() {
+		return scopes;
+	}
 	private String raw;
+	public void setScopes(String scopes) {
+		if(scopes!=null)
+		{
+			this.scopes = scopes.split(" ");
+		}
+		else
+		{
+			this.scopes=null;
+		}
+		
+	}
 	@Override
 	public String getAccess_token() {
 		return access_token;
@@ -45,6 +60,7 @@ public class TokenResponseImpl implements TokenResponse{;
 			{
 				this.expires_in=expiresIn;
 			}
+			this.setScopes(JsonUtils.getTextFieldFromObjectNode(node, "scope"));
 		} catch (JsonProcessingException e) {
 			//log warning
 		}

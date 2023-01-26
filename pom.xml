@@ -10,10 +10,11 @@
   	<module>admin-api-wrapper</module>
 
   	<module>custom-ant-tasks</module>
-  	<module>simple-oidc-check</module>
+
 
 
   	<module>automation-shared-lib</module>
+  	<module>oidc-check</module>
   </modules>
   <properties>
     <maven.compiler.source>11</maven.compiler.source>

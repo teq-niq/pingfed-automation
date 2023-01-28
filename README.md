@@ -14,7 +14,7 @@ As far as setup is concerned this is only a way to quickly get started on using 
 - JAVA_HOME environment variable should be correctly setup.
 - Java, Maven and Ant should be configured in Path environment variable.
 - A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
-- Ensure ports 9999, 9031, 8080 are available and not in use before proceeding.
+- Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.
 
 ## Steps to follow
 #### Setup

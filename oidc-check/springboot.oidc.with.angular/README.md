@@ -35,6 +35,7 @@ keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore 
 When prompted enter yes   
 <img width="209" alt="keytool1" src="https://user-images.githubusercontent.com/14346578/215853229-49eab6ef-1042-46e0-8be2-2e3c6966ba11.PNG">   
 
+On linux might need to use sudo and $JAVA_HOME when using keytool.   
 #### Demo:
 In command prompt or terminal navigate to pingfed-automation\oidc-check\springboot.oidc.with.angular folder.  
 springboot.oidc.with.angular is a maven project. Its also a submodule of pingfed-automation\oidc-check.  

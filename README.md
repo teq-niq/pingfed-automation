@@ -29,7 +29,7 @@ They are listed here:
 - pingfed-automation\oidc-check\simple-oidc-check and  
 - pingfed-automation\oidc-check\springboot.oidc.with.angular
 
-simple-oidc-check - is a roll your own example code project where the demo is done without using any library/framework.   
+simple-oidc-check - is a roll your own example code project where the demo is done without using any library/framework for OIDC purpose in general.   
 
 springboot.oidc.with.angular - here the demo is done using a spring boot angular code authorization code example.  
 

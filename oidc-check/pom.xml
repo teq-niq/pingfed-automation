@@ -9,5 +9,6 @@
   <packaging>pom</packaging>
    <modules>
     	<module>simple-oidc-check</module>
+    	<module>springboot.oidc.with.angular</module>
 	</modules>
 </project>

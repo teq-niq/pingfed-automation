@@ -24,7 +24,18 @@ As far as setup is concerned this is only a way to quickly get started on using 
 #### Swagger discussion
 [Swagger Notes](SwaggerNotes.md)- some notes.  
 #### Authorization code flow sample
-[Authorization code flow sample](AuthCodeSample.md) - some notes.   
+There are two simple example projects which can be used to verify that the automated pingfed configuration worked.   
+They are listed here:    
+- pingfed-automation\oidc-check\simple-oidc-check and  
+- pingfed-automation\oidc-check\springboot.oidc.with.angular
+
+simple-oidc-check - is a roll your own example code project where the demo is done without using any library/framework.   
+
+springboot.oidc.with.angular - here the demo is done using a spring boot angular code authorization code example.  
+
+For simple-oidc-check please see- [simple-oidc-check](oidc-check\simple-oidc-check\README.md)  
+For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check\simple-oidc-check\README.md) 
+
 #### Ping federate admin java wrapper - others
 This is possibly the first such implementation.  
 #### Versions  

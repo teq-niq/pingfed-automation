@@ -1,0 +1,11 @@
+<app-header></app-header>
+<nav>
+  <ul>
+    <li><a routerLink="/unprotected" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
+    <div *ngIf="isLoggedOn()">
+    <li><a routerLink="/protected" routerLinkActive="active" ariaCurrentWhenActive="page">Protected Component</a></li>
+  </div>
+    
+  </ul>
+</nav>
+<router-outlet></router-outlet>

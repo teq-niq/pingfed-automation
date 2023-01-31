@@ -108,13 +108,16 @@ If you understand pingfederate configuration details - visit https://localhost:9
 Now lets quickly proceed and verify if this was done correctly or not.  
 #### Verify the automated configuration
 There are two simple example projects which can be used to verify that the automated pingfed configuration worked.   
-They are listed here:  
+They are listed here:    
 - pingfed-automation\oidc-check\simple-oidc-check and  
-- pingfed-automation\oidc-check\<comingsoon>  
-simple-oidc-check is a roll your own example code project where the demo is done without using any library/framework.   
-<comingsoon> - here the demo is done using a spring boot angular code authorization code example.  
+- pingfed-automation\oidc-check\springboot.oidc.with.angular
+
+simple-oidc-check - is a roll your own example code project where the demo is done without using any library/framework.   
+
+springboot.oidc.with.angular - here the demo is done using a spring boot angular code authorization code example.  
 
 For simple-oidc-check please see- [simple-oidc-check](oidc-check\simple-oidc-check\README.md)  
+For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check\simple-oidc-check\README.md) 
 
 
 #### Stop Ping Federate

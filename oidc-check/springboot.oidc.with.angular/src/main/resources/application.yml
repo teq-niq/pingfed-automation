@@ -1,0 +1,24 @@
+server:
+  port: 8081
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.example: TRACE
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          pingfed:
+            client-id: manual1
+            client-secret: secret
+            scope:
+              - openid
+              - email
+              - bar
+              - foo
+        provider:
+          pingfed:
+            issuer-uri: https://localhost:9031

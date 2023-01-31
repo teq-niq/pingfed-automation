@@ -1,0 +1,6 @@
+<div *ngIf="isLoggedOn(); then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>Hello {{name()}} !
+    <button (click)="logout()"  type="button" class="btn btn-primary">Logout</button></ng-template>
+<ng-template #elseBlock><button (click)="login()" type="button" class="btn btn-primary">Login</button></ng-template>
+
+

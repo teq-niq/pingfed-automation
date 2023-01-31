@@ -1,3 +1,4 @@
+## Setup for simple-oidc-check:
 
 In command prompt or terminal navigate to pingfed-automation\oidc-check\simple-oidc-check folder.  
 simple-oidc-check is a maven project. Its also a submodule of pingfed-automation.  

@@ -109,7 +109,7 @@ After Adding remember to press the save button.
 Stop the PingFederate running server.  
 Edit pingfed-automation\win\ping\pingfederate\pingfederate-11.2.0\server\default\data\config-store\cors-configuration.xml file.
 add below entry   
-&lt;con:item name="urlPatterns"&gt;/as/authorization.oauth2&lt;/con:item&gt;
+&lt;con:item name="urlPatterns"&gt;/as/authorization.oauth2&lt;/con:item&gt;   
 Restart PingFederate
 
 Visit   http://localhost:8081

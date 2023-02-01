@@ -36,6 +36,8 @@ springboot.oidc.with.angular - here the demo is done using a spring boot angular
 For simple-oidc-check please see- [simple-oidc-check](oidc-check/simple-oidc-check/README.md)  
 For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check/springboot.oidc.with.angular/README.md) 
 
+Note: the two demo apps are sightly different in their flow but both do validate our pingfederate setup and configuration automation.
+
 #### Ping federate admin java wrapper - others
 This is possibly the first such implementation.  
 #### Versions  

@@ -72,6 +72,7 @@ Login should be successful.
  
 <img width="182" alt="springboot-angular6" src="https://user-images.githubusercontent.com/14346578/215854388-323b4054-3992-4d96-999a-f3a9c886cad2.png">    
 Visit the links and try out the application.  
+
 #### Additional Notes:
 A spring boot angular OIDC application can be done in different ways.   
 The approach taken here is the same approach used by back end web applications.  
@@ -85,7 +86,7 @@ As can be seen here the SPA angular app is not a pure SPA. Its compromising on i
 
 
 
-### Improvements in this sample code
+#### Improvements in this sample code
 Logout needs to use a pingfed logout endpoint.
 Note: Logout itself works.  
 

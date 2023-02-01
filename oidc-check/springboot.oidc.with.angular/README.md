@@ -6,11 +6,15 @@
 ### Add ssl certificate to the trusted store.   
 Before proceeding lets perform an additional prerequisite.
 Visit https://localhost:9999/  
+
+
 <img width="633" alt="pingfedlanding" src="https://user-images.githubusercontent.com/14346578/215850920-b76e66c4-6d8b-4dc7-b600-34425dd21850.png">    
 Click on the "Not secure" as shown below.   
   
 <img width="260" alt="certificatecheck" src="https://user-images.githubusercontent.com/14346578/215851310-4bdd61bd-0642-4a21-9195-8c8c6d4f0796.png">   
-Proceed as shown next        
+Proceed as shown next.
+
+(A quick side note: Its possible to add proper ssl certificates into pingfederate and is very straightforward. Not covering that here. )        
   
 <img width="251" alt="certificatecheck1" src="https://user-images.githubusercontent.com/14346578/215851488-8bcb8373-e45c-4124-82ff-e12dc9d973ab.png">   
 

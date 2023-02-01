@@ -14,7 +14,7 @@ As far as setup is concerned this is only a way to quickly get started on using 
 - JAVA_HOME environment variable should be correctly setup.
 - Java, Maven and Ant should be configured in Path environment variable.
 - A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
-- Ensure ports 9999, 9031, 8080 are available and not in use before proceeding.
+- Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.
 
 ## Steps to follow
 #### Setup
@@ -24,7 +24,18 @@ As far as setup is concerned this is only a way to quickly get started on using 
 #### Swagger discussion
 [Swagger Notes](SwaggerNotes.md)- some notes.  
 #### Authorization code flow sample
-[Authorization code flow sample](AuthCodeSample.md) - some notes.   
+There are two simple example projects which can be used to verify that the automated pingfed configuration worked.   The below sample projects are only there for convenience. The main repository is about the java wrapper over the pingfederate admin api.  
+They are listed here:    
+- pingfed-automation\oidc-check\simple-oidc-check and  
+- pingfed-automation\oidc-check\springboot.oidc.with.angular
+
+simple-oidc-check - is a roll your own example code project where the demo is done without using any library/framework for OIDC purpose in general.   
+
+springboot.oidc.with.angular - here the demo is done using a spring boot angular code authorization code example.  
+
+For simple-oidc-check please see- [simple-oidc-check](oidc-check/simple-oidc-check/README.md)  
+For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check/springboot.oidc.with.angular/README.md) 
+
 #### Ping federate admin java wrapper - others
 This is possibly the first such implementation.  
 #### Versions  

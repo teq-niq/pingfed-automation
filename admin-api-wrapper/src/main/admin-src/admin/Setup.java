@@ -142,7 +142,8 @@ public class Setup implements ISetup{
 		 new ScopesCreator(core).addScopes("email", "foo", "bar");
 		 
 		 new ClientCreator(core).createClient( AutomationSharedConstants.AuthCodeClientId, AutomationSharedConstants.AuthCodeClientId, AutomationSharedConstants.AuthCodeClientSecret, atmId1, 
-				  true, null, "http://"+AutomationSharedConstants.HOSTNAME+":8080/oidc-hello", GrantTypesEnum.AUTHORIZATION_CODE,
+				  true, null, "http://"+AutomationSharedConstants.HOSTNAME+":8080/oidc-hello|http://"+AutomationSharedConstants.HOSTNAME+":8081/login/oauth2/code/pingfed", 
+				  GrantTypesEnum.AUTHORIZATION_CODE,
 				 GrantTypesEnum.ACCESS_TOKEN_VALIDATION);
 		 new ClientCreator(core).createClient( "manual2", "manual2", "secret", atmId2, 
 				  true, null, "", GrantTypesEnum.CLIENT_CREDENTIALS);

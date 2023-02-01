@@ -4,7 +4,7 @@
 - JAVA_HOME environment variable should be correctly setup.
 - Java, Maven and Ant should be configured in Path environment variable.
 - A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
-- Ensure ports 9999, 9031, 8080 are available and not in use before proceeding.  
+- Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.  
 
 ## The steps
 Clone the project from - here to a suitable folder in your machine.  
@@ -107,57 +107,18 @@ Output should look like this:
 If you understand pingfederate configuration details - visit https://localhost:9999/ and verify the results in the admin console.  
 Now lets quickly proceed and verify if this was done correctly or not.  
 #### Verify the automated configuration
-In command prompt or terminal navigate to pingfed-automation\simple-oidc-check folder.  
-simple-oidc-check is a maven project. Its also a submodule of pingfed-automation.  
-It should be already built.  
-Its a simple servlet based project.  
-We are going to use this project to verify if we are able to obtain some access tokens from pingfederate.  
-In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant". On linux machines use "sudo ant". 
-<img width="451" alt="simple_oidc_check" src="https://user-images.githubusercontent.com/14346578/210154307-7414149b-75b0-452e-854b-3817de1ab6a8.png">   
-Build should show up like this.  
-<img width="591" alt="simple_oidc_check_ant_res" src="https://user-images.githubusercontent.com/14346578/210154342-1505f797-f26b-4b6f-9b5a-5d2e4b184791.png">   
-In case of difficulty edit tomcat.ver property in the build.xml file.  
-##### Start Tomat
-Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
-You can also start and stop the tomcat using the ant targets as shown here.  
-In command prompt or terminal after navigating to pingfed-automation\simple-oidc-check folder run "ant start-tomcat".   
-On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/startup.sh".  
-On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/catalina.sh".  
-On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/shutdown.sh".  
-Then on linux use "sudo ant start-tomcat".   
+There are two simple example projects which can be used to verify that the automated pingfed configuration worked.   
+They are listed here:    
+- pingfed-automation\oidc-check\simple-oidc-check and  
+- pingfed-automation\oidc-check\springboot.oidc.with.angular
 
-<img width="298" alt="start_tomcat" src="https://user-images.githubusercontent.com/14346578/210154363-b207100c-81d1-46e1-aeb5-1deb86f8f965.png">   
-This should result in  
-<img width="773" alt="start_tomcat_result" src="https://user-images.githubusercontent.com/14346578/210154374-9e545fc6-3192-4b73-9027-aa34bdd37878.png">     
-Once this tomcat has started pls visit http://localhost:8080/   
-<img width="425" alt="localhost_8080" src="https://user-images.githubusercontent.com/14346578/210154396-63c1508f-f011-47c5-a1bb-ecc9cea5f052.png">   
-In case you see messages of could not connect please ensure pingdirectory and pingfederate is running.    
-##### Click on the "Protected...- link -(Authorization code grant flow).   
-We have two configurations for essentially same oidc server.    
-So in next screen it will prompt for selecting the oidc server.    
-<img width="355" alt="oidcselect" src="https://user-images.githubusercontent.com/14346578/210154416-f46fc3c8-7d08-4ef6-9753-7a0f7568016d.png">   
-Click on the first "Start" link. This will start and verify the authorization code flow.  
-<img width="255" alt="authorization_code1" src="https://user-images.githubusercontent.com/14346578/210154455-1b3749f0-fc34-4918-a371-d856a2e7cc9a.png">    
-Note: Use "password" for password
-Then  
-<img width="641" alt="authorization_code2" src="https://user-images.githubusercontent.com/14346578/210169644-0929666f-7265-436e-9667-0a35b82f3060.png">    
-Uncheck foo scope item.   
-<img width="586" alt="authorization_code3" src="https://user-images.githubusercontent.com/14346578/210169650-98df70d9-5ca6-45f4-8366-cb8462f395fd.png">    
-Press Allow button.  
-Next screen should be this.  
-<img width="270" alt="protected" src="https://user-images.githubusercontent.com/14346578/210169662-38c982b7-b63e-45c5-a150-94af44ceb6c4.png">   
-Note: As can be seen in above screen in our authorization code sample for convenience treating scope as the user roles.  Thats why it says false against foo. But true against bar.   
-Also Note: Security can be applied against scope and also roles treating both as different concepts.  
-Look at the console to see the access token and other details.  
-This above application demonstrates the **authorisation code flow**.  
-The improvment areas are :  
-- Caching of jwks and the introspection.  
-- use of refresh token.  
-Could be done in different ways.  Steering away from it for now.   
+simple-oidc-check - is a roll your own example code project where the demo is done without using any library/framework.   
 
-##### Click on the "Try" link -(Client credentials grant flow).  
-It should take you to another access token via client credentials grant flow.  
-If all worked correctly congrats.
+springboot.oidc.with.angular - here the demo is done using a spring boot angular code authorization code example.  
+
+For simple-oidc-check please see- [simple-oidc-check](oidc-check/simple-oidc-check/README.md)  
+For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check/springboot-angular-oidc-check/README.md) 
+
 
 #### Stop Ping Federate
 Run “ant stop-pingfed”  

@@ -37,9 +37,19 @@ When prompted enter yes
 
 On linux might need to use sudo and $JAVA_HOME when using keytool.   
 #### Demo:
-In command prompt or terminal navigate to pingfed-automation\oidc-check\springboot.oidc.with.angular folder.  
+
 springboot.oidc.with.angular is a maven project. Its also a submodule of pingfed-automation\oidc-check.  
-It should have been already built.  
+It should have been already built.  However we need to build it properly.
+In command prompt or terminal navigate to pingfed-automation\oidc-check\springboot.oidc.with.angular folder.  
+Run the below command.
+mvn clean package -P npmbuild    
+
+<img width="498" alt="build_springboot_angular" src="https://user-images.githubusercontent.com/14346578/216162830-b1f3550f-3b10-424e-9425-5a549fc9d88d.png">    
+
+This should give a result as shown below.    
+<img width="633" alt="build_springboot_angular1" src="https://user-images.githubusercontent.com/14346578/216163155-8e6f9533-1f6d-4e7a-9085-9cb5207188aa.png">    
+
+   
 Its a simple spring boot based project. Using angular for front end.  
 We are going to use this project to verify if we are able to obtain some access tokens from pingfederate. 
 With command prompt at pingfed-automation\oidc-check\springboot.oidc.with.angular lets run the following
@@ -77,7 +87,7 @@ As can be seen here the SPA angular app is not a pure SPA. Its compromising on i
 
 ### Improvements in this sample code
 Logout needs to use a pingfed logout endpoint.
-Logout itself works.  
+Note: Logout itself works.  
 
 
 #### Cleanup if needed:

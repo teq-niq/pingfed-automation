@@ -1,9 +1,9 @@
-#### Spring boot angular authorization code sample.  
+# Spring boot angular authorization code sample.  
 
 
-#### Addditional Prerequisite:
+## Addditional Prerequisite:
 
-##### Add ssl certificate to the trusted store.   
+### Add ssl certificate to the trusted store.   
 Before proceeding lets perform an additional prerequisite.
 Visit https://localhost:9999/  
 <img width="633" alt="pingfedlanding" src="https://user-images.githubusercontent.com/14346578/215850920-b76e66c4-6d8b-4dc7-b600-34425dd21850.png">    
@@ -36,7 +36,7 @@ When prompted enter yes
 <img width="209" alt="keytool1" src="https://user-images.githubusercontent.com/14346578/215853229-49eab6ef-1042-46e0-8be2-2e3c6966ba11.PNG">   
 
 On linux might need to use sudo and $JAVA_HOME when using keytool.   
-#### Demo:
+## Demo:
 
 springboot.oidc.with.angular is a maven project. Its also a submodule of pingfed-automation\oidc-check.  
 It should have been already built.  However we need to build it properly.
@@ -86,19 +86,19 @@ As can be seen here the SPA angular app is not a pure SPA. Its compromising on i
 
 
 
-#### Improvements in this sample code
+## Improvements in this sample code
 Logout needs to use a pingfed logout endpoint.
 Note: Logout itself works.  
 
 
-#### Cleanup if needed:
-##### Remove ssl certificate from the trusted store. 
+## Cleanup if needed:
+### Remove ssl certificate from the trusted store. 
 Run below command to remove certificate from the trusted store.
 keytool -delete -alias localpingfed -keystore %JAVA_HOME%/lib/security/cacerts
 
 This should remove the ssl certificate from the trust store.
 
-#### CORS when not logged on
+## CORS when not logged on
 
 If debugging in the browser one can see some CORS errors.
 These could be eliminated by the following steps:  

@@ -136,7 +136,7 @@ The CORS warnings will have disappeared.
 But do note this recommendation in the comments in same cors-configuration.xml file:   
 Adding the OAuth authorization endpoint (/as/authorization.oauth2) to the urlPatterns field is _strongly_ discouraged due to the resulting security risks.
 
-So best to undo these CORS related changes for pingfederate.
+So best to undo these CORS related changes for pingfederate.   
 Note: These CORS warnings are only when pingfed is invoking our application.
 
 

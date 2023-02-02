@@ -23,7 +23,8 @@ Click on the menu item corresponding to Certificate is not valid as shown above.
 This will launch the certificate viewer.     
 Showing below a partial screen of same.       
  
-<img width="411" alt="certificatecheck2" src="https://user-images.githubusercontent.com/14346578/215851691-aefdbd78-b109-4fb4-b917-12b3b9d7a7a4.png">      
+<img width="411" alt="certificatecheck2" src="https://user-images.githubusercontent.com/14346578/215851691-aefdbd78-b109-4fb4-b917-12b3b9d7a7a4.png">   
+    
 Lets visit the details tab.   
   
 <img width="410" alt="certificatecheck3" src="https://user-images.githubusercontent.com/14346578/215851855-c494ccb3-e549-4e7f-9de8-d7403879394c.png">    
@@ -34,10 +35,14 @@ This will launch File save as dialog for the crt file.
 <img width="701" alt="certificatecheck4" src="https://user-images.githubusercontent.com/14346578/215852002-0c7a6cef-2b1b-4816-9b13-9a802a02afc3.png">    
 Save the file at a suitable location.  
 In command prompt or terminal visit same location.
-Execute the below command:  
-keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore %JAVA_HOME%/lib/security/cacerts -storepass changeit  
-<img width="482" alt="keytool" src="https://user-images.githubusercontent.com/14346578/215852636-ac70c56a-c95d-4982-a9b4-df84a556f9e4.PNG">    
+Execute the below command:   
+
+keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore %JAVA_HOME%/lib/security/cacerts -storepass changeit    
+
+<img width="482" alt="keytool" src="https://user-images.githubusercontent.com/14346578/215852636-ac70c56a-c95d-4982-a9b4-df84a556f9e4.PNG">   
+ 
 When prompted enter yes   
+
 <img width="209" alt="keytool1" src="https://user-images.githubusercontent.com/14346578/215853229-49eab6ef-1042-46e0-8be2-2e3c6966ba11.PNG">   
 
 On linux might need to use sudo and $JAVA_HOME when using keytool.   
@@ -46,7 +51,8 @@ On linux might need to use sudo and $JAVA_HOME when using keytool.
 springboot.oidc.with.angular is a maven project. Its also a submodule of pingfed-automation\oidc-check.  
 It should have been already built.  However we need to build it properly.
 In command prompt or terminal navigate to pingfed-automation\oidc-check\springboot.oidc.with.angular folder.  
-Run the below command.
+Run the below command.   
+
 mvn clean package -P npmbuild    
 
 <img width="498" alt="build_springboot_angular" src="https://user-images.githubusercontent.com/14346578/216162830-b1f3550f-3b10-424e-9425-5a549fc9d88d.png">    
@@ -57,25 +63,32 @@ This should give a result as shown below.
    
 Its a simple spring boot based project. Using angular for front end.  
 We are going to use this project to verify if we are able to obtain some access tokens from pingfederate. 
-With command prompt at pingfed-automation\oidc-check\springboot.oidc.with.angular lets run the following
+With command prompt at pingfed-automation\oidc-check\springboot.oidc.with.angular lets run the following    
+
 java -jar target\springboot.oidc.with.angular.jar   
 
 <img width="600" alt="springboot-angular1" src="https://user-images.githubusercontent.com/14346578/215853492-68e73a43-e678-49df-ad64-0db087ea32fd.png">   
+
 Showing below how it launches.    
 
 <img width="944" alt="springboot-angular2" src="https://user-images.githubusercontent.com/14346578/215853660-008b3c4b-9e44-4ce0-987a-983d33b03d65.png">      
+
 Vist http://localhost:8081    
 
 <img width="185" alt="springboot-angular3" src="https://user-images.githubusercontent.com/14346578/215853832-832d1288-0ce1-4fb6-b282-6cfca7b585b6.png">   
+
 Click Login     
 
 <img width="680" alt="springboot-angular4" src="https://user-images.githubusercontent.com/14346578/215853956-792477d2-0ab6-4cc8-86a7-50860caf0a07.png">   
+
 Enter user.0 and password for the username and password.   
 
 <img width="584" alt="springboot-angular5" src="https://user-images.githubusercontent.com/14346578/215854179-4f5dc139-b53b-4790-8848-2136f557ae9d.png">
+
 Login should be successful.   
  
 <img width="182" alt="springboot-angular6" src="https://user-images.githubusercontent.com/14346578/215854388-323b4054-3992-4d96-999a-f3a9c886cad2.png">    
+
 Visit the links and try out the application.  
 
 #### Additional Notes:

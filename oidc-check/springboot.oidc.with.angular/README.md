@@ -93,14 +93,17 @@ Visit the links and try out the application.
 
 #### Additional Notes:
 A spring boot angular OIDC application can be done in different ways.   
-The approach taken here is the same approach used by back end web applications.  
+The approach taken here is the same approach used by back end web applications. 
+As can be seen here the SPA angular app is not a pure SPA. Its compromising on its SPA'ness during login. 
 Have deliberately chosen an approach where the front end, back end application are all in the same web app.  
 The main advanatage of this approach is that the access token never leaves the back end.  
 It never is made accessible to the angular javascript front end.  
 This is often a most recommended highly secure and compact approach.  
 However this is not the only way.  
-There are other approaches also possible. Depending on the requirements choose the appropriate approach.  
-As can be seen here the SPA angular app is not a pure SPA. Its compromising on its SPA'ness during login.
+There are other approaches also possible. 
+If needed one can also use Authorization Code with PKCE when working with Pure SPA or native applications where browser redirect is being avoided or not possible. 
+Depending on the requirements choose the appropriate approach.  
+
 
 
 

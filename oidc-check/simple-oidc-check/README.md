@@ -7,9 +7,9 @@ Its a simple servlet based project.
 We are going to use this project to verify if we are able to obtain some access tokens from pingfederate.  
 In command prompt or terminal after navigating to pingfed-automation\oidc-check\simple-oidc-check folder run "ant".  
 On linux machines use "sudo ant".  
-<img width="451" alt="simple_oidc_check" src="https://user-images.githubusercontent.com/14346578/210154307-7414149b-75b0-452e-854b-3817de1ab6a8.png">   
+<img width="451" alt="simple_oidc_check" src="https://user-images.githubusercontent.com/14346578/216606944-e30b6543-b624-4f38-85c5-0076132892e1.png">   
 Build should show up like this.  
-<img width="591" alt="simple_oidc_check_ant_res" src="https://user-images.githubusercontent.com/14346578/210154342-1505f797-f26b-4b6f-9b5a-5d2e4b184791.png">   
+<img width="591" alt="simple_oidc_check_ant_res" src="https://user-images.githubusercontent.com/14346578/216607302-9aec9569-1cc4-4332-9cb8-8be67b62ee21.png">   
 In case of difficulty edit tomcat.ver property in the build.xml file.  
 ##### Start Tomat
 Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
@@ -20,9 +20,10 @@ On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.
 On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/shutdown.sh".  
 Then on linux use "sudo ant start-tomcat".   
 
-<img width="298" alt="start_tomcat" src="https://user-images.githubusercontent.com/14346578/210154363-b207100c-81d1-46e1-aeb5-1deb86f8f965.png">   
+<img width="298" alt="start_tomcat" src="https://user-images.githubusercontent.com/14346578/216607601-9fa70751-24fa-42e0-b53c-d51ba5261fb4.png">   
+
 This should result in  
-<img width="773" alt="start_tomcat_result" src="https://user-images.githubusercontent.com/14346578/210154374-9e545fc6-3192-4b73-9027-aa34bdd37878.png">     
+<img width="773" alt="start_tomcat_result" src="https://user-images.githubusercontent.com/14346578/216607904-74cf5f9b-4bf2-4ce3-b77b-6feb7629dc02.png">     
 
 Once this tomcat has started pls visit http://localhost:8080/   
 <img width="425" alt="localhost_8080" src="https://user-images.githubusercontent.com/14346578/210154396-63c1508f-f011-47c5-a1bb-ecc9cea5f052.png">   

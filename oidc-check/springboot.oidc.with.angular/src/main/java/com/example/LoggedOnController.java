@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -44,11 +45,11 @@ public class LoggedOnController {
 	private  OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
 
 	@RequestMapping(path = "/getLoggedOnUser", method = RequestMethod.GET)
-	public ResponseEntity<Map<String, Object>> getLoggedOnUser() throws IOException {
+	public ResponseEntity<UserInfo> getLoggedOnUser() throws IOException {
 		
 		Authentication authentication = SecurityContextHolder.getContext()
         .getAuthentication();
-		Map<String, Object> data= new HashMap<>();
+		UserInfo data= new UserInfo();
 		System.out.println("gett authentication="+authentication.getClass().getName());
 		if(authentication.isAuthenticated())
 		{
@@ -65,13 +66,13 @@ public class LoggedOnController {
 			System.out.println("scopes="+scopes);
 			
 			OAuth2User principal = o.getPrincipal();
-
-			data.put("username", principal.getName());
+			data.setUsername( principal.getName());
+			
 			if(principal instanceof OidcUser)
 			{
 				OidcUser oidcUser=(OidcUser) principal;
+				data.setUsername( oidcUser.getGivenName());
 				
-				data.put("username", oidcUser.getGivenName());
 				System.out.println("claims="+oidcUser.getClaims());
 				Collection<? extends GrantedAuthority> authorities = oidcUser.getAuthorities();
 				for (GrantedAuthority grantedAuthority : authorities) {
@@ -91,13 +92,13 @@ public class LoggedOnController {
 				}
 			}
 			
-			data.put("authenticateStatus", true);
-			return new ResponseEntity<Map<String,Object>>(data, HttpStatusCode.valueOf(200));
+			data.setAuthenticateStatus(true);
+			return new ResponseEntity<UserInfo>(data, HttpStatus.OK);
 		}
 		else
 		{
-			data.put("authenticateStatus", false);
-			return new ResponseEntity<Map<String,Object>>(data, HttpStatusCode.valueOf(403));
+			data.setAuthenticateStatus(false);
+			return new ResponseEntity<UserInfo>(data, HttpStatus.FORBIDDEN);
 		}
 		
 		

@@ -14,6 +14,7 @@ export class UnProtectedComponent {
 
   regularResponse?:string;
   protectedResponse?:string;
+  fooResponse?:string;
   constructor(private http: HttpClient,
     public urlsrvc: UrlConstructService)
   {
@@ -36,9 +37,20 @@ export class UnProtectedComponent {
   {
     let url = this.urlsrvc.mainUrl('secured');
 		//console.log("called session check from app component")
-    this.http.get<any>(url, {withCredentials:true}).subscribe({
+    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
       next: (data) => this.protectedResponse=JSON.stringify(data),
-      error: (e) => 	this.protectedResponse='Got Problem',
+      error: (e) => 	this.protectedResponse='status:'+e.status+'Got Problem',
+      complete: () => console.info('complete') 
+  });
+  }
+
+  foo()
+  {
+    let url = this.urlsrvc.mainUrl('foo');
+		//console.log("called session check from app component")
+    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
+      next: (data) => this.fooResponse=JSON.stringify(data),
+      error: (e) => 	{this.fooResponse='status:'+e.status+'Got Problem'},
       complete: () => console.info('complete') 
   });
   }

@@ -98,7 +98,7 @@ As can be seen here the SPA angular app is not a pure SPA. Its compromising on i
 Have deliberately chosen an approach where the front end, back end application are all in the same web app.  
 The main advanatage of this approach is that the access token never leaves the back end.  
 It never is made accessible to the angular javascript front end.  
-This is often a most recommended highly secure and compact approach.  
+This is often a most recommended highly secure and compact approach- I am attempting here the The BFF Pattern (Backend for Frontend).  
 However this is not the only way.  
 There are other approaches also possible. 
 If needed one can also use Authorization Code with PKCE when working with Pure SPA or native applications where browser redirect is being avoided or not possible. 

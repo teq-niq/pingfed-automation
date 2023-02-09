@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,7 +16,12 @@ import org.springframework.security.oauth2.client.endpoint.OAuth2AuthorizationCo
 import org.springframework.security.oauth2.client.http.OAuth2ErrorResponseErrorHandler;
 import org.springframework.security.oauth2.core.http.converter.OAuth2AccessTokenResponseHttpMessageConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.RequestHeaderRequestMatcher;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 
@@ -34,21 +40,25 @@ public class SecurityConfig {
 		corsConfiguration.setAllowCredentials(true);
 		corsConfiguration.setExposedHeaders(List.of("Authorization"));
 
-		OAuth2LoginConfigurer<HttpSecurity> oauth2Login = http.cors().configurationSource(request -> corsConfiguration)
-				.and().
+		http
+		.cors().configurationSource(request -> corsConfiguration)
+		.and()
 
-				// http.
-				csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and().authorizeHttpRequests()
-				.requestMatchers("/tologin", "/getLoggedOnUser", "/secured").authenticated().and().oauth2Client().and()
-				.oauth2Login();
-
-		oauth2Login.
-
-				tokenEndpoint().accessTokenResponseClient(this.accessTokenResponseClient());
-
-		oauth2Login
-
-				.and().authorizeHttpRequests().anyRequest().permitAll();
+		.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+		.and()
+        .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/tologin", "/getLoggedOnUser").authenticated()
+                .anyRequest().permitAll()
+        )
+        .oauth2Login(oauth2Login -> 
+        					oauth2Login
+        						.tokenEndpoint().accessTokenResponseClient(this.accessTokenResponseClient())
+        						)
+		.exceptionHandling()
+		.defaultAuthenticationEntryPointFor(
+				new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),
+				new RequestHeaderRequestMatcher("X-Requested-With", "XMLHttpRequest"));
+		
 
 		return http.build();
 	}

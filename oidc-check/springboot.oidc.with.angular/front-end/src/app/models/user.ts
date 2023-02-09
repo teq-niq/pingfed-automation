@@ -1,4 +1,7 @@
-export interface User {
-    username:string;
-    authenticateStatus:boolean;
+export class User {
+    username?:string;
+    authenticateStatus:boolean=false;
+    authorities?:string[];
+
+    
 }

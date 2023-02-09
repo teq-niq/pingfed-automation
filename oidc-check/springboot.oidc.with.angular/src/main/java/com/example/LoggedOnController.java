@@ -76,20 +76,8 @@ public class LoggedOnController {
 				System.out.println("claims="+oidcUser.getClaims());
 				Collection<? extends GrantedAuthority> authorities = oidcUser.getAuthorities();
 				for (GrantedAuthority grantedAuthority : authorities) {
-					System.out.println("grantedAuthority="+grantedAuthority.getAuthority()+"@"+grantedAuthority.getClass().getName());
-					if(grantedAuthority instanceof OidcUserAuthority)
-					{
-						OidcUserAuthority oua=(OidcUserAuthority) grantedAuthority;
-						OidcIdToken idToken = oua.getIdToken();
-					
-						System.out.println("idToken.class="+idToken.getClass().getName());
-						OidcUserInfo userInfo = oua.getUserInfo();
-						
-						System.out.println("userInfo.class="+userInfo.getClass().getName());
-						
+					data.add(grantedAuthority.getAuthority());
 					}
-
-				}
 			}
 			
 			data.setAuthenticateStatus(true);

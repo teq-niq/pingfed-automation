@@ -8,7 +8,7 @@ import { UrlConstructService } from './url-construct.service';
   providedIn: 'root'
 })
 export class ProfileService {
-  user?:User;
+  user?:User|undefined;
 
   constructor(private http: HttpClient,
     public urlsrvc: UrlConstructService) { }
@@ -17,19 +17,27 @@ export class ProfileService {
     return this.user!=null && this.user.authenticateStatus;
   }
 
+  hasAuthority(authority:string):boolean
+    {
+        let ret:boolean=false;
+        if(this.user!=null && this.user.authenticateStatus)
+        {
+          if(this.user.authorities!=null && this.user.authorities.length>0)
+          {
+              ret=this.user.authorities.indexOf(authority) > -1;
+          }
+        }
+        
+        return ret;
+    }
+
+ 
+
   loggedOnUser():User|undefined{
     return this.user;
   }
 
-  testSuccessLogin()
-  {
-    this.user={username:'tester', authenticateStatus:true}
-  }
-
-  testFailedLogin()
-  {
-    this.user={username:'', authenticateStatus:false}
-  }
+  
 
 
 
@@ -43,11 +51,11 @@ export class ProfileService {
 	}
 
   sessionInvalidate() {
-    this.user={username:'', authenticateStatus:false};
+    this.user=undefined;
     let url = this.urlsrvc.mainUrl('logoutuser');
     
     
-    this.http.get<string>(url, {withCredentials:true  
+    this.http.get<string>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}  
       }).subscribe({
       next: (v:string) => console.log(JSON.stringify(v)),
       error: (e) => console.error(e),
@@ -61,17 +69,18 @@ export class ProfileService {
     console.log('data='+JSON.stringify(data));
 		if (data !== null && data.username != null && data.authenticateStatus) {
 			
-			this.user=data;
+			this.user=data;;
 		}
     else{
-      this.user={username:'', authenticateStatus:false};
+      this.user=undefined;
+      
     }
 	}
 
   isLoggedOn$() :Observable<User>{
 		let url = this.urlsrvc.mainUrl('getLoggedOnUser');
 		//console.log("called session check from app component")
-    return this.http.get<User>(url, {withCredentials:true});
+    return this.http.get<User>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}});
 	}
 
   login() {

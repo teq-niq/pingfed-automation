@@ -15,6 +15,8 @@ export class UnProtectedComponent {
   regularResponse?:string;
   protectedResponse?:string;
   fooResponse?:string;
+  barResponse?:string;
+  profileResponse?:string;
   constructor(private http: HttpClient,
     public urlsrvc: UrlConstructService)
   {
@@ -51,6 +53,28 @@ export class UnProtectedComponent {
     this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
       next: (data) => this.fooResponse=JSON.stringify(data),
       error: (e) => 	{this.fooResponse='status:'+e.status+'Got Problem'},
+      complete: () => console.info('complete') 
+  });
+  }
+
+  bar()
+  {
+    let url = this.urlsrvc.mainUrl('bar');
+		//console.log("called session check from app component")
+    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
+      next: (data) => this.barResponse=JSON.stringify(data),
+      error: (e) => 	{this.barResponse='status:'+e.status+'Got Problem'},
+      complete: () => console.info('complete') 
+  });
+  }
+
+  profile()
+  {
+    let url = this.urlsrvc.mainUrl('profile');
+		//console.log("called session check from app component")
+    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
+      next: (data) => this.profileResponse=JSON.stringify(data),
+      error: (e) => 	{this.profileResponse='status:'+e.status+'Got Problem'},
       complete: () => console.info('complete') 
   });
   }

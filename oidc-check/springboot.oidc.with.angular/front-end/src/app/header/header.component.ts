@@ -29,7 +29,7 @@ logout() {
   name():string{
     let name:string='';
     const user:User|undefined=this.profileService.loggedOnUser();
-    if(user && user.authenticateStatus)
+    if(user && user.authenticateStatus && user.username)
     {
       name=user.username;
     }

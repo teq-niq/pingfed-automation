@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { UrlConstructService } from '../services/url-construct.service';
 import { HttpClient } from '@angular/common/http';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-comp2',
@@ -14,8 +15,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProtectedComponent {
   protectedResponse?:string;
+  fooResponse?:string;
+  barResponse?:string;
+  profileResponse?:string;
+
+  hasAuthority(authority:string):boolean{
+    return this.profileService.hasAuthority(authority);
+  }
+  isLoggedOn():boolean{
+    return this.profileService.isLoggedOn();
+  }
+
   constructor(private http: HttpClient,
-    public urlsrvc: UrlConstructService)
+    public urlsrvc: UrlConstructService, 
+    private profileService:ProfileService)
   {
 
   }
@@ -26,6 +39,39 @@ export class ProtectedComponent {
     this.http.get<any>(url, {withCredentials:true}).subscribe({
       next: (data) => this.protectedResponse=JSON.stringify(data),
       error: (e) => 	this.protectedResponse='Got Problem',
+      complete: () => console.info('complete') 
+  });
+  }
+
+  foo()
+  {
+    let url = this.urlsrvc.mainUrl('foo');
+		//console.log("called session check from app component")
+    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
+      next: (data) => this.fooResponse=JSON.stringify(data),
+      error: (e) => 	{this.fooResponse='status:'+e.status+'Got Problem'},
+      complete: () => console.info('complete') 
+  });
+  }
+
+  bar()
+  {
+    let url = this.urlsrvc.mainUrl('bar');
+		//console.log("called session check from app component")
+    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
+      next: (data) => this.barResponse=JSON.stringify(data),
+      error: (e) => 	{this.barResponse='status:'+e.status+'Got Problem'},
+      complete: () => console.info('complete') 
+  });
+  }
+
+  profile()
+  {
+    let url = this.urlsrvc.mainUrl('profile');
+		//console.log("called session check from app component")
+    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
+      next: (data) => this.profileResponse=JSON.stringify(data),
+      error: (e) => 	{this.profileResponse='status:'+e.status+'Got Problem'},
       complete: () => console.info('complete') 
   });
   }

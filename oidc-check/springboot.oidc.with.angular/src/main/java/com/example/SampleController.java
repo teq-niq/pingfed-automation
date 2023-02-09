@@ -65,7 +65,7 @@ public class SampleController {
 	}
 	
 	@RequestMapping(path = "/profile", method = RequestMethod.GET)
-	 @PreAuthorize("hasAuthority('SCOPE_profile')")
+	@PreAuthorize("isAuthenticated()")
 	public ResponseEntity<Map<String, Object>> profile(OAuth2AuthenticationToken authentication) {
 		
 	

@@ -58,6 +58,8 @@ public class LoggedOnController {
 				            o.getAuthorizedClientRegistrationId(),
 				            o.getName());
 			OAuth2AccessToken accessTokenObj = client.getAccessToken();
+			String tokenValue = accessTokenObj.getTokenValue();
+			System.out.println("tokenValue="+tokenValue);
 			System.out.println("accessTokenObj.class="+accessTokenObj.getClass().getName());
 			Set<String> scopes = accessTokenObj.getScopes();
 			System.out.println("scopes="+scopes);

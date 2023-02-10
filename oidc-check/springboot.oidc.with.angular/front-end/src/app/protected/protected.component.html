@@ -1,7 +1,19 @@
 <p>protected component works!</p>
+<p>
+Show Innaccessible: <input [(ngModel)]="showInnacessible" type="checkbox"> 
+{{ showInnacessible }}
+</p>
+<p>
+    Preess above checkbx to show/hide inaccessible inputs.
+</p>
+<p>
+    <button (click)="regular()"  type="button" class="btn btn-primary">Access Un-Protected API</button>
+    Response: {{regularResponse}}
+    </p>
+<p *ngIf="isLoggedOn()">
 <button (click)="protected()"  type="button" class="btn btn-primary">Access Protected API</button>
 Response: {{protectedResponse}}
-
+</p>
 
 <p *ngIf="hasAuthority('SCOPE_foo')">
 <button (click)="foo()"  type="button" class="btn btn-primary">Access Foo</button>

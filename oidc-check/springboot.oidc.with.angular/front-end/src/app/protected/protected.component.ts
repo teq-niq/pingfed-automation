@@ -5,25 +5,30 @@ import { Observable } from 'rxjs';
 import { UrlConstructService } from '../services/url-construct.service';
 import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../services/profile.service';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-comp2',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './protected.component.html',
   styleUrls: ['./protected.component.css']
 })
 export class ProtectedComponent {
+  regularResponse?:string;
   protectedResponse?:string;
   fooResponse?:string;
   barResponse?:string;
   profileResponse?:string;
+  showInnacessible: boolean=false;
+
 
   hasAuthority(authority:string):boolean{
-    return this.profileService.hasAuthority(authority);
+    return this.profileService.hasAuthority(authority)||this.showInnacessible;
   }
   isLoggedOn():boolean{
-    return this.profileService.isLoggedOn();
+    return this.profileService.isLoggedOn()||this.showInnacessible;
   }
 
   constructor(private http: HttpClient,
@@ -31,6 +36,16 @@ export class ProtectedComponent {
     private profileService:ProfileService)
   {
 
+  }
+  regular()
+  {
+    let url = this.urlsrvc.mainUrl('unsecured');
+		//console.log("called session check from app component")
+    this.http.get<any>(url, {withCredentials:true}).subscribe({
+      next: (data) => this.regularResponse=JSON.stringify(data),
+      error: (e) => 	this.regularResponse='Got Problem',
+      complete: () => console.info('complete') 
+  });
   }
   protected()
   {

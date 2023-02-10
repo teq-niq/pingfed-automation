@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { HttpClient, HttpHeaders, HttpParams, HttpBackend, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UrlConstructService } from './url-construct.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ProfileService {
   user?:User|undefined;
 
   constructor(private http: HttpClient,
-    public urlsrvc: UrlConstructService) { }
+    public urlsrvc: UrlConstructService, private router:Router) { }
 
   isLoggedOn():boolean{
     return this.user!=null && this.user.authenticateStatus;
@@ -59,7 +60,7 @@ export class ProfileService {
       }).subscribe({
       next: (v:string) => console.log(JSON.stringify(v)),
       error: (e) => console.error(e),
-      complete: () => console.info('complete-logoutuser') 
+      complete: () => {console.info('complete-logoutuser');this.router.navigate(['/']); }
   }
     );
 	

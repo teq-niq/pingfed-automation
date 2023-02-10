@@ -119,31 +119,5 @@ keytool -delete -alias localpingfed -keystore %JAVA_HOME%/lib/security/cacerts
 
 This should remove the ssl certificate from the trust store.
 
-## CORS when not logged on
-
-If debugging in the browser one can see some CORS errors.
-These could be eliminated by the following steps:  
-Visit https://localhost:9999/pingfederate/app#/onAuthzServerSettings
-Under Cross-Origin Resource Sharing Settings>Allowed Origin add the below:
-http://localhost:8081
-After Adding remember to press the save button.
-Stop the PingFederate running server.  
-Edit pingfed-automation\win\ping\pingfederate\pingfederate-11.2.0\server\default\data\config-store\cors-configuration.xml file.
-add below entry   
-&lt;con:item name="urlPatterns"&gt;/as/authorization.oauth2&lt;/con:item&gt;   
-Restart PingFederate
-
-Visit   http://localhost:8081
-The CORS warnings will have disappeared.
-
-But do note this recommendation in the comments in same cors-configuration.xml file:   
-Adding the OAuth authorization endpoint (/as/authorization.oauth2) to the urlPatterns field is _strongly_ discouraged due to the resulting security risks.
-
-So best to undo these CORS related changes for pingfederate.   
-Note: These CORS warnings are only when pingfed is invoking our application.
-
-
-
-
 
   

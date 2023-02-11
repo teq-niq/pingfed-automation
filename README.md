@@ -9,6 +9,7 @@
 1.2 Post initial configuration setup automate configuration of pingfederate using a java admin api wrapper.
 2. A general discussion on swagger in this context.
 As far as setup is concerned this is only a way to quickly get started on using pingfederate. Customize as needed.  
+
 ## Prerequisites 
 - Java JDK 11
 - JAVA_HOME environment variable should be correctly setup.
@@ -31,7 +32,7 @@ They are listed here:
 
 simple-oidc-check - is a roll your own example code project where the demo is done without using any library/framework for OIDC purpose in general.   
 
-springboot.oidc.with.angular - here the demo is done using a spring boot angular code authorization code example.  
+springboot.oidc.with.angular - here the demo is done using a spring boot angular project for an authorization code example.  
 
 For simple-oidc-check please see- [simple-oidc-check](oidc-check/simple-oidc-check/README.md)  
 For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check/springboot.oidc.with.angular/README.md) 

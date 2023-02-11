@@ -85,7 +85,7 @@ Enter user.0 and password for the username and password.
 
 <img width="584" alt="springboot-angular5" src="https://user-images.githubusercontent.com/14346578/215854179-4f5dc139-b53b-4790-8848-2136f557ae9d.png">
 
-Uncheck foo now. Press Allow.
+Uncheck foo now. Press Allow.  
 
 <img width="584" alt="uncheck foo" src="https://user-images.githubusercontent.com/14346578/218252517-b9dccf3f-b2ad-4737-bb69-5fc6ec586740.png">
 
@@ -93,7 +93,32 @@ Login should be successful.
  
 <img width="584" alt="springboot-angular6" src="https://user-images.githubusercontent.com/14346578/218252642-0e02d6c5-7469-4666-9eaa-5da3a1d7a593.png">    
 
-Visit the links and try out the application.  
+The second link is a Protected route and appears only when logged in.   
+But both links have same functionality for this demo.  
+Click the first one.  
+
+<img width="584" alt="springboot-angular6a" src="https://user-images.githubusercontent.com/14346578/218252978-be8e013a-c38f-416a-818c-a8b60fbbf675.png">   
+
+Now check the "Show Innaccessible" checkbox.  
+
+<img width="584" alt="springboot-angular6b" src="https://user-images.githubusercontent.com/14346578/218253418-4337ef96-5a99-43a7-af3f-16cd66ec6d0e.png">   
+
+The Access Foo Buton is now available even though it should not be.  
+Click all the buttons.   
+
+<img width="584" alt="springboot-angular6c" src="https://user-images.githubusercontent.com/14346578/218253555-92c2bdc7-3610-4317-a515-25e709ddcf28.png">   
+
+Notice how all the buttons work. But "Access Foo" button reported  403 and Problem.   
+
+If you logout and are at this page you will see even less buttons.
+
+<img width="584" alt="springboot-angular6d" src="https://user-images.githubusercontent.com/14346578/218253795-ffd0b3ba-bd80-4190-94f2-d5adb4c094dc.png">  
+
+Again pressing the checkbox would show you all the buttons including the inaccessibble ones. Pressing the inaccessible ones will report 401.   
+
+Conclusion: So we have seen how the login and scopes selection affects how the users can do what on the application.   
+
+
 
 #### Additional Notes:
 A spring boot angular OIDC application can be done in different ways.   

@@ -41,7 +41,7 @@ export class ProtectedComponent {
   {
     let url = this.urlsrvc.mainUrl('unsecured');
 		//console.log("called session check from app component")
-    this.http.get<any>(url, {withCredentials:true}).subscribe({
+    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
       next: (data) => this.regularResponse=JSON.stringify(data),
       error: (e) => 	this.regularResponse='Got Problem',
       complete: () => console.info('complete') 
@@ -51,9 +51,9 @@ export class ProtectedComponent {
   {
     let url = this.urlsrvc.mainUrl('secured');
 		//console.log("called session check from app component")
-    this.http.get<any>(url, {withCredentials:true}).subscribe({
+    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
       next: (data) => this.protectedResponse=JSON.stringify(data),
-      error: (e) => 	this.protectedResponse='Got Problem',
+      error: (e) => 	this.protectedResponse='status:'+e.status+'Got Problem',
       complete: () => console.info('complete') 
   });
   }
@@ -64,7 +64,7 @@ export class ProtectedComponent {
 		//console.log("called session check from app component")
     this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
       next: (data) => this.fooResponse=JSON.stringify(data),
-      error: (e) => 	{this.fooResponse='status:'+e.status+'Got Problem'},
+      error: (e) => 	this.fooResponse='status:'+e.status+'Got Problem',
       complete: () => console.info('complete') 
   });
   }
@@ -75,7 +75,7 @@ export class ProtectedComponent {
 		//console.log("called session check from app component")
     this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
       next: (data) => this.barResponse=JSON.stringify(data),
-      error: (e) => 	{this.barResponse='status:'+e.status+'Got Problem'},
+      error: (e) => 	this.barResponse='status:'+e.status+'Got Problem',
       complete: () => console.info('complete') 
   });
   }
@@ -86,7 +86,7 @@ export class ProtectedComponent {
 		//console.log("called session check from app component")
     this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
       next: (data) => this.profileResponse=JSON.stringify(data),
-      error: (e) => 	{this.profileResponse='status:'+e.status+'Got Problem'},
+      error: (e) => 	this.profileResponse='status:'+e.status+'Got Problem',
       complete: () => console.info('complete') 
   });
   }

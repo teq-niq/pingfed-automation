@@ -114,7 +114,12 @@ If you logout and are at this page you will see even less buttons.
 
 <img width="584" alt="springboot-angular6d" src="https://user-images.githubusercontent.com/14346578/218253795-ffd0b3ba-bd80-4190-94f2-d5adb4c094dc.png">  
 
-Again pressing the checkbox would show you all the buttons including the inaccessibble ones. Pressing the inaccessible ones will report 401.   
+Again pressing the checkbox would show you all the buttons including the inaccessibble ones. 
+
+<img width="584" alt="springboot-angular6e" src="https://user-images.githubusercontent.com/14346578/218263256-a33651ad-5e8d-4203-9a3b-48cf3527ad94.png"> 
+
+Pressing the inaccessible ones will report 401 as shown below.   
+<img width="584" alt="springboot-angular6f" src="https://user-images.githubusercontent.com/14346578/218263902-e29f2264-c5d9-4e17-88f7-ccdf64b9b47e.png"> 
 
 Conclusion: So we have seen how the login and scopes selection affects how the users can do what on the application.   
 

@@ -118,6 +118,8 @@ Again pressing the checkbox would show you all the buttons including the inacces
 
 Conclusion: So we have seen how the login and scopes selection affects how the users can do what on the application.   
 
+You can also launch with application with a VM argument of -DisOn4200=true.  
+If you do that during development you can keep the server running at 8081 but front end at 4200.  You could launch the application then at http://localhost:4200 when doing angular development. 
 
 
 #### Additional Notes:

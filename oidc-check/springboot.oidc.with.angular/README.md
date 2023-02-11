@@ -75,7 +75,7 @@ Showing below how it launches.
 
 Vist http://localhost:8081    
 
-<img width="185" alt="springboot-angular3" src="https://user-images.githubusercontent.com/14346578/215853832-832d1288-0ce1-4fb6-b282-6cfca7b585b6.png">   
+<img width="680" alt="springboot-angular3" src="https://user-images.githubusercontent.com/14346578/218252358-2fd48d84-edfd-4eda-ba63-c9ced69afd6a.png">   
 
 Click Login     
 
@@ -85,9 +85,13 @@ Enter user.0 and password for the username and password.
 
 <img width="584" alt="springboot-angular5" src="https://user-images.githubusercontent.com/14346578/215854179-4f5dc139-b53b-4790-8848-2136f557ae9d.png">
 
+Uncheck foo now. Press Allow.
+
+<img width="584" alt="uncheck foo" src="https://user-images.githubusercontent.com/14346578/218252517-b9dccf3f-b2ad-4737-bb69-5fc6ec586740.png">
+
 Login should be successful.   
  
-<img width="182" alt="springboot-angular6" src="https://user-images.githubusercontent.com/14346578/215854388-323b4054-3992-4d96-999a-f3a9c886cad2.png">    
+<img width="584" alt="springboot-angular6" src="https://user-images.githubusercontent.com/14346578/218252642-0e02d6c5-7469-4666-9eaa-5da3a1d7a593.png">    
 
 Visit the links and try out the application.  
 

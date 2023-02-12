@@ -121,7 +121,7 @@ Again pressing the checkbox would show you all the buttons including the inacces
 Pressing the inaccessible ones will report 401 as shown below.   
 <img width="584" alt="springboot-angular6f" src="https://user-images.githubusercontent.com/14346578/218263902-e29f2264-c5d9-4e17-88f7-ccdf64b9b47e.png"> 
 
-Conclusion: So we have seen how the login and scopes selection affects how the users can do what on the application.   
+**Conclusion**: We have seen how the login and scopes selection affects how the users can do what on the application.   
 
 You can also launch with application with a VM argument of -DisOn4200=true.  
 If you do that during development you can keep the server running at 8081 but front end at 4200.  You could launch the application then at http://localhost:4200 when doing angular development. 

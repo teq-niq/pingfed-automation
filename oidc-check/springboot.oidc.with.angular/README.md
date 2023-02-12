@@ -106,7 +106,7 @@ Now check the "Show Innaccessible" checkbox.
 The Access Foo Buton is now available even though it should not be.  
 Click all the buttons.   
 
-<img width="584" alt="springboot-angular6c" src="https://user-images.githubusercontent.com/14346578/218253555-92c2bdc7-3610-4317-a515-25e709ddcf28.png">   
+<img width="584" alt="springboot-angular6c" src="https://user-images.githubusercontent.com/14346578/218297445-264ba111-908d-425f-85c6-c76a4ff55a64.png">   
 
 Notice how all the buttons work. But "Access Foo" button reported  403 and Problem.   
 

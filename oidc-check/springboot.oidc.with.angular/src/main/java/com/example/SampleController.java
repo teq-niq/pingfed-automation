@@ -5,6 +5,7 @@ package com.example;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -67,11 +68,21 @@ public class SampleController {
 	@RequestMapping(path = "/profile", method = RequestMethod.GET)
 	@PreAuthorize("isAuthenticated()")
 	public ResponseEntity<Map<String, Object>> profile(OAuth2AuthenticationToken authentication) {
-		
+		Map<String, Object> profile=new HashMap<>();
+		Collection<GrantedAuthority> authorities = authentication.getAuthorities();
+		Set<String> grantedAuthorityNames=new HashSet<>();
+		for (GrantedAuthority grantedAuthority : authorities) {
+			grantedAuthorityNames.add(grantedAuthority.getAuthority());
+		}
+		profile.put("grantedAuthorityNames", grantedAuthorityNames);
 	
 		Map<String, Object> attributes = authentication.getPrincipal().getAttributes();
+		Set<String> keySet = attributes.keySet();
+		for (String key : keySet) {
+			profile.put(key, attributes.get(key));
+		}
 		
-		return new ResponseEntity<Map<String, Object>>(attributes, HttpStatus.OK);
+		return new ResponseEntity<Map<String, Object>>(profile, HttpStatus.OK);
 		
 		
 	}

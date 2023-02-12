@@ -95,9 +95,6 @@ public class LoggedOnController {
 	
 	@RequestMapping(path = "/tologin", method = RequestMethod.GET)
 	public void tologin(@AuthenticationPrincipal OidcUser oidcUser, HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-		
-	
 		String serverUrl = getServerUrl(request);
 		response.sendRedirect(isOn4200?"http://localhost:4200":serverUrl);
 	}
@@ -106,10 +103,6 @@ public class LoggedOnController {
 		String scheme = request.getScheme();
 		String serverName = request.getServerName();
 		int serverPort = request.getServerPort();
-		ServletContext servletContext = request.getServletContext();
-		String servletContextName = servletContext.getServletContextName();
-		String contextPath = servletContext.getContextPath();
-		//System.out.println("scheme="+scheme+",serverName="+serverName+",serverPort="+serverPort+",servletContextName="+servletContextName+",contextPath="+contextPath);
 		String url = scheme+"://"+serverName+":"+serverPort;
 		return url;
 	}

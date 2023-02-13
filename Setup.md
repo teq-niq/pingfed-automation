@@ -90,7 +90,7 @@ Do nothing. Press Finish.
 #### swagger.json
 Visit  https://localhost:9999/pf-admin-api/v1/swagger.json
 Copy its contents into the file- pingfed-automation\admin-api-wrapper\swagger-json\swagger.json.   
-This step has already been done if you are on version pingfederate-11.2.0.  
+This step has already been done if you are on version pingfederate-11.2.2.  
 If your pingfederate version is higher do please update the file content here.  
 #### Swagger Code generation
 In command prompt/terminal visit folder - "pingfed-automation".

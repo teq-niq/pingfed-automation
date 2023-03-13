@@ -28,6 +28,8 @@ import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.oauth2.core.oidc.user.OidcUserAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,7 +46,7 @@ public class SampleController {
 	
 	
 
-	@RequestMapping(path = "/foo", method = RequestMethod.GET)
+	@RequestMapping(path = "/foo", method = RequestMethod.POST)
 	 @PreAuthorize("hasAuthority('SCOPE_foo')")
 	public ResponseEntity<Map<String, Object>> foo() {
 		

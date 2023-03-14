@@ -93,7 +93,7 @@ public class Launch {
 		String[] arguments = getOptionalData(processHandle.info()::arguments, new String[] {});
 		System.out.println("pid=" + pid + ",parentPid=" + parentPid + ",command=" + command + ",commandLine="
 				+ commandLine + ",arguments=" + Arrays.toString(arguments));
-		if (inner && command.endsWith("java.exe")) {
+		if (inner && (command.endsWith("java.exe")||command.endsWith("java"))) {
 			Properties props = new Properties();
 			props.setProperty("pingfed.launch.pid", String.valueOf(pid));
 

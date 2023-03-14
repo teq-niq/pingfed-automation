@@ -1,6 +1,6 @@
 # PingFed Automation Setup steps
 ## Prerequisites 
-- Java JDK 11
+- Java JDK 17
 - JAVA_HOME environment variable should be correctly setup.
 - Java, Maven and Ant should be configured in Path environment variable.
 - A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
@@ -8,6 +8,7 @@
 
 ## The steps
 Clone the project from - here to a suitable folder in your machine.  
+git clone -b main https://github.com/teq-niq/pingfed-automation.git  
 Read pingfed-automation\downloads\downloadnotes.txt.   
 Download the files as mentioned here into "pingfed-automation\downloads" folder.  
 In command prompt/terminal navigate to pingfed-automation folder.  

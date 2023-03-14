@@ -11,7 +11,7 @@
 As far as setup is concerned this is only a way to quickly get started on using pingfederate. Customize as needed.  
 
 ## Prerequisites 
-- Java JDK 11
+- Java JDK 17
 - JAVA_HOME environment variable should be correctly setup.
 - Java, Maven and Ant should be configured in Path environment variable.
 - A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.

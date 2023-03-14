@@ -181,7 +181,7 @@ public class Setup implements ISetup{
 		String schema=mysqlProps.getProperty("mysql.schema");
 		String host=mysqlProps.getProperty("mysql.host");
 		String port=mysqlProps.getProperty("mysql.port");
-		String url="jdbc:mysql://"+host+":"+port+"/"+schema+"?autoReconnect=true";
+		String url="jdbc:mysql://"+host+":"+port+"/"+schema+"?autoReconnect=true&useSSL=false";
 		String jdbcDsId="JDBC-MYSQL";
 		String jdbcDsName="mysqljdbcName";
 		new JDBCDataStoreCreator(core).createJdbcDataStore(jdbcDsId, jdbcDsName, url, userName, password);

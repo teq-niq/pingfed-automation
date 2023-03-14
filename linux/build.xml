@@ -149,9 +149,9 @@
 									</filterset>
 								</copy>	
 
-			<sql src="../sql/setup-use.sql" userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" />
+			<sql src="../sql/setup-use.sql" userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}?useSSL=false" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" />
 			<delete file="../sql/setup-use.sql"/>
-			<sql src="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\oauth-client-management\sql-scripts\oauth-client-management-mysql.sql" userid="${mysql.u}" password="${mysql.upwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" />
+			<sql src="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\oauth-client-management\sql-scripts\oauth-client-management-mysql.sql" userid="${mysql.u}" password="${mysql.upwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}?useSSL=false" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" />
 			<chmod perm="777" file="ping\pingfederate\pingfederate-${ping.fed.version}\bin\obfuscate${ping.fed.extn}"/>
 			<chmod perm="777" file="ping/pingfederate/pingfederate-${ping.fed.version}/bin/*"/>
 

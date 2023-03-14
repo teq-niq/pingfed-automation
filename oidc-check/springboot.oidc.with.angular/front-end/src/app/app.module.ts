@@ -5,19 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from "./header/header.component";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
+import { HttpXSRFInterceptor } from './intecepter/http.xsrf.interceptor';
 
 
 @NgModule({
     declarations: [
         AppComponent
     ],
-    providers: [],
+    providers: [{
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpXSRFInterceptor,
+        multi: true
+      },],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
         HttpClientModule,
+        HttpClientXsrfModule,
         FormsModule,
         AppRoutingModule,
         NgbModule,

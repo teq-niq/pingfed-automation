@@ -63,7 +63,7 @@ export class UnProtectedComponent {
   {
     let url = this.urlsrvc.mainUrl('foo');
 		//console.log("called session check from app component")
-    this.http.get<any>(url, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
+    this.http.post<any>(url, {}, {withCredentials:true, headers:{"X-Requested-With": "XMLHttpRequest"}}).subscribe({
       next: (data) => this.fooResponse=JSON.stringify(data),
       error: (e) => 	this.fooResponse='status:'+e.status+'Got Problem',
       complete: () => console.info('complete') 

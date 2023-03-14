@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 import org.springframework.security.web.util.matcher.RequestHeaderRequestMatcher;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.cors.CorsConfiguration;
@@ -31,6 +32,10 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		
+		CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
+	    // set the name of the attribute the CsrfToken will be populated on
+	    requestHandler.setCsrfRequestAttributeName(null);
 
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type", "X-XSRF-TOKEN"));
@@ -44,8 +49,11 @@ public class SecurityConfig {
 		.cors().configurationSource(request -> corsConfiguration)
 		.and()
 
-		.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-		.and()
+		.csrf((csrf)->csrf
+	            .csrfTokenRequestHandler(requestHandler).
+	            csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+
+		//.and()
         .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/tologin", "/getLoggedOnUser").authenticated()
                 .anyRequest().permitAll()

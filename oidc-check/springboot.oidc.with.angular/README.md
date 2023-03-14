@@ -39,13 +39,16 @@ Execute the below command:
 
 keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore %JAVA_HOME%/lib/security/cacerts -storepass changeit    
 
+On linux:
+sudo keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit   
+
 <img width="482" alt="keytool" src="https://user-images.githubusercontent.com/14346578/215852636-ac70c56a-c95d-4982-a9b4-df84a556f9e4.PNG">   
  
 When prompted enter yes   
 
 <img width="209" alt="keytool1" src="https://user-images.githubusercontent.com/14346578/215853229-49eab6ef-1042-46e0-8be2-2e3c6966ba11.PNG">   
 
-On linux might need to use sudo and $JAVA_HOME when using keytool.   
+   
 ## Demo:
 
 springboot.oidc.with.angular is a maven project. Its also a submodule of pingfed-automation\oidc-check.  
@@ -65,7 +68,7 @@ Its a simple spring boot based project. Using angular for front end.
 We are going to use this project to verify if we are able to obtain some access tokens from pingfederate. 
 With command prompt at pingfed-automation\oidc-check\springboot.oidc.with.angular lets run the following    
 
-java -jar target\springboot.oidc.with.angular.jar   
+java -jar target/springboot.oidc.with.angular.jar   
 
 <img width="600" alt="springboot-angular1" src="https://user-images.githubusercontent.com/14346578/215853492-68e73a43-e678-49df-ad64-0db087ea32fd.png">   
 

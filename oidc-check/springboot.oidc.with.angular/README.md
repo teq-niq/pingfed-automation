@@ -84,7 +84,8 @@ Click Login
 
 <img width="680" alt="springboot-angular4" src="https://user-images.githubusercontent.com/14346578/215853956-792477d2-0ab6-4cc8-86a7-50860caf0a07.png">   
 
-Enter user.0 and password for the username and password.   
+**Note:** Enter **user.0** and **password** for the username and password.  
+Just the text - user.0 and password for username and password respectively.    
 
 <img width="584" alt="springboot-angular5" src="https://user-images.githubusercontent.com/14346578/215854179-4f5dc139-b53b-4790-8848-2136f557ae9d.png">
 

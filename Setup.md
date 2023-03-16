@@ -63,14 +63,14 @@ You might get a message "Your connection is not private" as shown above.
 If so press Advanced button   
 <img width="304" alt="chrome-step2" src="https://user-images.githubusercontent.com/14346578/210154017-619af26b-0aaf-47bf-aca3-0bd60220f4a0.png">   
 Click on the proceed to localhost link.  
-Note: Its possible to configure SSL. Not covering that here.  
+Note: Its possible to configure SSL better. Not covering that here.  
 We should be seeing this.  
 <img width="238" alt="chrome-step3" src="https://user-images.githubusercontent.com/14346578/210154036-12a351e2-8268-4dca-ba99-dae23be55404.png">   
 Check the checkbox and press Next button.  
 <img width="202" alt="chrome-step4" src="https://user-images.githubusercontent.com/14346578/210154054-3e9fac8e-a11a-4623-98b3-196113481494.png">   
 I left the base url at "https://localhost:9031" for now. It can be modified later too. Press Next.  
 <img width="210" alt="chrome-step5" src="https://user-images.githubusercontent.com/14346578/210154087-50000fc4-a05b-436f-ab7a-8ba048026cb3.png">   
-Do nothing. Just press Next.  For now avoid the check box encouraging you to connect to a PingOne Account. 
+Do nothing. Just press Next.  For now avoid the check box encouraging you to connect to a PingOne Account.   
 <img width="191" alt="chrome-step6" src="https://user-images.githubusercontent.com/14346578/210154114-2e68c868-ef0a-4613-aa85-49eef5eaa1fa.png">    
 Press the choose file button. Navigate to the ping federate license file in pingfed-automation/downloads.  
 Select it.  

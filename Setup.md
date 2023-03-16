@@ -30,7 +30,10 @@ In command prompt/terminal navigate to
 ! pingfed-automation/mysql.properties file entries should match the expectations.  
 + Edit pingfed-automation\mysql.properties as needed.  
 ```
-  
+**Impotant Note:**
+*Before proceeding ensure that mysql is running and reachable.   
+pingfed-automation/mysql.properties file entries should match the expectations.  
+Edit pingfed-automation\mysql.properties as needed.*   
 
 Run “ant”. On linux might need to use  “sudo ant”.   
 <img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">  
@@ -80,7 +83,7 @@ Press Next.
 + Ensure this matches with pingfed-automation\admin-api-wrapper\pingfed.api.properties file contents.  
 ```
 
-Note: Its possible to create additional users for use with pingfed  api.
+**Note:** Its possible to create additional users for use with pingfed  api.
 However keeping it simple.  
 Prss Next.  
 <img width="191" alt="chrome-step9" src="https://user-images.githubusercontent.com/14346578/210154177-d42d869e-7b19-4977-a850-d9d6cf2f4c57.png">   

@@ -221,9 +221,14 @@
 			<echo file="ping/pingdirectory/PingDirectory-${ping.dir.version}/config/tools.pin" message="manager" />
 
 				</target>
-    <target name="depends">
+    <target name="depends" depends="testMySql">
     	<mkdir dir="ping" />
     </target>
+	<target name="testMySql">
+				<sql  userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" >
+					select 1 from DUAL
+				</sql>
+		 </target>	
 	<target name="clean">
 	    	<delete dir="ping" />
 	    </target>

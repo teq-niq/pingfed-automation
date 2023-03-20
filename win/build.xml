@@ -214,7 +214,7 @@
 
 				</target>
 	<target name="testMySql">
-			<sql  userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" >
+			<sql  userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" >
 				select 1 from DUAL
 			</sql>
 		</target>

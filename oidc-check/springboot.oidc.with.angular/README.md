@@ -40,7 +40,9 @@ Execute the below command:
 keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore %JAVA_HOME%/lib/security/cacerts -storepass changeit    
 
 On linux:
-sudo keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit   
+**sudo** keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit   
+
+Also ensure name of the file "localhost.crt" matcjhes wuith actual.  
 
 <img width="482" alt="keytool" src="https://user-images.githubusercontent.com/14346578/215852636-ac70c56a-c95d-4982-a9b4-df84a556f9e4.PNG">   
  

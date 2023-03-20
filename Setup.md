@@ -35,9 +35,17 @@ In command prompt/terminal navigate to
 pingfed-automation/mysql.properties file entries should match the expectations.  
 Edit pingfed-automation\mysql.properties as needed.*   
 
-Run “ant”. On linux might need to use  “sudo ant”.   
-<img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">  
-Result should look like this:  
+Run “ant”.   
+On linux might need to use  “sudo ant”.   
+In linux sometimes sudo ant will report "sudo: ant: command not found".
+If so please add below line in your .bashrc and source it.  
+- alias sudo='sudo env PATH=$PATH $@'   
+After adding above line run below.    
+- source ~/.bashrc
+   
+<img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">    
+
+Result should look like this:   
 <img width="588" alt="setuprun-part1" src="https://user-images.githubusercontent.com/14346578/210153791-e6e8662f-7c01-4c9d-a463-35c7a918beeb.png">  
 <img width="604" alt="setuprun-part2" src="https://user-images.githubusercontent.com/14346578/210153798-08e1a56d-8665-4da0-b979-9a07d718113c.png">  
 That should setup pinfederate.
@@ -156,3 +164,11 @@ Result should be like this.
 <img width="538" alt="undosetupresult" src="https://user-images.githubusercontent.com/14346578/210154640-4aec73e8-c85b-4c2c-ac3e-f0059855319b.png">   
 Note: Before running "ant clean" ensure that pingfederate and pingdirectory are stopped.
 Also Note: Can again setup by running "ant".
+
+
+#### Trouble shooting
+In linux sometimes sudo ant will report "sudo: ant: command not found".
+If so please add below line in your .bashrc and source it.
+- alias sudo='sudo env PATH=$PATH $@'   
+After adding above line run below.    
+- source ~/.bashrc

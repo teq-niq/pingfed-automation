@@ -5,6 +5,7 @@
 - Java, Maven and Ant should be configured in Path environment variable.
 - A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
 - Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.  
+- Some example projects are also included which can be run on localhost easily assuming a desktop machine.  
 
 ## The steps
 Clone the project from - here to a suitable folder in your machine.  
@@ -127,6 +128,7 @@ If you understand pingfederate configuration details - visit https://localhost:9
 Now lets quickly proceed and verify if this was done correctly or not.  
 #### Verify the automated configuration
 There are two simple example projects which can be used to verify that the automated pingfed configuration worked.   
+These examples can be easily run on a desktop machine using localhost.
 They are listed here:    
 - pingfed-automation\oidc-check\simple-oidc-check and  
 - pingfed-automation\oidc-check\springboot.oidc.with.angular
@@ -171,4 +173,13 @@ In linux sometimes sudo ant will report "sudo: ant: command not found".
 If so please add below line in your .bashrc and source it.
 - alias sudo='sudo env PATH=$PATH $@'   
 After adding above line run below.    
-- source ~/.bashrc
+- source ~/.bashrc    
+
+I did something wrong. How do I start again?   
+- Run ant stop-pingfed if its running.   
+- Run ant stop-ds if its running   
+- Run ant clean.   
+- Worst case scenario restart the machine.   
+- Run ant clean   
+- After ant clean assuming pingfed-automation\downloads folder has the needed files. Start again with "ant setup".  
+

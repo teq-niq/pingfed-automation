@@ -1,6 +1,6 @@
 package example;
-
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
@@ -10,30 +10,45 @@ import java.util.stream.Stream;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 
-public class StopNonClusterdPingFed extends Task {
-
-	@Override
-	public void execute() throws BuildException {
-
-		try {
-			inner();
-		} catch (IOException | InterruptedException e) {
-			e.printStackTrace();
-			throw new BuildException("Problem", e);
-		}
-
+public class StopNonClusterdPingFed extends Task{
+	
+	private File launchPropertiesFile;
+	public void setLaunchPropertiesFile(File launchPropertiesFile) {
+		this.launchPropertiesFile = launchPropertiesFile;
 	}
 	
-	private void inner() throws IOException, InterruptedException {
-		final boolean isOnWin = isOnWin();
-		System.out.println(isOnWin);
-		Stream<ProcessHandle> allProcesses = ProcessHandle.allProcesses();
+	@Override
+	public void execute() throws BuildException {
 		
+			try {
+				final boolean isOnWin = isOnWin();
+				if(isOnWin)
+				{
+					new KillUsingFileForWin(launchPropertiesFile).killUsingPidFromFile();
+				}
+				else
+				{
+					killForNonWin();
+				}
+				
+			} catch (IOException | InterruptedException e) {
+				e.printStackTrace();
+				throw new BuildException("Problem stopping", e);
+			}
+		
+	}
+	
+	private void killForNonWin() throws IOException, InterruptedException {
+		
+		
+		Stream<ProcessHandle> allProcesses = ProcessHandle.allProcesses();
+		final boolean isOnWin = isOnWin();
 		
 		Optional<ProcessHandle> found = allProcesses.parallel().filter((ProcessHandle h) -> {
 			
 			boolean ret=false;
 			long pid = h.pid();
+			//this.getCommandLine(pid) will not be invoked. its too slow
 			Optional<String> commandLine = isOnWin?this.getCommandLine(pid):h.info().commandLine();
 			
 
@@ -78,15 +93,7 @@ public class StopNonClusterdPingFed extends Task {
 			System.out.println("called destroy for pid=" + pid);
 		}
 	}
-	
-	public static void main(String[] args) {
-		StopNonClusterdPingFed stopNonClusterdPingFed = new StopNonClusterdPingFed();
-		Optional<String> commandLine = stopNonClusterdPingFed.getCommandLine(26728);
-		if(commandLine.isPresent())
-		{
-			System.out.println(commandLine.get());
-		}
-	}
+
 	private Optional<String> getCommandLine(long desiredProcessid ) throws UncheckedIOException {
 
 	   
@@ -113,5 +120,6 @@ public class StopNonClusterdPingFed extends Task {
 	      throw new UncheckedIOException(e);
 	    }
 	  }
+	
 
 }

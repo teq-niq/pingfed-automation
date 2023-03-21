@@ -5,7 +5,7 @@
 - Java, Maven and Ant should be configured in Path environment variable.
 - A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
 - Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.  
-- Some example projects are also included which can be run on localhost easily assuming a desktop machine.  
+
 
 ## The steps
 Clone the project from - here to a suitable folder in your machine.  
@@ -37,7 +37,7 @@ pingfed-automation/mysql.properties file entries should match the expectations.
 Edit pingfed-automation\mysql.properties as needed.*   
 
 Run “ant”.   
-On linux might need to use  “sudo ant”.   
+<ins>On linux might need to use  “sudo ant”.</ins>   
 In linux sometimes sudo ant will report "sudo: ant: command not found".
 If so please add below line in your .bashrc and source it.  
 - alias sudo='sudo env PATH=$PATH $@'   

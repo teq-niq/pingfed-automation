@@ -1,0 +1,18 @@
+If running not out of a desktop.
+Do the steps as mentioned.
+Open ping federate admin console using remote address https://<remoteip>:9999.
+Feed the base url of localhost.
+Generate the java code as usual.
+Edit pingfed-automation\automation-shared-lib\src\main\java\com\example\config\constants\AutomationSharedConstants.java
+In HOSTNAME use the remote ip.
+Using https://<remoteip>:9999/pingfederate/app#/protocolSettings edit
+BASE URL so that it has remote ip.
+go to pingfed-automation in command prompt/terminal
+mvn clean package -P admin
+After that go to pingfed-automation\admin-api-wrapper in command prompt/terminal
+java -jar target/admin-api-wrapper.jar admin.Main
+
+The first example should be runnable.
+
+Second example without a desktop also possible but must setup proper ssl certificates in pingfederate.
+

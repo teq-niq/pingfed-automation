@@ -9,18 +9,16 @@ import org.apache.tools.ant.Task;
 
 public class StartNonClusterdPingFed extends Task{
 	private File pingFedHome;
-	private File launchPropertiesFile;
-	public void setLaunchPropertiesFile(File launchPropertiesFile) {
-		this.launchPropertiesFile = launchPropertiesFile;
-	}
+	
+
 	public void setPingFedHome(File pingFedHome) {
 		this.pingFedHome = pingFedHome;
 	}
 	@Override
 	public void execute() throws BuildException {
 		try {
-			new Launch(pingFedHome, launchPropertiesFile).launch();
-		} catch (IOException e) {
+			new Launch(pingFedHome).launch();
+		} catch (IOException | InterruptedException e) {
 		
 			e.printStackTrace();
 			

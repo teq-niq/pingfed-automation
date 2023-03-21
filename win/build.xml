@@ -50,36 +50,18 @@
 	
 	
 	<target name="start-pingfed">
-		<!--
-			comment if you prefer using direct java instead of ant tasks
-		-->
+		
 		<start-non-clustered-pingfed 
 			pingFedHome=".\ping\pingfederate\pingfederate-${ping.fed.version}"
-			launchPropertiesFile=".\ping\pingfederate\pingfed.launch.properties"
+			
 		/>
-		<!-- uncomment below if not using ant task but direct java-->
-		<!--
-		<java   classpathref="pingfed.start.stop.cp" classname="example.Launch">
-			<arg file=".\ping\pingfederate\pingfederate-${ping.fed.version}"/>
-			<arg file=".\ping\pingfederate\pingfed.launch.properties"/>
-		</java>
-		-->
+		
 	</target>
 	
 	<target name="stop-pingfed">
-		<!--
-			comment if you prefer using direct java instead of ant tasks
-		-->
-		<stop-non-clustered-pingfed 
-			launchPropertiesFile=".\ping\pingfederate\pingfed.launch.properties"
-		/>
-		<!-- uncomment below if not using ant task but direct java-->
-		<!--
-		<java   classpathref="pingfed.start.stop.cp" classname="example.Kill">
-			<arg file=".\ping\pingfederate\pingfed.launch.properties"/>
-		</java>
-		-->
-		<delete file=".\ping\pingfederate\pingfed.launch.properties"/>
+
+		<stop-non-clustered-pingfed/>
+		
 	</target>
 	
 	<target name="stop-ds">

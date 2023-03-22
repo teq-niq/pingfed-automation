@@ -52,9 +52,7 @@ public class Launch {
 		Process process = processBuilder.start();
 
 		long pid1 = process.pid();
-		System.out.println(pid1);
-		// checkPid(pid1);
-
+		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
 		String line = null;

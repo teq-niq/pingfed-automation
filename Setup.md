@@ -62,7 +62,7 @@ Run “ant start-pingfed”. On linux use "sudo ant start-pingfed".
 <img width="447" alt="start_pingfed" src="https://user-images.githubusercontent.com/14346578/210153941-6f95a083-fcef-49a1-ba47-553bc1f2501f.png">  
 Result should look like this:  
 <img width="567" alt="start_pingfed_result" src="https://user-images.githubusercontent.com/14346578/210153987-0c61dd67-3979-4893-8dea-cd6da4f9e2be.png">  
-Note: Via ant just starting the Ping Federate. Also capturing the process id.  
+Note: Via ant just starting the Ping Federate. Also capturing the process id in case of windows.  
 Ping Federate can also be started by launching: run.bat or run.sh found in bin folder of the Ping Federate.  
 #### Use Ping Federate Admin Console first time
 I am using chrome browser. Should possibly work well in other browsers too.  
@@ -147,7 +147,7 @@ Run “ant stop-pingfed”
 Result should look like this:  
 <img width="559" alt="stop_pingfed_result" src="https://user-images.githubusercontent.com/14346578/210154537-1dbc438a-e924-439c-a747-dee800748120.png">    
 Note: Via ant just stopping the Ping Federate by killing the process.  
-Relying on the process id noted earlier.
+Relying on the process id noted earlier in case of windows. In case of other environments just detecting processes that are running PingFederate and stopping them.    
 
 #### Stop PingDirectory
 Run “ant stop-ds”  

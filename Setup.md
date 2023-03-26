@@ -11,7 +11,7 @@
 Clone the project from - here to a suitable folder in your machine.  
 git clone -b main https://github.com/teq-niq/pingfed-automation.git  
 Read pingfed-automation\downloads\downloadnotes.txt.   
-Download the files as mentioned here into "pingfed-automation\downloads" folder.  
+<ins>Download the files as mentioned here into **"pingfed-automation\downloads"** folder.</ins>    
 In command prompt/terminal navigate to pingfed-automation folder.  
 Run “mvn clean package” in command prompt.  
 <img width="420" alt="build" src="https://user-images.githubusercontent.com/14346578/210153578-7bab1333-c9c4-441c-841f-3636dcab39b4.png">  

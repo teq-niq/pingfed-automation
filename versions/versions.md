@@ -7,6 +7,7 @@ This code should be compatible with these versions.
 | 11.2.0       | 9.2.0.0        | [link](11.2.0/swagger.json)   | main         |   
 | 11.2.1       | 9.2.0.0        | [link](11.2.1/swagger.json)   | main         | 
 | 11.2.2       | 9.2.0.0        | [link](11.2.2/swagger.json)   | main         |   
-| 11.2.3       | 9.2.0.0        | [link](11.2.3/swagger.json)   | main         |   
+| 11.2.3       | 9.2.0.0        | [link](11.2.3/swagger.json)   | main         |  
+| 11.2.4       | 9.2.0.0        | [link](11.2.4/swagger.json)   | main         |   
 
 

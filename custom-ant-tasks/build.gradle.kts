@@ -14,16 +14,16 @@ dependencies {
 
 tasks.jar{
     doLast{
-        extracted1()
+        setupAntTasks()
     }
 }
- extracted1();
+setupAntTasks();
 
 
-fun Build_gradle.extracted1() {
+fun setupAntTasks() {
     val x1: RegularFile = layout.buildDirectory.file("libs/custom-ant-tasks.jar").get()
     val f1: File = x1.asFile
-    println("f1.exists()=" + f1.exists())
+
     if (f1.exists()) {
         ant.lifecycleLogLevel = AntBuilder.AntMessagePriority.INFO
 

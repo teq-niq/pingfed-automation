@@ -10,10 +10,14 @@
 	<property file="../versions.properties"/>
 	<property file="os.properties"/>
 	<property file="../mysql.properties"/>
-	<property file="../build.properties"/> 
-	
+	<property file="../build.properties"/>
+
+	<delete dir="lib"></delete>
+	<mkdir dir="lib"/>
+	<copy  file="../custom-ant-tasks/build/libs/custom-ant-tasks.jar" todir="lib" overwrite="true"></copy>
+
 	<path id="pingfed.start.stop.cp" >
-		<pathelement location="../custom-ant-tasks/target/custom-ant-tasks.jar"/>
+		<pathelement location="lib/custom-ant-tasks.jar"/>
 	</path>
 	
 	<!--

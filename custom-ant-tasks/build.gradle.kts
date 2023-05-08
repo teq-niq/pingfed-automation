@@ -33,7 +33,9 @@ fun setupAntTasks() {
             }
 
         } else {
-            ant.importBuild("../linux/build.xml")
+            ant.importBuild("../linux/build.xml"){ antTaskName ->
+                "ping-${antTaskName}".toString()
+            }
 
         }
 

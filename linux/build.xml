@@ -12,10 +12,6 @@
 	<property file="../mysql.properties"/>
 	<property file="../build.properties"/> 
 	
-	<path id="pingfed.start.stop.cp" >
-		<pathelement location="../custom-ant-tasks/target/custom-ant-tasks.jar"/>
-	</path>
-	
 	
     <description>
             description
@@ -40,18 +36,8 @@
 
 	</target>
 	
-	<!--
-	Comment below taskdefs if you wish to avoid the custom ant tasks
-	and prefr using direct java
-	
-	-->
-	<taskdef name="start-non-clustered-pingfed" 
-			classname="example.StartNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
-	</taskdef>
-	<taskdef name="stop-non-clustered-pingfed" 
-			classname="example.StopNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
-	</taskdef>
-	<target name="start-pingfed">
+
+	<target name="start-pingfed" depends="importcustomanttasks">
 			
 			<start-non-clustered-pingfed 
 				pingFedHome=".\ping\pingfederate\pingfederate-${ping.fed.version}" />
@@ -59,7 +45,7 @@
 			
 		</target>
 		
-		<target name="stop-pingfed">
+		<target name="stop-pingfed" depends="importcustomanttasks">
 			
 			<stop-non-clustered-pingfed />
 			
@@ -214,5 +200,21 @@
 	<target name="clean">
 	    	<delete dir="ping" />
 	    </target>
+	<target name="importcustomanttasks">
+		
+			    		    		<mkdir dir="lib"/>
+			    		    		<copy  file="../custom-ant-tasks/build/libs/custom-ant-tasks.jar" todir="lib" overwrite="true"></copy>
+
+			    		    		<path id="pingfed.start.stop.cp" >
+			    		    			<pathelement location="lib/custom-ant-tasks.jar"/>
+			    		    		</path>
+			    		    			<taskdef name="start-non-clustered-pingfed" 
+			    		    					classname="example.StartNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
+			    		    			</taskdef>
+			    		    			<taskdef name="stop-non-clustered-pingfed" 
+			    		    					classname="example.StopNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
+			    		    			</taskdef>
+
+		</target>
 
 </project>

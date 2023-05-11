@@ -223,7 +223,7 @@
 		</target>
 	
 	<target name="importcustomanttasks">
-		<delete dir="lib"></delete>
+	
 		    		    		<mkdir dir="lib"/>
 		    		    		<copy  file="../custom-ant-tasks/build/libs/custom-ant-tasks.jar" todir="lib" overwrite="true"></copy>
 

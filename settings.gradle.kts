@@ -6,6 +6,6 @@ plugins {
 }
 
 rootProject.name = "pingfed-automation"
-include("verify-downloads", "custom-ant-tasks")
+include("verify-downloads", "custom-ant-tasks", "admin-api-wrapper")
 
 

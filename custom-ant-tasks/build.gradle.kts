@@ -28,7 +28,7 @@ fun setupAntTasks() {
         ant.lifecycleLogLevel = AntBuilder.AntMessagePriority.INFO
 
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-            ant.importBuild("../win/build.xml") { antTaskName ->
+            ant.importBuild("../win/build.xml"  ) { antTaskName ->
                 "ping-${antTaskName}".toString()
             }
 
@@ -39,11 +39,12 @@ fun setupAntTasks() {
 
         }
 
-        tasks.forEach {
+       tasks.forEach {
 
             if (it.name.startsWith("ping-")) {
 
                 it.group = "Ping"
+
             }
         }
 

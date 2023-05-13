@@ -1,12 +1,19 @@
+
+
 plugins {
    
 
     id("pingfed.automation.java-spring-library-conventions")
+
+    id("pingfed.automation.java-swagger2java-conventions")
+    
+
 }
 
 val buildProfile: String? by project
 println("buildProfile="+buildProfile)
 //apply(from = "profile-${buildProfile ?: "default"}.gradle.kts")
+
 
 
 dependencies {
@@ -17,10 +24,17 @@ dependencies {
     implementation("org.apache.httpcomponents:httpclient")
     implementation("org.javatuples:javatuples:1.2")
     implementation("com.github.joschi.jackson:jackson-datatype-threetenbp:2.6.4")
+    
+    if(buildProfile.equals("admin"))
+	{
+		 implementation("io.swagger:swagger-codegen:2.4.28")
+	}
 
 }
 
-if(buildProfile.equals("admin"))
-{
 
+tasks.compileJava{
+    if(buildProfile.equals("admin")) {
+        dependsOn(tasks.named("swagger2java"))
+    }
 }

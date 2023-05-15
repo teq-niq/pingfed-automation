@@ -1,4 +1,4 @@
-
+import com.example.SimpleSwaggerToJavaTask
 
 plugins {
    
@@ -6,7 +6,7 @@ plugins {
     id("pingfed.automation.java-spring-library-conventions")
 
     id("pingfed.automation.java-swagger2java-conventions")
-    
+
 
 }
 
@@ -33,8 +33,13 @@ dependencies {
 }
 
 
+val x:TaskProvider<SimpleSwaggerToJavaTask> = tasks.named<SimpleSwaggerToJavaTask>("swagger2java"){
+    inputSpecs.set(file("swagger-json/swagger.json"));
+    target.set(layout.buildDirectory.dir("generated/sources/swagger"));
+}
+
 tasks.compileJava{
     if(buildProfile.equals("admin")) {
-        dependsOn(tasks.named("swagger2java"))
+        dependsOn(x.get())
     }
 }

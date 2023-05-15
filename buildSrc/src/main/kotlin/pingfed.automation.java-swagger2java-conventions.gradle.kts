@@ -19,7 +19,7 @@ dependencies {
 }
 
 tasks.register<SimpleSwaggerToJavaTask>("swagger2java") {
-    group="classes";
+    group="codegen";
     doLast {
         println("2java");
     }

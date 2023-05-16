@@ -38,47 +38,27 @@ val x:TaskProvider<SimpleSwaggerToJavaTask> = tasks.named<SimpleSwaggerToJavaTas
     inputSpecs.set(file("swagger-json/swagger.json"));
     target.set(layout.buildDirectory.dir("/generated/sources/swagger"));
     doLast{
-        println("configured swagger2java");
-    }
-}
-
-val y=tasks.register("addsrc")
-{
-    doLast{
-        println("configured sourceSets");
-
-
         java {
             val extraSrcDir = "src/main/admin-src"
             val genSrcDir = "build/generated/sources/swagger/src/main/java"
             val mainJavaSourceSet: SourceDirectorySet = sourceSets.getByName("main").java
             mainJavaSourceSet.srcDir(genSrcDir)
             mainJavaSourceSet.srcDir(extraSrcDir)
-            println("final-"+mainJavaSourceSet.srcDirs)
+
         }
+        println("configured swagger2java");
     }
 }
 
+
 tasks.compileJava{
-println("compiling");
+
        if(buildProfile.equals("admin")) {
 
            dependsOn(x.get())
-           dependsOn(y.get())
 
        }
-doLast{
-    sourceSets{
-        main{
-            println("java.srcDirs = ${java.srcDirs}");
-            println( "resources.srcDirs = ${resources.srcDirs}");
 
-
-            println ("output.resourcesDir = ${output.resourcesDir}");
-            println ("output.files = ${output.files}");
-        }
-    }
-}
 }
 
 

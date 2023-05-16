@@ -17,11 +17,13 @@ public abstract class SimpleSwaggerToJavaTask extends DefaultTask {
 
     @TaskAction
     public void doGenerate(){
-
+        String sr=getTarget().get().getAsFile().getAbsolutePath();
+        System.out.println("sr="+sr);
         CodegenConfigurator config=new CodegenConfigurator();
         config.setInputSpec(getInputSpecs().get().getAsFile().getAbsolutePath());
         config.setLang("java");
         config.setLibrary("resttemplate");
+
         config.setModelPackage("com.example.pingfedadmin.model");
         config.setApiPackage("com.example.pingfedadmin.api");
         config.setInvokerPackage("com.example.pingfedadmin.invoker");

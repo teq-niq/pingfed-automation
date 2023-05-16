@@ -28,6 +28,7 @@ dependencies {
     if(buildProfile.equals("admin"))
 	{
 		 implementation("io.swagger:swagger-codegen:2.4.28")
+        implementation(project(":automation-shared-lib"))
 	}
 
 }
@@ -52,7 +53,7 @@ val y=tasks.register("addsrc")
             val genSrcDir = "build/generated/sources/swagger/src/main/java"
             val mainJavaSourceSet: SourceDirectorySet = sourceSets.getByName("main").java
             mainJavaSourceSet.srcDir(genSrcDir)
-           // mainJavaSourceSet.srcDir(extraSrcDir)
+            mainJavaSourceSet.srcDir(extraSrcDir)
             println("final-"+mainJavaSourceSet.srcDirs)
         }
     }

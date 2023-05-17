@@ -62,4 +62,13 @@ tasks.compileJava{
 }
 
 
+task("auto-administer-pingfed", JavaExec::class) {
+
+    dependsOn(tasks.compileJava);
+    mainClass.set("admin.Main")
+    group="Ping"
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
+
 

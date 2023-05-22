@@ -106,7 +106,7 @@ Do nothing. Press Finish.
 
 #### swagger.json
 
-This immediate next step has already been done if you are on version pingfederate-11.2.4.  
+This immediate next step has already been done if you are on version pingfederate-11.2.5.  
 If your pingfederate version is higher do please update the file content here by following below 2 steps.  
  
 - Visit  https://localhost:9999/pf-admin-api/v1/swagger.json

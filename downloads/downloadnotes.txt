@@ -8,7 +8,7 @@ Product Downloads and Licensing
 
 A) Go to https://www.pingidentity.com/en/resources/downloads/pingfederate.html
 Download the PRODUCT DISTRIBUTION (ZIP)
-In my case it was pingfederate-11.2.3.zip.
+In my case it was pingfederate-11.2.5.zip.
 Copy it into downloads folder.
 
 B) Go to https://www.pingidentity.com/en/account/request-license-key.html

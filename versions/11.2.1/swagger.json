@@ -4,7 +4,7 @@
 		"description": "The PingFederate Administrative API is a REST-based interface that provides a programmatic way to make configuration changes to PingFederate as an alternative to using the administrative console.<br/><br/>Expand the resources below to display implementation details on that resource such as the available endpoints, the parameter and response models for the operation, and the model structure of the resources themselves. Each resource operation comes with the ability to interact with the API. You are prompted for proper administration credentials when you try to perform an API operation.",
 		"title": "Administrative API Documentation"
 	},
-	"host": "ALIPL2162.accionlabs.in:9999",
+	"host": "localhost:9999",
 	"basePath": "/pf-admin-api/v1",
 	"tags": [
 		{

@@ -1,4 +1,4 @@
-
+import org.apache.tools.ant.taskdefs.condition.Os
 
 plugins {
    
@@ -10,7 +10,41 @@ plugins {
 
 }
 
+tasks.war{
+    doLast{
+        setupAntTasks()
+    }
+}
+setupAntTasks();
 
+
+fun setupAntTasks() {
+
+        ant.lifecycleLogLevel = AntBuilder.AntMessagePriority.INFO
+
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            ant.importBuild("../build.xml"  ) { antTaskName ->
+                "demo1-${antTaskName}".toString()
+            }
+
+        } else {
+            ant.importBuild("../build.xml"){ antTaskName ->
+                "demo1-${antTaskName}".toString()
+            }
+
+        }
+
+        tasks.forEach {
+
+            if (it.name.startsWith("demo1-")) {
+
+                it.group = "Demo1"
+
+            }
+        }
+
+
+}
 
 dependencies {
     providedCompile("jakarta.servlet:jakarta.servlet-api:6.0.0")

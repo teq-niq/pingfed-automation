@@ -2,8 +2,9 @@ import com.example.SimpleSwaggerToJavaTask
 
 plugins {
    
-
-    id("pingfed.automation.java-spring-library-conventions")
+	id("org.springframework.boot") version "2.7.3"
+	id("io.spring.dependency-management") version "1.1.0"
+    //id("pingfed.automation.java-spring-library-conventions")
 
     id("pingfed.automation.java-swagger2java-conventions")
 
@@ -30,6 +31,8 @@ dependencies {
 		 implementation("io.swagger:swagger-codegen:2.4.28")
         implementation(project(":automation-shared-lib"))
 	}
+	  implementation("org.springframework.boot:spring-boot-gradle-plugin:2.7.3")
+ 
 
 }
 

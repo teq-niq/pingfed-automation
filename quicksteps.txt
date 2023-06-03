@@ -9,6 +9,8 @@ admin console and first longin
 .\gradlew demo1-fullbuild
 .\gradlew demo1-start-tomcat
 
+.\gradlew ping-stop-pingfed
+.\gradlew ping-stop-ds
 
 .\gradlew ping-clean
 .\gradlew tasks

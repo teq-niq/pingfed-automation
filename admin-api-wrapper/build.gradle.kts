@@ -4,7 +4,7 @@ plugins {
    
 	id("org.springframework.boot") version "2.7.3"
 	id("io.spring.dependency-management") version "1.1.0"
-    //id("pingfed.automation.java-spring-library-conventions")
+
 
     id("pingfed.automation.java-swagger2java-conventions")
 

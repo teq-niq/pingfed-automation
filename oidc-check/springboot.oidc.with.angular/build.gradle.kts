@@ -3,21 +3,13 @@ plugins {
 	java
 	id("org.springframework.boot") version "3.0.0"
 	id("io.spring.dependency-management") version "1.1.0"
-	// id("pingfed.automation.java-spring-library-conventions")
+
 }
 
-/*
-dependencyManagement {
-	imports {
-		mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-	}
-}
-
-
-repositories {
+repositories{
     mavenCentral()
 }
-*/
+
 dependencies {
 
 
@@ -32,10 +24,19 @@ dependencies {
     implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     compileOnly("jakarta.servlet:jakarta.servlet-api:6.0.0")
 
-    
+    runtimeOnly(project(":oidc-check:springboot.oidc.with.angular:front-end"))
 
 }
 
+tasks.named("bootJar"){
+    doFirst{
+        println("jar invoked.begins...")
+    }
+    dependsOn(":oidc-check:springboot.oidc.with.angular:front-end:assembleFrontend")
+    doLast{
+        println("jar invoked.ends...")
+    }
+}
 
 
 

@@ -4,11 +4,14 @@ plugins {
    
 
     id("pingfed.automation.java-war-conventions")
+    id("org.siouan.frontend-jdk11") version "6.0.0"
 
 
 
 
 }
+
+
 
 tasks.war{
     doLast{

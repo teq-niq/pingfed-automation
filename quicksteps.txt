@@ -8,6 +8,7 @@ admin console and first longin
 .\gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin
 .\gradlew demo1-fullbuild
 .\gradlew demo1-start-tomcat
+.\gradlew :oidc-check:springboot.oidc.with.angular:bootRun
 
 .\gradlew ping-stop-pingfed
 .\gradlew ping-stop-ds

@@ -12,8 +12,10 @@ Clone the project from - here to a suitable folder in your machine.
 git clone -b main https://github.com/teq-niq/pingfed-automation.git  
 Read pingfed-automation\downloads\downloadnotes.txt.   
 <ins>Download the files as mentioned here into **"pingfed-automation\downloads"** folder.</ins>    
-In command prompt/terminal navigate to pingfed-automation folder.  
-Run “mvn clean package” in command prompt.  
+In command prompt/terminal navigate to pingfed-automation folder. 
+For convenience We will run all our commands from this location only.   
+Run “.\gradlew clean build” in command prompt.  
+This might take some time on first run.  
 <img width="420" alt="build" src="https://user-images.githubusercontent.com/14346578/210153578-7bab1333-c9c4-441c-841f-3636dcab39b4.png">  
 Wait for it to finish successfully.  
 <img width="447" alt="buildresult" src="https://user-images.githubusercontent.com/14346578/210246321-280ce33f-fa8a-4448-8826-3ef2efbb6475.png">    

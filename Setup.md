@@ -180,6 +180,6 @@ I did something wrong. How do I start again?
 - Run ".\gradlew ping-stop-ds" if its running   
 - Run ".\gradlew ping-clean".   
 - Worst case scenario restart the machine.   
-- Run ant clean   
+- Run .\gradlew ping-clean"   
 - After ".\gradlew ping-clean" assuming pingfed-automation\downloads folder has the needed files. Start again with ".\gradlew ping-stop-pingfed".  
 

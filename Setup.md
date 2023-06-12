@@ -14,21 +14,18 @@ Clone the project from - here to a suitable folder in your machine.
 git clone -b main https://github.com/teq-niq/pingfed-automation.git  
 Read pingfed-automation\downloads\downloadnotes.txt.   
 <ins>Download the files as mentioned here into **"pingfed-automation\downloads"** folder.</ins>    
-In command prompt/terminal navigate to pingfed-automation folder. 
-For convenience We will run all our commands from this location only.   
+In command prompt/terminal navigate to pingfed-automation folder.   
+**For convenience We will run all our commands from this location only.**   
 Run ".\gradlew clean build" in command prompt.  
 This might take some time on first run.  
 <img width="420" alt="build" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/2fcb1bd1-746e-4316-9801-f190c4274986">  
 Wait for it to finish successfully.  
-<img width="447" alt="buildresult" src="https://user-images.githubusercontent.com/14346578/210246321-280ce33f-fa8a-4448-8826-3ef2efbb6475.png">    
-In command prompt/terminal navigate to "pingfed-automation/verify-downloads" folder.  
-Run "verifydownloads.bat" or "verifydownloads.sh".
-Might need to use "sudo chmod +x verifydownloads.sh" on linux.   
-Might need to use "sudo ./verifydownloads.sh" on linux.  
+<img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/eebef5eb-5503-41e6-823e-c787ad059069">    
+
+Run ".\gradlew verify-downloads".  
 I got this output.  
-<img width="666" alt="verifydownloads" src="https://user-images.githubusercontent.com/14346578/210153720-536f2a35-603e-4d78-902e-d632e81bd244.png">   
-In command prompt/terminal navigate to 
-"pingfed-automation/win/" or "pingfed-automation/linux"  
+<img width="666" alt="verifydownloads" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/fca34177-3794-4a58-8a0f-f1a1ef00f0a7">   
+ 
 
 ```diff
 ! Impotant Note: Before proceeding ensure that mysql is running and reachable.  
@@ -40,7 +37,8 @@ In command prompt/terminal navigate to
 pingfed-automation/mysql.properties file entries should match the expectations.  
 Edit pingfed-automation\mysql.properties as needed.*   
 
-Run “ant”.   
+Run “.\gradlew ping-setup”. 
+leaving below lines for now. must remove.    
 <ins>On linux might need to use  “sudo ant”.</ins>   
 In linux sometimes sudo ant will report "sudo: ant: command not found".
 If so please add below line in your .bashrc and source it.  
@@ -51,22 +49,24 @@ After adding above line run below.
 <img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">    
 
 Result should look like this:   
-<img width="588" alt="setuprun-part1" src="https://user-images.githubusercontent.com/14346578/210153791-e6e8662f-7c01-4c9d-a463-35c7a918beeb.png">  
-<img width="604" alt="setuprun-part2" src="https://user-images.githubusercontent.com/14346578/210153798-08e1a56d-8665-4da0-b979-9a07d718113c.png">  
+<img width="588" alt="setuprun-part1" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/602907b1-f26e-40be-a23e-c6d73ad38d88">  
+
+<img width="604" alt="setuprun-part2" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/63eef6b9-c646-4548-9ae6-3c7c2a03c92e">   
+ 
 That should setup pinfederate.
 #### Start PingDirectory
-Run "ant start-ds". On linux use "sudo ant start-ds".     
-<img width="412" alt="start_ds" src="https://user-images.githubusercontent.com/14346578/210153869-5818bb83-99a6-4303-b7be-681b0aefbaa6.png">  
+Run ".\gradlew ping-start-ds".     
+<img width="412" alt="start_ds" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/cce83b7f-b739-424d-9c5e-7efdd91a4ed8">  
 Result should look like this:  
-<img width="567" alt="start_ds_result" src="https://user-images.githubusercontent.com/14346578/210153897-455b13eb-9616-400b-ab68-6e7342014b28.png">  
-Note: Via ant just starting the Ping directory. 
+<img width="567" alt="start_ds_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/1494dc0e-134d-4bd0-86ad-00020049c188">  
+Note: 
 PingDirectory can also be started by launching: start-server.bat or start-server.sh found in bin/bat folder of the Ping Directory.
 #### Start Ping Federate
-Run “ant start-pingfed”. On linux use "sudo ant start-pingfed".    
-<img width="447" alt="start_pingfed" src="https://user-images.githubusercontent.com/14346578/210153941-6f95a083-fcef-49a1-ba47-553bc1f2501f.png">  
+Run “.\gradlew ping-start-pingfed”.      
+<img width="447" alt="start_pingfed" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/a53f29db-dcb1-489c-a44e-e5d4a9808a14">  
 Result should look like this:  
-<img width="567" alt="start_pingfed_result" src="https://user-images.githubusercontent.com/14346578/210153987-0c61dd67-3979-4893-8dea-cd6da4f9e2be.png">  
-Note: Via ant just starting the Ping Federate. Also capturing the process id in case of windows.  
+<img width="567" alt="start_pingfed_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/51460f02-4fb6-4941-8836-71801236565f">  
+Note: Just starting the Ping Federate. Also capturing the process id in case of windows.  
 Ping Federate can also be started by launching: run.bat or run.sh found in bin folder of the Ping Federate.  
 #### Use Ping Federate Admin Console first time
 I am using chrome browser. Should possibly work well in other browsers too.  
@@ -117,17 +117,12 @@ If your pingfederate version is higher do please update the file content here by
 - Copy its contents into the file- pingfed-automation\admin-api-wrapper\swagger-json\swagger.json.   
   
 #### Swagger Code generation
-In command prompt/terminal visit folder - "pingfed-automation".
-Run "mvn clean package -P admin".    
-<img width="259" alt="codegen" src="https://user-images.githubusercontent.com/14346578/210247771-ee8abbce-3689-4c2f-9533-96f49850192f.png">       
+Run ".\gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin".    
+<img width="600" alt="codegen" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/925ace66-72b3-42ca-b568-fdc7db537e0c">       
 Result should look like this:   
-<img width="447" alt="buildresult" src="https://user-images.githubusercontent.com/14346578/210246321-280ce33f-fa8a-4448-8826-3ef2efbb6475.png">    
-This time because we used the admin profile during maven build there has also been some code generation.   
-Now navigate to "pingfed-automation\admin-api-wrapper" in command prompt.  
-Run "java -jar target/admin-api-wrapper.jar admin.Main".  
-<img width="697" alt="automated_pingfed_config" src="https://user-images.githubusercontent.com/14346578/210154285-6e0b6552-7a5f-4e3f-b35a-7e3d76e7be78.png">    
-Output should look like this:   
-<img width="681" alt="automated_pingfed_config_result" src="https://user-images.githubusercontent.com/14346578/210248610-0e0ce7c5-044e-4642-9a71-0351ced971cd.png">   
+<img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/7e7af231-1006-43ff-9da5-67ae8cfae77d">    
+This time because we used the admin profile during maven build there has also been some code generationand automated pingfed configuration.     
+  
 If you understand pingfederate configuration details - visit https://localhost:9999/ and verify the results in the admin console.  
 Now lets quickly proceed and verify if this was done correctly or not.  
 #### Verify the automated configuration
@@ -146,30 +141,31 @@ For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oid
 
 
 #### Stop Ping Federate
-Run “ant stop-pingfed”  
-<img width="445" alt="stop_pingfed" src="https://user-images.githubusercontent.com/14346578/210154520-4fc91e8f-e101-4c87-aa32-da37620068f6.png">   
+Run “.\gradlew ping-stop-pingfed”  
+<img width="445" alt="stop_pingfed" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/8db016bd-bba0-4219-a676-0cd60e899515">   
 Result should look like this:  
-<img width="559" alt="stop_pingfed_result" src="https://user-images.githubusercontent.com/14346578/210154537-1dbc438a-e924-439c-a747-dee800748120.png">    
-Note: Via ant just stopping the Ping Federate by killing the process.  
+<img width="559" alt="stop_pingfed_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/d6a8ffe3-b178-453f-b4e3-083e3658c098">    
+Note: Just stopping the Ping Federate by killing the process.  
 Relying on the process id noted earlier in case of windows. In case of other environments just detecting processes that are running PingFederate and stopping them.    
 
 #### Stop PingDirectory
-Run “ant stop-ds”  
-<img width="420" alt="stop_ds" src="https://user-images.githubusercontent.com/14346578/210154564-2cc58c7c-ec94-4a5d-8aec-4b992a91ffcc.png">   
+Run “.\gradlew ping-stop-ds”  
+<img width="420" alt="stop_ds" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/6adcff42-723f-4ef5-99dc-d98412bf3672">   
 Result should look like this:  
 
-<img width="460" alt="stop_ds_result" src="https://user-images.githubusercontent.com/14346578/210154578-346c747a-ecb8-486c-b511-05383ba42804.png">   
-Note: Via ant just stopping the Ping directory. 
+<img width="460" alt="stop_ds_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/31d9d5a0-c68d-40af-af47-6552ddfc4d97">     
+
+Note: Just stopping the Ping directory. 
 PingDirectory can also be stopped by launching: stop-server.bat or stop-server.sh found in bin/bat folder of the Ping Directory.
 
 
 #### Undo the Setup If and when needed
-Run “ant clean”  
-<img width="395" alt="undosetup" src="https://user-images.githubusercontent.com/14346578/210154619-18f6954c-14d5-430a-ad50-0bef0b54dda0.png">   
+Run “.\gradlew ping-clean”  
+<img width="395" alt="undosetup" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/f1cc1e4f-5816-4961-8325-ef502415eb5d">   
 Result should be like this.  
-<img width="538" alt="undosetupresult" src="https://user-images.githubusercontent.com/14346578/210154640-4aec73e8-c85b-4c2c-ac3e-f0059855319b.png">   
+<img width="538" alt="undosetupresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/73bbefc4-d0bb-4046-b383-52b35b73dfaf">   
 Note: Before running "ant clean" ensure that pingfederate and pingdirectory are stopped.
-Also Note: Can again setup by running "ant".
+Also Note: Can again setup by running ".\gradlew ping-setup".
 
 
 #### Trouble shooting
@@ -180,10 +176,10 @@ After adding above line run below.
 - source ~/.bashrc    
 
 I did something wrong. How do I start again?   
-- Run ant stop-pingfed if its running.   
-- Run ant stop-ds if its running   
-- Run ant clean.   
+- Run ".\gradlew ping-stop-pingfed" if its running.   
+- Run ".\gradlew ping-stop-ds" if its running   
+- Run ".\gradlew ping-clean".   
 - Worst case scenario restart the machine.   
 - Run ant clean   
-- After ant clean assuming pingfed-automation\downloads folder has the needed files. Start again with "ant setup".  
+- After ".\gradlew ping-clean" assuming pingfed-automation\downloads folder has the needed files. Start again with ".\gradlew ping-stop-pingfed".  
 

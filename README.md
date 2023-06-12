@@ -11,11 +11,13 @@
 As far as setup is concerned this is only a way to quickly get started on using pingfederate. Customize as needed.  
 
 ## Prerequisites 
-- Java JDK 17
+- Java JDK 17  
 - JAVA_HOME environment variable should be correctly setup.
-- Java, Maven and Ant should be configured in Path environment variable.
-- A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
-- Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.
+- Java,  Path environment variable.   
+- A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.  
+- Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.  
+- Internet access  
+- Should be able to launch gradlew(.bat) included in the project. 
 
 ## Steps to follow
 #### Setup

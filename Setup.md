@@ -1,10 +1,12 @@
 # PingFed Automation Setup steps
 ## Prerequisites 
-- Java JDK 17
+- Java JDK 17  
 - JAVA_HOME environment variable should be correctly setup.
-- Java, Maven and Ant should be configured in Path environment variable.
-- A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
+- Java,  Path environment variable.   
+- A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.  
 - Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.  
+- Internet access  
+- Should be able to launch gradlew(.bat) included in the project. 
 
 
 ## The steps
@@ -14,9 +16,9 @@ Read pingfed-automation\downloads\downloadnotes.txt.
 <ins>Download the files as mentioned here into **"pingfed-automation\downloads"** folder.</ins>    
 In command prompt/terminal navigate to pingfed-automation folder. 
 For convenience We will run all our commands from this location only.   
-Run “.\gradlew clean build” in command prompt.  
+Run ".\gradlew clean build" in command prompt.  
 This might take some time on first run.  
-<img width="420" alt="build" src="https://user-images.githubusercontent.com/14346578/210153578-7bab1333-c9c4-441c-841f-3636dcab39b4.png">  
+<img width="420" alt="build" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/2fcb1bd1-746e-4316-9801-f190c4274986">  
 Wait for it to finish successfully.  
 <img width="447" alt="buildresult" src="https://user-images.githubusercontent.com/14346578/210246321-280ce33f-fa8a-4448-8826-3ef2efbb6475.png">    
 In command prompt/terminal navigate to "pingfed-automation/verify-downloads" folder.  

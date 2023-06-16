@@ -1,7 +1,7 @@
 //import org.apache.tools.ant.filters.*;
 
 plugins {
-   
+
 
     id("pingfed.automation.java-library-conventions")
 
@@ -26,11 +26,16 @@ tasks.jar{
 }
 
 val fatJar = task("fatJar", type = Jar::class) {
-    dependsOn(":oidc-check:simple-oidc-check:simple-oidc-sharedlib:jar", ":automation-shared-lib:jar")
+    dependsOn(":oidc-check:simple-oidc-check:simple-oidc-sharedlib:jar", ":automation-shared-lib:jar", ":oidc-check:simple-oidc-check:simple-oidc-realm:jar")
     archiveFileName.set(project.name+".jar");
-duplicatesStrategy=DuplicatesStrategy.EXCLUDE;
-    from(configurations.runtimeClasspath.get().map { if (it.isDirectory()) it else zipTree(it) })
-    with(tasks["jar"] as CopySpec)
+    duplicatesStrategy=DuplicatesStrategy.EXCLUDE;
+    
+    val dependencyFiles: List<File> =configurations.runtimeClasspath.get().resolvedConfiguration.resolvedArtifacts.map{it.file};
+    val fatJarFiles: MutableList<File> = mutableListOf<File>();
+    fatJarFiles.addAll(dependencyFiles);
+    fatJarFiles.add(tasks.jar.get().archiveFile.get().asFile);
+
+    from(fatJarFiles.map { if (it.isDirectory()) it else zipTree(it) })
 }
 
 tasks {
@@ -43,9 +48,9 @@ tasks {
 
 tasks.processResources{
 
-        filter {it.replace("\${project.artifactId}", project.name);
+    filter {it.replace("\${project.artifactId}", project.name);
 
-        }
+    }
 
 
 

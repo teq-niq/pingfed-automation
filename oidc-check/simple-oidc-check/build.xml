@@ -42,7 +42,7 @@
     		</copy>
     	
     	<copy todir="${tomcat.home}/lib">
-    	    		<fileset dir="simple-oidc-realm/target">
+    	    		<fileset dir="simple-oidc-realm/build/libs">
     	    			<include name="simple-oidc-realm.jar"/>
     	    		</fileset>
     				<!--fileset dir="simple-oidc-sharedlib/target">
@@ -61,13 +61,13 @@
     	    <condition>
     	        <not>
     	            <resourcecount count="1">
-    	                <fileset id="fs" dir="simple-oidc-app/target" includes="simple-oidc-app.war"/>
+    	                <fileset id="fs" dir="simple-oidc-app/build/libs" includes="simple-oidc-app.war"/>
     	            </resourcecount>
     	        </not>
     	    </condition>
     	</fail>
     	<delete dir="${tomcat.home}/webapps/simple-oidc-app"></delete>
-    	<unwar  src="simple-oidc-app/target/simple-oidc-app.war" dest="${tomcat.home}/webapps/simple-oidc-app"></unwar>
+    	<unwar  src="simple-oidc-app/build/libs/simple-oidc-app.war" dest="${tomcat.home}/webapps/simple-oidc-app"></unwar>
    
     </target>
 	

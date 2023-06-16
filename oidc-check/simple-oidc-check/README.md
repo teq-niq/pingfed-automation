@@ -1,29 +1,32 @@
 ## Setup for simple-oidc-check:
 
-In command prompt or terminal navigate to pingfed-automation\oidc-check\simple-oidc-check folder.  
-simple-oidc-check is a maven project. Its also a submodule of pingfed-automation.  
-It should have been already built.  
+  
+simple-oidc-check is a gradle project. Its also a submodule of pingfed-automation.  
+It should have been already built.  But we are going to build it more completely now.  
 Its a simple servlet based project.  
 We are going to use this project to verify if we are able to obtain some access tokens from pingfederate.  
-In command prompt or terminal after navigating to pingfed-automation\oidc-check\simple-oidc-check folder run "ant".  
-On linux machines use "sudo ant".  
-<img width="451" alt="simple_oidc_check" src="https://user-images.githubusercontent.com/14346578/216606944-e30b6543-b624-4f38-85c5-0076132892e1.png">   
+In command prompt or terminal continue being at pingfed-automation folder. Run ".\gradlew demo1-fullbuild".  
+ 
+<img width="451" alt="simple_oidc_check" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/c7f15a6d-33e7-43fb-81f3-19efd8ff9744">   
 Build should show up like this.  
-<img width="591" alt="simple_oidc_check_ant_res" src="https://user-images.githubusercontent.com/14346578/216607302-9aec9569-1cc4-4332-9cb8-8be67b62ee21.png">   
+<img width="591" alt="simple_oidc_check_ant_res" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/87ab1074-a153-446d-8573-2b50337b7a74">   
 In case of difficulty edit tomcat.ver property in the build.xml file.  
-##### Start Tomat
-Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
-You can also start and stop the tomcat using the ant targets as shown here.  
-In command prompt or terminal after navigating to pingfed-automation\oidc-check\simple-oidc-check folder run "ant start-tomcat".   
+##### Start Tomcat
+In command prompt or terminal staying at pingfed-automation folder run ".\gradlew demo1-start-tomcat".  
+
 On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/startup.sh".  
 On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/catalina.sh".  
 On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/shutdown.sh".  
 Then on linux use "sudo ant start-tomcat".   
 
-<img width="298" alt="start_tomcat" src="https://user-images.githubusercontent.com/14346578/216607601-9fa70751-24fa-42e0-b53c-d51ba5261fb4.png">   
+<img width="298" alt="start_tomcat" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/e6fdcf72-e5a0-47b5-8578-b3fdc91d9252">   
 
 This should result in  
-<img width="773" alt="start_tomcat_result" src="https://user-images.githubusercontent.com/14346578/216607904-74cf5f9b-4bf2-4ce3-b77b-6feb7629dc02.png">     
+<img width="773" alt="start_tomcat_result" src="https://user-images.githubusercontent.com/14346578/216607904-74cf5f9b-4bf2-4ce3-b77b-6feb7629dc02.png">   
+Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
+You can also start and stop the tomcat using the ant targets as shown here.  
+ 
+  
 
 Once this tomcat has started pls visit http://localhost:8080/   
 <img width="425" alt="localhost_8080" src="https://user-images.githubusercontent.com/14346578/210154396-63c1508f-f011-47c5-a1bb-ecc9cea5f052.png">   

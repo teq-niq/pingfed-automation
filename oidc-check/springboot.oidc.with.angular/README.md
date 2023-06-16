@@ -54,30 +54,20 @@ When prompted enter yes
 ## Demo:
 
 springboot.oidc.with.angular is a maven project. Its also a submodule of pingfed-automation\oidc-check.  
-It should have been already built.  However we need to build it properly.
-In command prompt or terminal navigate to pingfed-automation\oidc-check\springboot.oidc.with.angular folder.  
+It should have been already built.  However we need to build it properly with its angular parts.
+In command prompt or terminal navigate to the usual pingfed-automation folder.  
 Run the below command.   
 
-mvn clean package -P npmbuild    
+.\gradlew :oidc-check:springboot.oidc.with.angular:bootRun 
 
-<img width="498" alt="build_springboot_angular" src="https://user-images.githubusercontent.com/14346578/216162830-b1f3550f-3b10-424e-9425-5a549fc9d88d.png">    
+<img width="498" alt="build_springboot_angular" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/cb48cffd-8fcf-401e-8016-9640ed8423af">    
 
 This should give a result as shown below.    
-<img width="633" alt="build_springboot_angular1" src="https://user-images.githubusercontent.com/14346578/216163155-8e6f9533-1f6d-4e7a-9085-9cb5207188aa.png">    
-
+<img width="633" alt="build_and run_springboot_angular1" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/ca6f570f-8edc-4dd5-8d76-a8c2d9706476">    
+Showing above how it launches.
    
 Its a simple spring boot based project. Using angular for front end.  
 We are going to use this project to verify if we are able to obtain some access tokens from pingfederate. 
-With command prompt at pingfed-automation\oidc-check\springboot.oidc.with.angular lets run the following    
-
-java -jar target/springboot.oidc.with.angular.jar   
-
-<img width="600" alt="springboot-angular1" src="https://user-images.githubusercontent.com/14346578/215853492-68e73a43-e678-49df-ad64-0db087ea32fd.png">   
-
-Showing below how it launches.    
-
-<img width="944" alt="springboot-angular2" src="https://user-images.githubusercontent.com/14346578/215853660-008b3c4b-9e44-4ce0-987a-983d33b03d65.png">      
-
 Vist http://localhost:8081    
 
 <img width="680" alt="springboot-angular3" src="https://user-images.githubusercontent.com/14346578/218252358-2fd48d84-edfd-4eda-ba63-c9ced69afd6a.png">   

@@ -8,9 +8,13 @@ We are going to use this project to verify if we are able to obtain some access 
 In command prompt or terminal continue being at pingfed-automation folder. Run ".\gradlew demo1-fullbuild".  
  
 <img width="451" alt="simple_oidc_check" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/c7f15a6d-33e7-43fb-81f3-19efd8ff9744">   
-Build should show up like this.  
+ 
+Build should show up like this.   
+
 <img width="591" alt="simple_oidc_check_ant_res" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/87ab1074-a153-446d-8573-2b50337b7a74">   
+
 In case of difficulty edit tomcat.ver property in the build.xml file.  
+
 ##### Start Tomcat
 In command prompt or terminal staying at pingfed-automation folder run ".\gradlew demo1-start-tomcat".  
 
@@ -22,7 +26,7 @@ Then on linux use "sudo ant start-tomcat".
 <img width="298" alt="start_tomcat" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/e6fdcf72-e5a0-47b5-8578-b3fdc91d9252">   
 
 This should result in  
-<img width="773" alt="https://github.com/teq-niq/pingfed-automation/assets/14346578/0f73746c-d6a0-4f1d-8a0c-e4a8f78ee924">   
+<img width="773"  alt="started_tomcat"  src="https://github.com/teq-niq/pingfed-automation/assets/14346578/0f73746c-d6a0-4f1d-8a0c-e4a8f78ee924">   
 
 Can also do this- Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
   

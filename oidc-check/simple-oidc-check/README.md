@@ -22,10 +22,9 @@ Then on linux use "sudo ant start-tomcat".
 <img width="298" alt="start_tomcat" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/e6fdcf72-e5a0-47b5-8578-b3fdc91d9252">   
 
 This should result in  
-<img width="773" alt="start_tomcat_result" src="https://user-images.githubusercontent.com/14346578/216607904-74cf5f9b-4bf2-4ce3-b77b-6feb7629dc02.png">   
-Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
-You can also start and stop the tomcat using the ant targets as shown here.  
- 
+<img width="773" alt="https://github.com/teq-niq/pingfed-automation/assets/14346578/0f73746c-d6a0-4f1d-8a0c-e4a8f78ee924">   
+
+Can also do this- Navigate into build/apache-tomcat-${tomcat.ver}/bin folder and run startup.bat or startup.sh. 
   
 
 Once this tomcat has started pls visit http://localhost:8080/   
@@ -74,4 +73,4 @@ If all worked correctly congrats.
  - Keep in mind this is is a working implementation to help demonstrate and understand Authorization code flow. Also used it to test the pingfederate setup.    
  - Could not find another similar tomcat based demo except - https://github.com/boylesoftware/tomcat-oidcauth. Unlike this project we are not using HttpSessions in our demo.  
  - Similar implementations should be possible for application containers other than tomcat using same logic. Could even implement same approach in spring if needed. 
- - Note: In java spring world it is generally recommended to use spring security for implementing the Authorization code flow.  Lots of articles exist on that topic.  Also providing a springboot angular demo in this repository.  
+ - Note: In java spring world it is generally recommended to use spring security for implementing the Authorization code flow.  Lots of articles exist on that topic.  Also providing a springboot angular demo in this repository as second example.  

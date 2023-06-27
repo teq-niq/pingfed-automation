@@ -3,6 +3,12 @@
 
 <img width="255" alt="authorization_code1" src="https://user-images.githubusercontent.com/14346578/210153449-078d9f02-642f-4006-bd1c-f727e80ab9a2.png">  
 
+
+## Temporary WIP Note:  
+Due to some changes in new PingFederate 11.3.0 compared to earlier versions this automation needs some change.  
+Will work on it and update.  
+It continues to support the earlier PingFederate versions.  
+
 ## Objectives:
 1. Speed up getting started on PingFederate.  
 1.1 Setup a non clustered pingfederate instance with minimal manual effort.  

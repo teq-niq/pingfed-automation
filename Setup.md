@@ -1,10 +1,5 @@
 # PingFed Automation Setup steps   
 
-## Temporary WIP Note:  
-Due to some changes in new PingFederate 11.3.0 compared to earlier versions this automation needs some change.  
-Will work on it and update.  
-It continues to support the earlier PingFederate versions.  
-
 
 ## Prerequisites 
 - Java JDK 17

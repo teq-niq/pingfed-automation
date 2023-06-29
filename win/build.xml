@@ -145,8 +145,8 @@
 				<move tofile="ping\pingfederate\pingfederate-${ping.fed.version}" file="ping\pingfederate\pingfederate-${ping.fed.version}-temp\pingfederate" />
 				<move file="ping\pingfederate\pingfederate-${ping.fed.version}-temp\ReadMeFirst.pdf" todir="ping\pingfederate\pingfederate-${ping.fed.version}" />
 				<delete dir="ping\pingfederate\pingfederate-${ping.fed.version}-temp" />
-				<replace file="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\META-INF\hivemodule.xml" 
-					token="class=&quot;org.sourceid.oauth20.domain.ClientManagerXmlFileImpl&quot;" value="class=&quot;org.sourceid.oauth20.domain.ClientManagerJdbcImpl&quot;"/>
+				<replace file="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\service-points.conf" 
+					token="client.manager=&quot;org.sourceid.oauth20.domain.ClientManagerXmlFileImpl&quot;" value="client.manager=&quot;org.sourceid.oauth20.domain.ClientManagerJdbcImpl&quot;"/>
 				
 				<copy file="../downloads\mysql-connector-java-${mysql.conn.version}.jar" todir="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\lib" />
 			<copy file="../sql/setup.sql" tofile="../sql/setup-use.sql" overwrite="true">

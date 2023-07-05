@@ -39,7 +39,7 @@ dependencies {
 
 val x:TaskProvider<SimpleSwaggerToJavaTask> = tasks.named<SimpleSwaggerToJavaTask>("swagger2java"){
     inputSpecs.set(file("swagger-json/swagger.json"));
-    target.set(layout.buildDirectory.dir("/generated/sources/swagger"));
+    target.set(layout.buildDirectory.dir("generated/sources/swagger"));
     doLast{
         java {
             val extraSrcDir = "src/main/admin-src"

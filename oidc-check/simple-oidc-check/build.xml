@@ -19,6 +19,10 @@
 	<condition property="extn" value="sh">
 	        <os family="unix" />
 	</condition>
+	
+	<condition property="unixtype" value="true">
+		        <os family="unix" />
+		</condition>
 
 	
     <!-- ================================= 
@@ -68,17 +72,25 @@
     	</fail>
     	<delete dir="${tomcat.home}/webapps/simple-oidc-app"></delete>
     	<unwar  src="simple-oidc-app/build/libs/simple-oidc-app.war" dest="${tomcat.home}/webapps/simple-oidc-app"></unwar>
-   
+    	 
     </target>
 	
+	 <target name="setpermissions"  description="description" if="unixtype">
+	 	<chmod file="${tomcat.home}/bin/startup.sh" perm="ugo+x"/>
+	 	<chmod file="${tomcat.home}/bin/catalina.sh" perm="ugo+x"/>
+	 	<chmod file="${tomcat.home}/bin/shutdown.sh" perm="ugo+x"/>
+	    	   
+	    	
+	   
+	    </target>
 
- <target name="stop-tomcat">
+ <target name="stop-tomcat" depends="setpermissions">
  	<exec dir="${tomcat.home}/bin" executable="${tomcat.home}/bin/shutdown.${extn}">
  	
  	</exec>
 	</target>
 	
-	<target name="start-tomcat">
+	<target name="start-tomcat" depends="setpermissions">
 	 	<exec dir="${tomcat.home}/bin" executable="${tomcat.home}/bin/startup.${extn}">
 	 	
 	 	</exec>

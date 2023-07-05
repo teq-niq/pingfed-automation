@@ -122,7 +122,8 @@ public class Setup implements ISetup{
 		 new AtmMappingCreator(core).createTokenMappings( "jwtatm1mapping", AccessTokenMappingContext.TypeEnum.IDP_ADAPTER, formAdapterid, atmId1,
 				 new AccessTokenMappingAttribute(null, AutomationSharedConstants.AtmOauth_PersistentGrantUserKeyAttrName, SourceTypeIdKey.TypeEnum.OAUTH_PERSISTENT_GRANT, "USER_KEY"),
 				 new AccessTokenMappingAttribute(null, "iat", SourceTypeIdKey.TypeEnum.EXPRESSION, "#iat=@org.jose4j.jwt.NumericDate@now().getValue()"),
-				 new AccessTokenMappingAttribute(null, "nbf", SourceTypeIdKey.TypeEnum.EXPRESSION, "#nbf = @org.jose4j.jwt.NumericDate@now(), #nbf.addSeconds(10), #nbf = #nbf.getValue()")
+				 //new AccessTokenMappingAttribute(null, "nbf", SourceTypeIdKey.TypeEnum.EXPRESSION, "#nbf = @org.jose4j.jwt.NumericDate@now(), #nbf.addSeconds(10), #nbf = #nbf.getValue()")
+				 new AccessTokenMappingAttribute(null, "nbf", SourceTypeIdKey.TypeEnum.EXPRESSION, "#nbf = @org.jose4j.jwt.NumericDate@now().getValue()")
 				 
 				);
 		 
@@ -131,7 +132,8 @@ public class Setup implements ISetup{
 				 new AccessTokenMappingAttribute(null, "iss", SourceTypeIdKey.TypeEnum.EXPRESSION, "#value = #this.get(\"context.HttpRequest\").getObjectValue().getRequestURL().toString(), #length = #value.length(), #length = #length-16, #iss = #value.substring(0, #length)"),
 				 new AccessTokenMappingAttribute(null, "sub", SourceTypeIdKey.TypeEnum.TEXT, "6a481348-42a1-49d7-8361-f76ebd23634b"),
 				 new AccessTokenMappingAttribute(null, "aud", SourceTypeIdKey.TypeEnum.TEXT, "https://apiauthete.ssa.gov/mga/sps/oauth/oauth20/token"),
-				 new AccessTokenMappingAttribute(null, "nbf", SourceTypeIdKey.TypeEnum.EXPRESSION, "#nbf = @org.jose4j.jwt.NumericDate@now(), #nbf.addSeconds(10), #nbf = #nbf.getValue()"),
+				 //new AccessTokenMappingAttribute(null, "nbf", SourceTypeIdKey.TypeEnum.EXPRESSION, "#nbf = @org.jose4j.jwt.NumericDate@now(), #nbf.addSeconds(10), #nbf = #nbf.getValue()"),
+				 new AccessTokenMappingAttribute(null, "nbf", SourceTypeIdKey.TypeEnum.EXPRESSION, "#nbf = @org.jose4j.jwt.NumericDate@now().getValue()"),
 				 new AccessTokenMappingAttribute(null, "iat", SourceTypeIdKey.TypeEnum.EXPRESSION, "#iat=@org.jose4j.jwt.NumericDate@now().getValue()")
 				 
 						 

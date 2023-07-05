@@ -16,7 +16,7 @@ Read pingfed-automation\downloads\downloadnotes.txt.
 <ins>Download the files as mentioned here into **"pingfed-automation\downloads"** folder.</ins>    
 In command prompt/terminal navigate to pingfed-automation folder.   
 **For convenience We will run all our commands from this location only.**   
-Run ".\gradlew clean build" in command prompt.  
+Run ".\gradlew clean build" in command prompt or "./gradlew clean build" in linux terminal.  
 This might take some time on first run.  
 <img width="420" alt="build" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/2fcb1bd1-746e-4316-9801-f190c4274986">  
 Wait for it to finish successfully.  

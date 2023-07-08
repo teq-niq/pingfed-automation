@@ -13,7 +13,7 @@
 
 ![image](https://github.com/teq-niq/pingfed-automation/assets/14346578/8012e054-68db-4aab-8d1b-0e032db35e60)[![image](https://github.com/teq-niq/pingfed-automation/assets/14346578/5191d857-52c9-4918-9a9b-07020aef1160)](Setup-ubuntu.md)  
 
-[<img src="images/grey-ubuntu.png">](Setup-ubuntu.md)
+![image](images/white-win.png)[<img src="images/grey-ubuntu.png">](Setup-ubuntu.md)
 
 
 [Setup Ubuntu Steps](Setup-ubuntu.md)

@@ -1,6 +1,7 @@
 [<img src="images/grey-win.png">](Setup-win.md)[<img src="images/white-ubuntu.png">](Setup-ubuntu.md) 
 
 # PingFed Automation Setup steps
+## Branch gradle_wip is WIP. Not ready for use this branch. Main branch is usable.
 ## Prerequisites 
 - Java JDK 17  
 - JAVA_HOME environment variable should be correctly setup.
@@ -13,21 +14,22 @@
 
 ## The steps
 
+Note:  For linux I used a ubuntu desktop I had set up on the cloud.   
 Clone the project from - here to a suitable folder in your machine.  
-git clone -b main https://github.com/teq-niq/pingfed-automation.git  
+git clone -b gradle_wip https://github.com/teq-niq/pingfed-automation.git  
 Read pingfed-automation\downloads\downloadnotes.txt.   
 <ins>Download the files as mentioned here into **"pingfed-automation\downloads"** folder.</ins>    
 In command prompt/terminal navigate to pingfed-automation folder.   
 **For convenience We will run all our commands from this location only.**  
 On linux do this first.
 Run sudo chmod +x ./gradlew 
-Run ".\gradlew clean build" in command prompt or "./gradlew clean build" in linux terminal.  
+Run  "sudo ./gradlew clean build" in linux terminal.  
 This might take some time on first run.  
 <img width="420" alt="build" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/2fcb1bd1-746e-4316-9801-f190c4274986">  
 Wait for it to finish successfully.  
 <img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/eebef5eb-5503-41e6-823e-c787ad059069">    
 
-Run ".\gradlew verify-downloads".  
+Run "sudo ./gradlew verify-downloads".  
 I got this output.  
 <img width="666" alt="verifydownloads" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/fca34177-3794-4a58-8a0f-f1a1ef00f0a7">   
  
@@ -42,14 +44,9 @@ I got this output.
 pingfed-automation/mysql.properties file entries should match the expectations.  
 Edit pingfed-automation\mysql.properties as needed.*   
 
-Run “.\gradlew ping-setup”. 
+Run “sudo ./gradlew ping-setup”. 
 leaving below lines for now. must remove.    
-<ins>On linux might need to use  “sudo ant”.</ins>   
-In linux sometimes sudo ant will report "sudo: ant: command not found".
-If so please add below line in your .bashrc and source it.  
-- alias sudo='sudo env PATH=$PATH $@'   
-After adding above line run below.    
-- source ~/.bashrc
+
    
 <img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">    
 
@@ -60,14 +57,14 @@ Result should look like this:
  
 That should setup pinfederate.
 #### Start PingDirectory
-Run ".\gradlew ping-start-ds".     
+Run "sudo ./gradlew ping-start-ds".     
 <img width="412" alt="start_ds" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/cce83b7f-b739-424d-9c5e-7efdd91a4ed8">  
 Result should look like this:  
 <img width="567" alt="start_ds_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/1494dc0e-134d-4bd0-86ad-00020049c188">  
 Note: 
 PingDirectory can also be started by launching: start-server.bat or start-server.sh found in bin/bat folder of the Ping Directory.
 #### Start Ping Federate
-Run “.\gradlew ping-start-pingfed”.      
+Run “sudo ./gradlew ping-start-pingfed”.      
 <img width="447" alt="start_pingfed" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/a53f29db-dcb1-489c-a44e-e5d4a9808a14">  
 Result should look like this:  
 <img width="567" alt="start_pingfed_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/51460f02-4fb6-4941-8836-71801236565f">  
@@ -122,7 +119,7 @@ If your pingfederate version is higher do please update the file content here by
 - Copy its contents into the file- pingfed-automation\admin-api-wrapper\swagger-json\swagger.json.   
   
 #### Swagger Code generation
-Run ".\gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin".    
+Run "sudo ./gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin".    
 <img width="600" alt="codegen" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/925ace66-72b3-42ca-b568-fdc7db537e0c">       
 Result should look like this:   
 <img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/7e7af231-1006-43ff-9da5-67ae8cfae77d">    
@@ -146,7 +143,7 @@ For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oid
 
 
 #### Stop Ping Federate
-Run “.\gradlew ping-stop-pingfed”  
+Run “sudo ./gradlew ping-stop-pingfed”  
 <img width="445" alt="stop_pingfed" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/8db016bd-bba0-4219-a676-0cd60e899515">   
 Result should look like this:  
 <img width="559" alt="stop_pingfed_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/d6a8ffe3-b178-453f-b4e3-083e3658c098">    
@@ -154,7 +151,7 @@ Note: Just stopping the Ping Federate by killing the process.
 Relying on the process id noted earlier in case of windows. In case of other environments just detecting processes that are running PingFederate and stopping them.    
 
 #### Stop PingDirectory
-Run “.\gradlew ping-stop-ds”  
+Run “sudo ./gradlew ping-stop-ds”  
 <img width="420" alt="stop_ds" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/6adcff42-723f-4ef5-99dc-d98412bf3672">   
 Result should look like this:  
 
@@ -165,26 +162,26 @@ PingDirectory can also be stopped by launching: stop-server.bat or stop-server.s
 
 
 #### Undo the Setup If and when needed
-Run “.\gradlew ping-clean”  
+Run “sudo ./gradlew ping-clean”  
 <img width="395" alt="undosetup" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/f1cc1e4f-5816-4961-8325-ef502415eb5d">   
 Result should be like this.  
 <img width="538" alt="undosetupresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/73bbefc4-d0bb-4046-b383-52b35b73dfaf">   
 Note: Before running "ant clean" ensure that pingfederate and pingdirectory are stopped.
-Also Note: Can again setup by running ".\gradlew ping-setup".
+Also Note: Can again setup by running "sudo ./gradlew ping-setup".
 
 
 #### Trouble shooting
-In linux sometimes sudo ant will report "sudo: ant: command not found".
+In linux sometimes sudo xyz will report "sudo: xyz: command not found". Replace xyz with a valid command.  
 If so please add below line in your .bashrc and source it.
 - alias sudo='sudo env PATH=$PATH $@'   
 After adding above line run below.    
 - source ~/.bashrc    
 
 I did something wrong. How do I start again?   
-- Run ".\gradlew ping-stop-pingfed" if its running.   
-- Run ".\gradlew ping-stop-ds" if its running   
-- Run ".\gradlew ping-clean".   
+- Run "sudo ./gradlew ping-stop-pingfed" if its running.   
+- Run "sudo ./gradlew ping-stop-ds" if its running   
+- Run "sudo ./gradlew ping-clean".   
 - Worst case scenario restart the machine.   
-- Run .\gradlew ping-clean"   
-- After ".\gradlew ping-clean" assuming pingfed-automation\downloads folder has the needed files. Start again with ".\gradlew ping-stop-pingfed".  
+- Run sudo ./gradlew ping-clean"   
+- After "sudo ./gradlew ping-clean" assuming pingfed-automation\downloads folder has the needed files. Start again with "sudo ./gradlew ping-stop-pingfed".  
 

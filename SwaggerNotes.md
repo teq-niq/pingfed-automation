@@ -1,8 +1,7 @@
 # Choice of maven plugin version
-used below maven plugin because swagger.json file specified "swagger": "2.0"  
-&lt;groupId&gt;io.swagger&lt;/groupId&gt;  
-&lt;artifactId&gt;swagger-codegen-maven-plugin&lt;/artifactId&gt;  
-&lt;version&gt;2.4.28&lt;/version&gt;  
+used below gradle  dependeny  for code generation because swagger.json file specified "swagger": "2.0"  
+ 
+io.swagger:swagger-codegen:2.4.28
 
 # discriminator problem
 As an example, if we look at the swagger definition for DataStore we see that discriminator is the "type" property.

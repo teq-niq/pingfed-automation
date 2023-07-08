@@ -1,3 +1,4 @@
+[<img src="images/white-win.png">](Setup-win.md)[<img src="images/grey-ubuntu.png">](Setup-ubuntu.md)
 # PingFed Automation Demo  
 ## Branch gradle_wip is WIP. Not ready for use this branch. Main branch is usable.
 
@@ -21,7 +22,7 @@ As far as setup is concerned this is only a way to quickly get started on using 
 
 ## Steps to follow
 #### Setup
-[Setup Steps](Setup.md) - setup steps.  
+[Setup Steps](Setup-win.md) - setup steps.  
 
 ## Other points
 #### Swagger discussion

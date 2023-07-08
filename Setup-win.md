@@ -1,6 +1,7 @@
 [<img src="images/white-win.png">](Setup-win.md)[<img src="images/grey-ubuntu.png">](Setup-ubuntu.md)
 
 # PingFed Automation Setup steps
+## Branch gradle_wip is WIP. Not ready for use this branch. Main branch is usable.
 ## Prerequisites 
 - Java JDK 17  
 - JAVA_HOME environment variable should be correctly setup.
@@ -14,7 +15,7 @@
 ## The steps
 
 Clone the project from - here to a suitable folder in your machine.  
-git clone -b main https://github.com/teq-niq/pingfed-automation.git  
+git clone -b gradle_wip https://github.com/teq-niq/pingfed-automation.git  
 Read pingfed-automation\downloads\downloadnotes.txt.   
 <ins>Download the files as mentioned here into **"pingfed-automation\downloads"** folder.</ins>    
 In command prompt/terminal navigate to pingfed-automation folder.   

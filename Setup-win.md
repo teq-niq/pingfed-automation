@@ -142,7 +142,7 @@ simple-oidc-check - is a roll your own example code project where the demo is do
 
 springboot.oidc.with.angular - here the demo is done using a spring boot angular code authorization code example.  
 
-For simple-oidc-check please see- [simple-oidc-check](oidc-check/simple-oidc-check/simple_oidc_win.md)  
+For simple-oidc-check please see- [simple-oidc-check](oidc-check/simple-oidc-check/README_win.md)  
 For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check/springboot.oidc.with.angular/README.md) 
 
 

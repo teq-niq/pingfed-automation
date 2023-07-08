@@ -1,4 +1,4 @@
-[<img src="../../../../images/white-win.png">](Setup-win.md)[<img src="./../../../images/grey-ubuntu.png">](Setup-ubuntu.md)
+[<img src="../../../images/white-win.png">](simple_oidc_win.md)[<img src="./../../images/grey-ubuntu.png">](simple_oidc_ubuntu.md)
 ## Setup for simple-oidc-check:
 
   

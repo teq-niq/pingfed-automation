@@ -1,3 +1,5 @@
+[<img src="images/grey-win.png">](Setup-win.md)[<img src="images/white-ubuntu.png">](Setup-ubuntu.md) 
+
 # PingFed Automation Setup steps
 ## Prerequisites 
 - Java JDK 17  
@@ -10,8 +12,6 @@
 
 
 ## The steps
-
-[<img src="images/grey-win.png">](Setup-win.md)[<img src="images/white-ubuntu.png">](Setup-ubuntu.md) 
 
 Clone the project from - here to a suitable folder in your machine.  
 git clone -b main https://github.com/teq-niq/pingfed-automation.git  

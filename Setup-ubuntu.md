@@ -11,7 +11,7 @@
 
 ## The steps
 
-![image](https://github.com/teq-niq/pingfed-automation/assets/14346578/8012e054-68db-4aab-8d1b-0e032db35e60)![image](https://github.com/teq-niq/pingfed-automation/assets/14346578/5191d857-52c9-4918-9a9b-07020aef1160)  
+[<img src="images/grey-win.png">](Setup-win.md)[<img src="images/white-ubuntu.png">](Setup-ubuntu.md) 
 
 Clone the project from - here to a suitable folder in your machine.  
 git clone -b main https://github.com/teq-niq/pingfed-automation.git  

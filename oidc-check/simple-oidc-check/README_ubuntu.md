@@ -1,4 +1,4 @@
-[<img src="images/grey-win.png">](README_win.md)[<img src="images/white-ubuntu.png">](README_ubuntu.md) 
+[<img src="../../images/grey-win.png">](README_win.md)[<img src="../../images/white-ubuntu.png">](README_ubuntu.md) 
 ## Setup for simple-oidc-check:
 
   

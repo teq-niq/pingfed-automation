@@ -22,16 +22,20 @@ Read pingfed-automation\downloads\downloadnotes.txt.
 In command prompt/terminal navigate to pingfed-automation folder.   
 **For convenience We will run all our commands from this location only.**  
 On linux do this first.
-Run sudo chmod +x ./gradlew 
+Run sudo chmod +x ./gradlew   
+![chmod on gradlew](https://github.com/teq-niq/pingfed-automation/assets/14346578/8a5409f7-433f-44b9-ac55-1573f33038b5)  
+
 Run  "sudo ./gradlew clean build" in linux terminal.  
 This might take some time on first run.  
-<img width="420" alt="build" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/2fcb1bd1-746e-4316-9801-f190c4274986">  
+<img width="420" alt="build" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/6ad82884-161b-459c-acfb-334b5ae92d02">  
 Wait for it to finish successfully.  
-<img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/eebef5eb-5503-41e6-823e-c787ad059069">    
+<img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/ed43be9d-79ed-4be7-a434-2193f0ac346e">    
 
 Run "sudo ./gradlew verify-downloads".  
+![run verify downloads](https://github.com/teq-niq/pingfed-automation/assets/14346578/ad704765-f964-4b95-b6ef-93dbc5ea7af9)   
+
 I got this output.  
-<img width="666" alt="verifydownloads" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/fca34177-3794-4a58-8a0f-f1a1ef00f0a7">   
+<img width="666" alt="verifydownloads" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/8e38acf5-1251-4d80-985b-29ad72978092">   
  
 
 ```diff
@@ -44,31 +48,28 @@ I got this output.
 pingfed-automation/mysql.properties file entries should match the expectations.  
 Edit pingfed-automation\mysql.properties as needed.*   
 
-Run “sudo ./gradlew ping-setup”. 
-leaving below lines for now. must remove.    
-
+Run “sudo ./gradlew ping-setup”.  
    
-<img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">    
+<img width="369" alt="setup" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/698f6158-b581-45a1-b4f1-5b9fdf250518">     
 
 Result should look like this:   
-<img width="588" alt="setuprun-part1" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/602907b1-f26e-40be-a23e-c6d73ad38d88">  
 
-<img width="604" alt="setuprun-part2" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/63eef6b9-c646-4548-9ae6-3c7c2a03c92e">   
+<img width="604" alt="setuprun-part2" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/d3557187-5b1d-442c-8a06-4f3750ac0fe1">    
  
 That should setup pinfederate.
 #### Start PingDirectory
 Run "sudo ./gradlew ping-start-ds".     
-<img width="412" alt="start_ds" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/cce83b7f-b739-424d-9c5e-7efdd91a4ed8">  
+<img width="412" alt="start_ds" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/1cc52e58-6921-4409-9753-a2ae91e26385">  
 Result should look like this:  
-<img width="567" alt="start_ds_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/1494dc0e-134d-4bd0-86ad-00020049c188">  
+<img width="567" alt="start_ds_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/29c66baf-0261-4b06-8208-4c2e5576591e">  
 Note: 
 PingDirectory can also be started by launching: start-server.bat or start-server.sh found in bin/bat folder of the Ping Directory.
 #### Start Ping Federate
 Run “sudo ./gradlew ping-start-pingfed”.      
-<img width="447" alt="start_pingfed" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/a53f29db-dcb1-489c-a44e-e5d4a9808a14">  
+<img width="447" alt="start_pingfed" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/ebee3d13-4397-4db0-b946-0ad8ab03d141">  
 Result should look like this:  
-<img width="567" alt="start_pingfed_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/51460f02-4fb6-4941-8836-71801236565f">  
-Note: Just starting the Ping Federate. Also capturing the process id in case of windows.  
+<img width="567" alt="start_pingfed_result" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/4b410b48-656f-40d7-a89e-e99c579edfe4">  
+Note: Just starting the Ping Federate. 
 Ping Federate can also be started by launching: run.bat or run.sh found in bin folder of the Ping Federate.  
 #### Use Ping Federate Admin Console first time
 I am using chrome browser. Should possibly work well in other browsers too.  
@@ -120,10 +121,10 @@ If your pingfederate version is higher do please update the file content here by
   
 #### Swagger Code generation
 Run "sudo ./gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin".    
-<img width="600" alt="codegen" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/925ace66-72b3-42ca-b568-fdc7db537e0c">       
+<img width="600" alt="codegen" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/99a1c2e4-ebe1-4edc-b763-6d4347b0cf7b">       
 Result should look like this:   
-<img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/7e7af231-1006-43ff-9da5-67ae8cfae77d">    
-This time because we used the admin profile during maven build there has also been some code generationand automated pingfed configuration.     
+<img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/44ef108b-0e06-4bd4-9fb0-88980c66851f">    
+This time because we used the admin profile during gradle build there has also been some code generation and automated pingfed configuration.     
   
 If you understand pingfederate configuration details - visit https://localhost:9999/ and verify the results in the admin console.  
 Now lets quickly proceed and verify if this was done correctly or not.  
@@ -139,7 +140,7 @@ simple-oidc-check - is a roll your own example code project where the demo is do
 springboot.oidc.with.angular - here the demo is done using a spring boot angular code authorization code example.  
 
 For simple-oidc-check please see- [simple-oidc-check](oidc-check/simple-oidc-check/README_ubuntu.md)  
-For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check/springboot.oidc.with.angular/README.md) 
+For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check/springboot.oidc.with.angular/README_ubuntu.md) 
 
 
 #### Stop Ping Federate

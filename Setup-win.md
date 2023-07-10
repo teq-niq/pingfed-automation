@@ -44,13 +44,7 @@ pingfed-automation/mysql.properties file entries should match the expectations.
 Edit pingfed-automation\mysql.properties as needed.*   
 
 Run “.\gradlew ping-setup”. 
-leaving below lines for now. must remove.    
-<ins>On linux might need to use  “sudo ant”.</ins>   
-In linux sometimes sudo ant will report "sudo: ant: command not found".
-If so please add below line in your .bashrc and source it.  
-- alias sudo='sudo env PATH=$PATH $@'   
-After adding above line run below.    
-- source ~/.bashrc
+Remove some stuff
    
 <img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">    
 
@@ -143,7 +137,7 @@ simple-oidc-check - is a roll your own example code project where the demo is do
 springboot.oidc.with.angular - here the demo is done using a spring boot angular code authorization code example.  
 
 For simple-oidc-check please see- [simple-oidc-check](oidc-check/simple-oidc-check/README_win.md)  
-For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check/springboot.oidc.with.angular/README.md) 
+For springboot.oidc.with.angular please see- [springboot-angular-oidc-check](oidc-check/springboot.oidc.with.angular/README_win.md) 
 
 
 #### Stop Ping Federate

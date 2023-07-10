@@ -1,7 +1,7 @@
 [<img src="images/white-win.png">](Setup-win.md)[<img src="images/grey-ubuntu.png">](Setup-ubuntu.md)
 
 # PingFed Automation Setup steps
-## Branch gradle_wip is WIP. Not ready for use this branch. Main branch is usable.
+
 ## Prerequisites 
 - Java JDK 17  
 - JAVA_HOME environment variable should be correctly setup.

@@ -20,7 +20,7 @@ git clone -b gradle_wip https://github.com/teq-niq/pingfed-automation.git
 Read pingfed-automation\downloads\downloadnotes.txt.   
 <ins>Download the files as mentioned here into **"pingfed-automation\downloads"** folder.</ins>    
 In command prompt/terminal navigate to pingfed-automation folder.   
-**For convenience We will run all our commands from this location only.**  
+**For convenience We will run most of our commands from this location only.**  
 On linux do this first.
 Run sudo chmod +x ./gradlew   
 ![chmod on gradlew](https://github.com/teq-niq/pingfed-automation/assets/14346578/8a5409f7-433f-44b9-ac55-1573f33038b5)  

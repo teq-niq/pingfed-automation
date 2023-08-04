@@ -109,7 +109,7 @@
 				
 				
 				<copy file="../downloads\mysql-connector-java-${mysql.conn.version}.jar" todir="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\lib" />
-			<copy file="../sql/setup.sql" tofile="../sql/setup-use.sql" overwrite="true">
+			<copy file="../sql/setup-ubuntu.sql" tofile="../sql/setup-use.sql" overwrite="true">
 									<filterset>
 										
 										<filter token="pingfedmysqluserpwd" value="${mysql.upwd}" />

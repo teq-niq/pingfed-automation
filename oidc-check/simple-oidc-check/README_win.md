@@ -19,10 +19,6 @@ In case of difficulty edit tomcat.ver property in the build.xml file.
 ##### Start Tomcat
 In command prompt or terminal staying at pingfed-automation folder run ".\gradlew demo1-start-tomcat".  
 
-On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/startup.sh".  
-On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/catalina.sh".  
-On linux may have to do this extra step - "sudo chmod +x build/apache-tomcat-10.0.18/bin/shutdown.sh".  
-Then on linux use "sudo ant start-tomcat".   
 
 <img width="298" alt="start_tomcat" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/e6fdcf72-e5a0-47b5-8578-b3fdc91d9252">   
 

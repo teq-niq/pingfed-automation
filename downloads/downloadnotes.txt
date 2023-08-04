@@ -35,5 +35,5 @@ This was the file in my case- PingDirectory-9.3-Production.lic
 
 E) Visit https://repo1.maven.org/maven2/mysql/mysql-connector-java/
 Download the latest jar
-This was the file in my case- mysql-connector-java-8.0.30.jar
+This was the file in my case- mysql-connector-java-8.0.9-rc.jar
 Copy it into downloads folder.

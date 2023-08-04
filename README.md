@@ -10,6 +10,10 @@
 2. A general discussion on swagger in this context.
 As far as setup is concerned this is only a way to quickly get started on using pingfederate. Customize as needed.  
 
+## DZone Article to explain the objective  
+-  [https://dzone.com/articles/using-swagger-for-creating-a-pingfed-admin-api-jav](https://dzone.com/articles/using-swagger-for-creating-a-pingfed-admin-api-jav)  
+
+
 ## Prerequisites 
 - Java JDK 17  
 - JAVA_HOME environment variable should be correctly setup.

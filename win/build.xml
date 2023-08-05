@@ -10,23 +10,8 @@
 	<property file="../versions.properties"/>
 	<property file="os.properties"/>
 	<property file="../mysql.properties"/>
-	<property file="../build.properties"/> 
-	
-	<path id="pingfed.start.stop.cp" >
-		<pathelement location="../custom-ant-tasks/target/custom-ant-tasks.jar"/>
-	</path>
-	
-	<!--
-		Comment below taskdefs if you wish to avoid the custom ant tasks
-		and prefr using direct java
-		
-		-->
-		<taskdef name="start-non-clustered-pingfed" 
-				classname="example.StartNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
-		</taskdef>
-		<taskdef name="stop-non-clustered-pingfed" 
-				classname="example.StopNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
-		</taskdef>
+	<property file="../build.properties"/>
+
 	
 	
     <description>
@@ -41,7 +26,9 @@
     	
     </target>
 	<target name="start-ds">
-			<exec  executable="ping\pingdirectory\PingDirectory-${ping.dir.version}\${ping.dir.bin}\start-server${ping.dir.extn}">
+			<property name="ping.dir.start.exec" location="./ping/pingdirectory/PingDirectory-${ping.dir.version}\${ping.dir.bin}\start-server${ping.dir.extn}" />
+				
+			<exec  executable="${ping.dir.start.exec}">
 			</exec>
 
 	</target>
@@ -49,7 +36,7 @@
 	
 	
 	
-	<target name="start-pingfed">
+	<target name="start-pingfed" depends="importcustomanttasks">
 			<!--
 				comment if you prefer using direct java instead of ant tasks
 			-->
@@ -66,7 +53,7 @@
 			-->
 		</target>
 		
-		<target name="stop-pingfed">
+		<target name="stop-pingfed" depends="importcustomanttasks">
 			<!--
 				comment if you prefer using direct java instead of ant tasks
 			-->
@@ -83,7 +70,10 @@
 		</target>
 	
 	<target name="stop-ds">
-			<exec executable="ping\pingdirectory\PingDirectory-${ping.dir.version}\${ping.dir.bin}\stop-server${ping.dir.extn}">
+			<property name="ping.dir.stop.exec" location="./ping/pingdirectory/PingDirectory-${ping.dir.version}\${ping.dir.bin}\stop-server${ping.dir.extn}" />
+		
+			<exec executable="${ping.dir.stop.exec}">
+
 			</exec>
 
 		</target>
@@ -146,7 +136,7 @@
 				<move file="ping\pingfederate\pingfederate-${ping.fed.version}-temp\ReadMeFirst.pdf" todir="ping\pingfederate\pingfederate-${ping.fed.version}" />
 				<delete dir="ping\pingfederate\pingfederate-${ping.fed.version}-temp" />
 				<replace file="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\service-points.conf" 
-					token="client.manager=&quot;org.sourceid.oauth20.domain.ClientManagerXmlFileImpl&quot;" value="client.manager=&quot;org.sourceid.oauth20.domain.ClientManagerJdbcImpl&quot;"/>
+							token="client.manager=&quot;org.sourceid.oauth20.domain.ClientManagerXmlFileImpl&quot;" value="client.manager=&quot;org.sourceid.oauth20.domain.ClientManagerJdbcImpl&quot;"/>
 				
 				<copy file="../downloads\mysql-connector-java-${mysql.conn.version}.jar" todir="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\lib" />
 			<copy file="../sql/setup.sql" tofile="../sql/setup-use.sql" overwrite="true">
@@ -166,7 +156,10 @@
 	
 	<target name="configure-pingdir-win" depends="prepare-pingdir">
 						
-						<exec executable="ping\pingdirectory\PingDirectory-${ping.dir.version}\setup${ping.dir.extn}">
+						<property name="ping.dir.setup.dir" location="./ping/pingdirectory/PingDirectory-${ping.dir.version}" />
+		<property name="ping.dir.setup.exec" location="./ping/pingdirectory/PingDirectory-${ping.dir.version}/setup${ping.dir.extn}" />
+								<exec dir="${ping.dir.setup.dir}" executable="${ping.dir.setup.exec}">
+		
 								<arg value="--acceptLicense" />
 								<arg value="--licenseKeyFile" />
 								<arg path="ping\pingdirectory\PingDirectory-${ping.dir.version}\PingDirectory-${ping.dir.lic.version}.lic" />
@@ -220,11 +213,33 @@
 
 				</target>
 	<target name="testMySql">
-			<sql  userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" >
+		
+		<property name="mysqljar" location="../downloads/mysql-connector-java-${mysql.conn.version}.jar"/>
+		<path id="mysql.path" path="${mysqljar}"/>
+		<echo>mysqljar=${mysqljar}</echo>
+			<sql  userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpathref="mysql.path" >
 				select 1 from DUAL
 			</sql>
 		</target>
+	
+	<target name="importcustomanttasks">
+	
+		    		    		<mkdir dir="lib"/>
+		    		    		<copy  file="../custom-ant-tasks/build/libs/custom-ant-tasks.jar" todir="lib" overwrite="true"></copy>
+
+		    		    		<path id="pingfed.start.stop.cp" >
+		    		    			<pathelement location="lib/custom-ant-tasks.jar"/>
+		    		    		</path>
+		    		    			<taskdef name="start-non-clustered-pingfed" 
+		    		    					classname="example.StartNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
+		    		    			</taskdef>
+		    		    			<taskdef name="stop-non-clustered-pingfed" 
+		    		    					classname="example.StopNonClusterdPingFed" classpathref="pingfed.start.stop.cp">
+		    		    			</taskdef>
+
+	</target>
     <target name="depends" depends="testMySql">
+    	
     	<mkdir dir="ping" />
     </target>
 	

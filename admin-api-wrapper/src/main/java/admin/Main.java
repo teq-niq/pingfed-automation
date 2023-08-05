@@ -3,6 +3,7 @@ package admin;
 import java.lang.reflect.Constructor;
 
 public class Main {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) throws Exception {
 		Class c=Class.forName("admin.Setup");
 		Constructor con = c.getDeclaredConstructor();

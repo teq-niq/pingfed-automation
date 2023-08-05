@@ -40,8 +40,6 @@ Execute the below command:
 
 keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore %JAVA_HOME%/lib/security/cacerts -storepass changeit    
 
-On linux:
-**sudo** keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit   
 
 Also ensure name of the file "localhost.crt" matches with actual including the file name extension.   
 

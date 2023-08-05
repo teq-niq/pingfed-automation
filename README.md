@@ -1,8 +1,7 @@
+[<img src="images/white-win.png">](Setup-win.md)[<img src="images/grey-ubuntu.png">](Setup-ubuntu.md)
 # PingFed Automation Demo  
 
-
 <img width="255" alt="authorization_code1" src="https://user-images.githubusercontent.com/14346578/210153449-078d9f02-642f-4006-bd1c-f727e80ab9a2.png">  
-
 
 ## Objectives:
 1. Speed up getting started on PingFederate.  
@@ -11,16 +10,22 @@
 2. A general discussion on swagger in this context.
 As far as setup is concerned this is only a way to quickly get started on using pingfederate. Customize as needed.  
 
+## DZone Article to explain the objective  
+-  [https://dzone.com/articles/using-swagger-for-creating-a-pingfed-admin-api-jav](https://dzone.com/articles/using-swagger-for-creating-a-pingfed-admin-api-jav)  
+
+
 ## Prerequisites 
-- Java JDK 17
+- Java JDK 17  
 - JAVA_HOME environment variable should be correctly setup.
-- Java, Maven and Ant should be configured in Path environment variable.
-- A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.
-- Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.
+- Java,  Path environment variable.   
+- A running mysql with root user credentials to enable creation of a user,  schema and tables in the mysql for use by pingfederate.  
+- Ensure ports 9999, 9031, 8080, 8081 are available and not in use before proceeding.  
+- Internet access  
+- Should be able to launch gradlew(.bat) included in the project. 
 
 ## Steps to follow
 #### Setup
-[Setup Steps](Setup.md) - setup steps.  
+[Setup Steps](Setup-win.md) - setup steps.  
 
 ## Other points
 #### Swagger discussion

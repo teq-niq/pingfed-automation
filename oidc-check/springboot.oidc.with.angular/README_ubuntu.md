@@ -1,4 +1,4 @@
-[<img src="../../images/white-win.png">](README_win.md)[<img src="./../../images/grey-ubuntu.png">](README_ubuntu.md)
+[<img src="../../images/grey-win.png">](README_win.md)[<img src="../../images/white-ubuntu.png">](README_ubuntu.md) 
 # Spring boot angular authorization code sample.  
 
 
@@ -33,43 +33,40 @@ Lets visit the details tab.
 Press the "Export" button.      
 This will launch File save as dialog for the crt file.  
  
-<img width="701" alt="certificatecheck4" src="https://user-images.githubusercontent.com/14346578/215852002-0c7a6cef-2b1b-4816-9b13-9a802a02afc3.png">    
+<img width="701" alt="certificatecheck4" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/bb1a0b91-a8ed-4f79-aa95-cf06a81901c6">    
 Save the file at a suitable location.  
 In command prompt or terminal visit same location.
 Execute the below command:   
 
-keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore %JAVA_HOME%/lib/security/cacerts -storepass changeit    
-
-On linux:
 **sudo** keytool -import -trustcacerts -file localhost.crt -alias localpingfed -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit   
 
 Also ensure name of the file "localhost.crt" matches with actual including the file name extension.   
 
-<img width="482" alt="keytool" src="https://user-images.githubusercontent.com/14346578/215852636-ac70c56a-c95d-4982-a9b4-df84a556f9e4.PNG">   
+<img alt="keytool" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/702b10d8-fd18-4ef5-b032-ccfb5585368a">   
  
 When prompted enter yes   
 
-<img width="209" alt="keytool1" src="https://user-images.githubusercontent.com/14346578/215853229-49eab6ef-1042-46e0-8be2-2e3c6966ba11.PNG">   
+<img width="209" alt="keytool1" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/9fcef617-bb20-4bf3-ba79-f1295236a729">   
 
    
 ## Demo:
 
-springboot.oidc.with.angular is a maven project. Its also a submodule of pingfed-automation\oidc-check.  
+springboot.oidc.with.angular is a gradle project. Its also a submodule of pingfed-automation\oidc-check.  
 It should have been already built.  However we need to build it properly with its angular parts.
 In command prompt or terminal navigate to the usual pingfed-automation folder.  
 Run the below command.   
 
-.\gradlew :oidc-check:springboot.oidc.with.angular:bootRun 
+sudo ./gradlew :oidc-check:springboot.oidc.with.angular:bootRun 
 
-<img width="498" alt="build_springboot_angular" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/cb48cffd-8fcf-401e-8016-9640ed8423af">    
+<img width="498" alt="build_springboot_angular" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/9d3e0380-e824-43ed-aee9-378b1feb6640">    
 
 This should give a result as shown below.    
-<img width="633" alt="build_and run_springboot_angular1" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/ca6f570f-8edc-4dd5-8d76-a8c2d9706476">    
+<img width="633" alt="build_and run_springboot_angular1" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/efd130e7-2fc4-42da-a565-cb11d84279fd">    
 Showing above how it launches.
    
 Its a simple spring boot based project. Using angular for front end.  
 We are going to use this project to verify if we are able to obtain some access tokens from pingfederate. 
-Vist http://localhost:8081    
+Visit  http://localhost:8081       
 
 <img width="680" alt="springboot-angular3" src="https://user-images.githubusercontent.com/14346578/218252358-2fd48d84-edfd-4eda-ba63-c9ced69afd6a.png">   
 
@@ -148,7 +145,7 @@ Note: Logout itself works.
 ## Cleanup if needed:
 ### Remove ssl certificate from the trusted store. 
 Run below command to remove certificate from the trusted store.
-keytool -delete -alias localpingfed -keystore %JAVA_HOME%/lib/security/cacerts
+**sudo** keytool -delete -alias localpingfed -keystore $JAVA_HOME/lib/security/cacerts
 
 This should remove the ssl certificate from the trust store.
 

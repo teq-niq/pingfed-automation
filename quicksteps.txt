@@ -1,0 +1,31 @@
+.\gradlew clean build
+.\gradlew verify-downloads
+.\gradlew ping-setup
+.\gradlew ping-start-ds
+.\gradlew ping-start-pingfed
+admin console and first longin
+
+.\gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin
+.\gradlew demo1-fullbuild
+.\gradlew demo1-start-tomcat
+.\gradlew :oidc-check:springboot.oidc.with.angular:bootRun
+
+.\gradlew ping-stop-pingfed
+.\gradlew ping-stop-ds
+
+.\gradlew ping-clean
+.\gradlew tasks
+
+t2 large
+80 gib
+gradle_wip
+git clone -b gradle_wip https://github.com/teq-niq/pingfed-automation.git 
+sudo chmod +x ./gradlew
+sudo ./gradlew clean build
+sudo ./gradlew verify-downloads
+sudo ./gradlew ping-clean
+sudo ./gradlew ping-setup
+sudo ./gradlew ping-start-ds
+sudo ./gradlew ping-start-pingfed
+sudo ./gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin
+sudo ./gradlew :oidc-check:springboot.oidc.with.angular:bootRun 

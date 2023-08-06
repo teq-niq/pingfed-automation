@@ -15,7 +15,7 @@
 ## The steps
 
 Clone the project from - here to a suitable folder in your machine.  
-git clone -b gradle_wip https://github.com/teq-niq/pingfed-automation.git  
+git clone -b main https://github.com/teq-niq/pingfed-automation.git  
 Read pingfed-automation\downloads\downloadnotes.txt.   
 <ins>Download the files as mentioned here into **"pingfed-automation\downloads"** folder.</ins>    
 In command prompt/terminal navigate to pingfed-automation folder.   

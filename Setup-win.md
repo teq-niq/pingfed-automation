@@ -43,7 +43,7 @@ pingfed-automation/mysql.properties file entries should match the expectations.
 Edit pingfed-automation\mysql.properties as needed.*   
 
 Run “.\gradlew ping-setup”. 
-Remove some stuff
+
    
 <img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">    
 

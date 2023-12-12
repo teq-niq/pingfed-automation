@@ -45,7 +45,6 @@ Edit pingfed-automation\mysql.properties as needed.*
 Run “.\gradlew ping-setup”. 
 
    
-<img width="369" alt="setup" src="https://user-images.githubusercontent.com/14346578/210153762-a663526e-9900-436c-a07b-e9686014f10c.png">    
 
 Result should look like this:   
 <img width="588" alt="setuprun-part1" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/602907b1-f26e-40be-a23e-c6d73ad38d88">  

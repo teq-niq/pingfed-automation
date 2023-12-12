@@ -13,5 +13,9 @@ This code should be compatible with these versions.
 | 11.3.0       | 9.2.0.1        | [link](11.3.0/swagger.json)   | main         |  
 | 11.3.1       | 9.3.0.0        | [link](11.3.1/swagger.json)   | main         |   
 | 11.3.2       | 9.3.0.1        | [link](11.3.2/swagger.json)   | main         | 
+| 11.3.4       | 9.3.0.3        | [link](11.3.4/swagger.json)   | main         |   
 
+
+
+Note: I seem to have missed 11.3.3
 

@@ -11,10 +11,10 @@ Download the PRODUCT DISTRIBUTION (ZIP)
 In my case it was pingfederate-11.3.2.zip.
 Copy it into downloads folder.
 
-B) Go to https://www.pingidentity.com/en/account/request-license-key.html
+B) Go to https://support.pingidentity.com/s/manage-license-keys
+Scroll Down. Click on "Create Free License Key" button.
 Select PingFederate.
 Accept the license agreement and submit
-Go to https://support.pingidentity.com/s/manage-license-keys
 Select the license key and click View> download button.
 Copy the license key into the downloads folder.
 This was the file in my case- PingFederate-11.3-Development.lic
@@ -25,10 +25,10 @@ In my case it was PingDirectory-9.3.0.1.zip.
 Copy it into downloads folder.
 
 
-D) Go to https://www.pingidentity.com/en/account/request-license-key.html
+D) Go to https://support.pingidentity.com/s/manage-license-keys
+Scroll Down. Click on "Create Free License Key" button.
 Select PingDirectory.
 Accept the license agreement and submit
-Go to https://support.pingidentity.com/s/manage-license-keys
 Select the license key and click View> download button.
 Copy the license key into the downloads folder.
 This was the file in my case- PingDirectory-9.3-Development.lic

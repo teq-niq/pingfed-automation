@@ -30,21 +30,21 @@
          ================================= -->
     <target name="fullbuild"  description="description">
     	<delete dir="build"/>
-    	
+    	<echo message="deleted"/>
         <mkdir dir="build"/>
     	<mkdir dir="build/lib"/>
-
+    	<echo message="created dir"/>
     	<get src="https://archive.apache.org/dist/tomcat/tomcat-10/v${tomcat.ver}/bin/apache-tomcat-${tomcat.ver}-windows-x64.zip" dest="build"/>
 
-    	
+    	<echo message="got"/>
     	    	    	
  
     	<unzip src="build\apache-tomcat-${tomcat.ver}-windows-x64.zip" dest="build"/>
-    	
+    	<echo message="unzipped"/>
     	<copy todir="${tomcat.home}">
     		<fileset dir="overrides"/>
     		</copy>
-    	
+    	<echo message="copied overrides"/>
     	<copy todir="${tomcat.home}/lib">
     	    		<fileset dir="simple-oidc-realm/build/libs">
     	    			<include name="simple-oidc-realm.jar"/>
@@ -55,9 +55,9 @@
     	    		</copy>
     	
     	
-    	
+    	<echo message="to tomcat"/>
     	<antcall target="buildwar"/>
-    	
+    	<echo message="built war"/>
    
     </target>
     <target name="buildwar"  description="description">

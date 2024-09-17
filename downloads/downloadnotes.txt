@@ -8,7 +8,7 @@ Product Downloads and Licensing
 
 A) Go to https://www.pingidentity.com/en/resources/downloads/pingfederate.html
 Download the PRODUCT DISTRIBUTION (ZIP)
-In my case it was pingfederate-12.1.0.zip.
+In my case it was pingfederate-12.1.3.zip.
 Copy it into downloads folder.
 
 B) Go to https://support.pingidentity.com/s/manage-license-keys
@@ -31,7 +31,7 @@ Select PingDirectory.
 Accept the license agreement and submit
 Select the license key and click View> download button.
 Copy the license key into the downloads folder.
-This was the file in my case- PingDirectory-10.0.0.2-Development.lic
+This was the file in my case- PingDirectory-10.1.0.0-Development.lic
 
 E) Visit https://repo1.maven.org/maven2/mysql/mysql-connector-java/
 Download the latest jar

@@ -113,7 +113,7 @@ Do nothing. Press Finish.
 
 #### swagger.json
 
-This immediate next step has already been done if you are on version pingfederate-11.2.4.  
+This immediate next step has already been done if you are on version pingfederate-12.2.0.  
 If your pingfederate version is higher do please update the file content here by following below 2 steps.  
  
 - Visit  https://localhost:9999/pf-admin-api/v1/swagger.json
@@ -184,5 +184,5 @@ I did something wrong. How do I start again?
 - Run "sudo ./gradlew ping-clean".   
 - Worst case scenario restart the machine.   
 - Run sudo ./gradlew ping-clean"   
-- After "sudo ./gradlew ping-clean" assuming pingfed-automation\downloads folder has the needed files. Start again with "sudo ./gradlew ping-stop-pingfed".  
+- After "sudo ./gradlew ping-clean" assuming pingfed-automation\downloads folder has the needed files. Start again with the steps.  
 

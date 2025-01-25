@@ -108,14 +108,17 @@ Do nothing. Press Finish.
 
 #### swagger.json
 
-This immediate next step has already been done if you are on version pingfederate-11.2.4.  
+This immediate next step has already been done if you are on version pingfederate-12.2.0.  
 If your pingfederate version is higher do please update the file content here by following below 2 steps.  
  
 - Visit  https://localhost:9999/pf-admin-api/v1/swagger.json
 - Copy its contents into the file- pingfed-automation\admin-api-wrapper\swagger-json\swagger.json.   
   
 #### Swagger Code generation
-Run ".\gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin".    
+
+Run ".\gradlew clean build :admin-api-wrapper:compileJava -P buildProfile=admin".
+
+Dont run Run ".\gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin".    
 <img width="600" alt="codegen" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/925ace66-72b3-42ca-b568-fdc7db537e0c">       
 Result should look like this:   
 <img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/7e7af231-1006-43ff-9da5-67ae8cfae77d">    
@@ -179,5 +182,5 @@ I did something wrong. How do I start again?
 - Run ".\gradlew ping-clean".   
 - Worst case scenario restart the machine.   
 - Run .\gradlew ping-clean"   
-- After ".\gradlew ping-clean" assuming pingfed-automation\downloads folder has the needed files. Start again with ".\gradlew ping-stop-pingfed".  
+- After ".\gradlew ping-clean" assuming pingfed-automation\downloads folder has the needed files. Start again with the steps.  
 

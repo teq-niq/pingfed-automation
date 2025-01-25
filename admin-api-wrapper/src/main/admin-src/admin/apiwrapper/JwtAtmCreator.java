@@ -1,7 +1,5 @@
 package admin.apiwrapper;
 
-import java.util.ArrayList;
-
 import com.example.pingfedadmin.api.*;
 import com.example.pingfedadmin.model.*;
 
@@ -41,11 +39,6 @@ public class JwtAtmCreator extends BaseCreator{
 		 manager.setConfiguration(configuration);
 		
 		 manager.setAttributeContract(attributeContract);
-		 TokenEndpointAttributeContract tokenEndpointAttributeContract= new TokenEndpointAttributeContract();
-		 tokenEndpointAttributeContract.attributes(new ArrayList<TokenEndpointAttribute>());
-		 manager.setTokenEndpointAttributeContract(tokenEndpointAttributeContract);
-		
-
 		 AccessTokenManager createTokenManager = api.createTokenManager(manager);
 		return createTokenManager;
 	}

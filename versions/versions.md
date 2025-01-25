@@ -10,19 +10,20 @@ This code should be compatible with these versions.
 | 11.2.3       | 9.2.0.0        | [link](11.2.3/swagger.json)   | upto_11.2.5  |  
 | 11.2.4       | 9.2.0.0        | [link](11.2.4/swagger.json)   | upto_11.2.5  |  
 | 11.2.5       | 9.2.0.0        | [link](11.2.5/swagger.json)   | upto_11.2.5  |   
-| 11.3.0       | 9.2.0.1        | [link](11.3.0/swagger.json)   | main         |  
-| 11.3.1       | 9.3.0.0        | [link](11.3.1/swagger.json)   | main         |   
-| 11.3.2       | 9.3.0.1        | [link](11.3.2/swagger.json)   | main         | 
-| 11.3.4       | 9.3.0.3        | [link](11.3.4/swagger.json)   | main         |   
-| 12.0.0       | 10.0.0.0       | [link](12.0.0/swagger.json)   | main         | 
-| 12.0.1       | 10.0.0.1       | [link](12.0.1/swagger.json)   | main         | 
-| 12.0.2       | 10.0.0.2       | [link](12.0.2/swagger.json)   | main         | 
-| 12.0.3       | 10.0.0.2       | [link](12.0.3/swagger.json)   | main         | 
-| 12.1.0       | 10.1.0.0       | [link](12.1.0/swagger.json)   | main         | 
-| 12.1.3       | 10.1.0.0       | [link](12.1.3/swagger.json)   | main         | 
-| 12.1.4       | 10.1.0.2       | [link](12.1.4/swagger.json)   | main         | 
+| 11.3.0       | 9.2.0.1        | [link](11.3.0/swagger.json)   | upto_12.1.4  |  
+| 11.3.1       | 9.3.0.0        | [link](11.3.1/swagger.json)   | upto_12.1.4  |   
+| 11.3.2       | 9.3.0.1        | [link](11.3.2/swagger.json)   | upto_12.1.4  | 
+| 11.3.4       | 9.3.0.3        | [link](11.3.4/swagger.json)   | upto_12.1.4  |   
+| 12.0.0       | 10.0.0.0       | [link](12.0.0/swagger.json)   | upto_12.1.4  | 
+| 12.0.1       | 10.0.0.1       | [link](12.0.1/swagger.json)   | upto_12.1.4  | 
+| 12.0.2       | 10.0.0.2       | [link](12.0.2/swagger.json)   | upto_12.1.4  | 
+| 12.0.3       | 10.0.0.2       | [link](12.0.3/swagger.json)   | upto_12.1.4  | 
+| 12.1.0       | 10.1.0.0       | [link](12.1.0/swagger.json)   | upto_12.1.4  | 
+| 12.1.3       | 10.1.0.0       | [link](12.1.3/swagger.json)   | upto_12.1.4  | 
+| 12.1.4       | 10.1.0.2       | [link](12.1.4/swagger.json)   | upto_12.1.4  | 
+| 12.2.0       | 10.2.0.0       | [link](12.2.0/swagger.json)   | main         | 
 
 
 
-Note: I seem to have missed 11.3.3, 12.1.1, 12.1.2
+
 

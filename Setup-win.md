@@ -116,9 +116,9 @@ If your pingfederate version is higher do please update the file content here by
   
 #### Swagger Code generation
 
-Run ".\gradlew clean build :admin-api-wrapper:compileJava -P buildProfile=admin".
 
-Dont run Run ".\gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin".    
+
+Run ".\gradlew clean build :admin-api-wrapper:auto-administer-pingfed -P buildProfile=admin".    
 <img width="600" alt="codegen" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/925ace66-72b3-42ca-b568-fdc7db537e0c">       
 Result should look like this:   
 <img width="447" alt="buildresult" src="https://github.com/teq-niq/pingfed-automation/assets/14346578/7e7af231-1006-43ff-9da5-67ae8cfae77d">    

@@ -22,6 +22,7 @@ This code should be compatible with these versions.
 | 12.1.3       | 10.1.0.0       | [link](12.1.3/swagger.json)   | upto_12.1.4  | 
 | 12.1.4       | 10.1.0.2       | [link](12.1.4/swagger.json)   | upto_12.1.4  | 
 | 12.2.0       | 10.2.0.0       | [link](12.2.0/swagger.json)   | main         | 
+| 12.2.2       | 10.2.0.1       | [link](12.2.2/swagger.json)   | main         | 
 
 
 

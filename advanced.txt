@@ -16,3 +16,6 @@ The first example should be runnable.
 
 Second example without a desktop also possible but must setup proper ssl certificates in pingfederate.
 
+This can be useful at times:
+Run ".\gradlew clean build :admin-api-wrapper:compileJava -P buildProfile=admin".
+

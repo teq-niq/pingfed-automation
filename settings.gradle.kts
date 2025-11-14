@@ -13,4 +13,8 @@ include("verify-downloads", "custom-ant-tasks", "automation-shared-lib", "admin-
         ":oidc-check:springboot.oidc.with.angular")
 
 
-
+gradle.beforeProject {
+    if (gradle.gradleVersion != "7.6.4") {
+        throw GradleException("This project must be built with Gradle 7.6.4. Detected: ${gradle.gradleVersion}")
+    }
+}

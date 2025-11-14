@@ -33,7 +33,8 @@ Select the license key and click View> download button.
 Copy the license key into the downloads folder.
 This was the file in my case- PingDirectory-10.2.0.1-Development.lic
 
-E) Visit https://repo1.maven.org/maven2/mysql/mysql-connector-java/
+E) Visit https://repo1.maven.org/maven2/com/mysql/mysql-connector-j
 Download the latest jar
-This was the file in my case- mysql-connector-java-8.0.9-rc.jar
+This was the file in my case- 9.5.0/mysql-connector-j-9.5.0.jar
+https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/9.5.0/mysql-connector-j-9.5.0.jar
 Copy it into downloads folder.

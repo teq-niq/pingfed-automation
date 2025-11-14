@@ -11,6 +11,7 @@
 	<property file="os.properties"/>
 	<property file="../mysql.properties"/>
 	<property file="../build.properties"/>
+	<property name="mysql.connector.prefix" value="mysql-connector-j-" />
 
 	
 	
@@ -138,7 +139,7 @@
 				<replace file="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\service-points.conf" 
 							token="client.manager=&quot;org.sourceid.oauth20.domain.ClientManagerXmlFileImpl&quot;" value="client.manager=&quot;org.sourceid.oauth20.domain.ClientManagerJdbcImpl&quot;"/>
 				
-				<copy file="../downloads\mysql-connector-java-${mysql.conn.version}.jar" todir="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\lib" />
+				<copy file="../downloads\${mysql.connector.prefix}${mysql.conn.version}.jar" todir="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\lib" />
 			<copy file="../sql/setup.sql" tofile="../sql/setup-use.sql" overwrite="true">
 									<filterset>
 										
@@ -148,9 +149,9 @@
 									</filterset>
 								</copy>	
 
-			<sql src="../sql/setup-use.sql" userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" />
+			<sql src="../sql/setup-use.sql" userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\${mysql.connector.prefix}${mysql.conn.version}.jar" />
 			<delete file="../sql/setup-use.sql"/>
-			<sql src="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\oauth-client-management\sql-scripts\oauth-client-management-mysql.sql" userid="${mysql.u}" password="${mysql.upwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\mysql-connector-java-${mysql.conn.version}.jar" />
+			<sql src="ping\pingfederate\pingfederate-${ping.fed.version}\server\default\conf\oauth-client-management\sql-scripts\oauth-client-management-mysql.sql" userid="${mysql.u}" password="${mysql.upwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpath="../downloads\${mysql.connector.prefix}${mysql.conn.version}.jar" />
 
 			</target>
 	
@@ -214,7 +215,7 @@
 				</target>
 	<target name="testMySql">
 		
-		<property name="mysqljar" location="../downloads/mysql-connector-java-${mysql.conn.version}.jar"/>
+		<property name="mysqljar" location="../downloads/${mysql.connector.prefix}${mysql.conn.version}.jar"/>
 		<path id="mysql.path" path="${mysqljar}"/>
 		<echo>mysqljar=${mysqljar}</echo>
 			<sql  userid="${mysql.su}" password="${mysql.supwd}" url="jdbc:mysql://${mysql.host}:${mysql.port}?useSSL=false&#38;allowPublicKeyRetrieval=true" driver="com.mysql.cj.jdbc.Driver" classpathref="mysql.path" >

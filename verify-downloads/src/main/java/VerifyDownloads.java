@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class VerifyDownloads {
 
-	private static final String MYSQL_CONNECTOR_PREFIX = "mysql-connector-java-";
+	private static final String MYSQL_CONNECTOR_PREFIX = "mysql-connector-j-";
 	private static final String JAR = ".jar";
 	private static final String ZIP = ".zip";
 	private static final String PING_FED_PREFIX = "PingFederate-";
